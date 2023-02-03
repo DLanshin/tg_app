@@ -4,6 +4,7 @@ import Catalog from "./components/pages/Catalog";
 
 import {Route, Routes} from "react-router-dom";
 import {useTelegram} from "./components/hooks/useTelegram";
+import Profile from "./components/pages/Profile";
 
 
 
