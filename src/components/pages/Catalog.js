@@ -1,3 +1,4 @@
+import React from 'react';
 import {useEffect} from "react";
 
 const tg = window.Telegram.WebApp;
@@ -10,8 +11,9 @@ const Catalog = (props) => {
     }
     return (
         <div className="catalog">
-
+            Каталог
             <button onClick={onClose}>Закрыть</button>
         </div>
     );
 }
+export default Catalog;

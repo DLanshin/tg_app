@@ -1,19 +1,16 @@
+import React from 'react';
 import './App.css';
-import {BrowserRouter, Route} from "react-router-dom";
+import Catalog from "./components/pages/Catalog";
+
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+
 
 
 const App = (props) => {
   return (
-    <div className="wrapper">
       <BrowserRouter>
-        <Route path='/' component={Catalog}/>
-        <Route path='/cart' component={Cart}/>
-        <Route path='/profile' component={Profile}/>
-        <Route path='/contacts' component={Contacts}/>
-          <Route path='/order' component={Order}/>
+          <Catalog />
       </BrowserRouter>
-
-    </div>
   );
 }
 
