@@ -10,7 +10,7 @@ const Header = (props) => {
         <nav className={'navbar '+props.className}>
             <Button onClick={onClose}>Закрыть</Button>
             <span className={'username'}>
-                {user.username}
+                {user?.username}
             </span>
         </nav>
     );
