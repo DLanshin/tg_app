@@ -13,13 +13,10 @@ const App = (props) => {
     useEffect(()=>{
         tg.ready()
     })
-    console.log(user)
+    console.log(user);
   return (
       <div className={'App'}>
-          <Routes>
-              <Route index element={Catalog}/>
-              <Route path={'/profile'} element={Profile}/>
-          </Routes>
+          <Catalog/>
       </div>
   );
 }
