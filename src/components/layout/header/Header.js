@@ -5,12 +5,12 @@ import {useTelegram} from "../../hooks/useTelegram";
 
 
 const Header = (props) => {
-    const {tg, user, onClose} = useTelegram();
+    const {user, onClose} = useTelegram();
     return (
         <nav className={'navbar '+props.className}>
-            <Button>Закрыть</Button>
+            <Button onClick={onClose}>Закрыть</Button>
             <span className={'username'}>
-                {tg.initDataUnsafe?.user?.username}
+                {user.username}
             </span>
         </nav>
     );

@@ -5,7 +5,7 @@ import {useTelegram} from "../hooks/useTelegram";
 
 
 const Catalog = (props) => {
-    const {tg, user, onClose, onToggleButton} = useTelegram();
+    const {onToggleButton} = useTelegram();
     return (
         <div>
             <Header/>
