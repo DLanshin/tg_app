@@ -1,18 +1,15 @@
 import React from 'react';
 import {useEffect} from "react";
+import Header from "../layout/header/Header";
+import {useTelegram} from "../hooks/useTelegram";
 
-const tg = window.Telegram.WebApp;
+
 const Catalog = (props) => {
-    useEffect( () =>{
-        tg.ready();
-    },[]);
-    const onClose = () =>{
-        tg.close()
-    }
+    const {tg, user, onClose, onToggleButton} = useTelegram();
     return (
-        <div className="catalog">
-            Каталог
-            <button onClick={onClose}>Закрыть</button>
+        <div>
+            <Header/>
+            <button onClick={onToggleButton}>toggle</button>
         </div>
     );
 }

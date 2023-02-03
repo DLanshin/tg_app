@@ -3,9 +3,14 @@ body {
   color: var(--tg-theme-text-color);
 }
 
-button {
+.button {
   background-color: var(--tg-theme-button-color);
   color: var(--tg-theme-button-text-color);
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=App.css.map */
