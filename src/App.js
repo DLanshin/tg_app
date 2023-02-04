@@ -1,22 +1,18 @@
 import React, {useEffect} from 'react';
-import './App.css';
-import Catalog from "./components/pages/Catalog";
-
-import {Route, Routes} from "react-router-dom";
-import {useTelegram} from "./components/hooks/useTelegram";
-import Profile from "./components/pages/Profile";
+import './assets/stylesheets/main.css';
+import Profile from "./views/Profile";
+import {useTelegram} from "./hooks/useTelegram";
 
 
 
 const App = (props) => {
-    const {tg,user} = useTelegram();
+    const {tg} = useTelegram();
     useEffect(()=>{
         tg.ready()
     })
-    console.log(user);
   return (
       <div className={'App'}>
-          <Catalog/>
+          <Profile/>
       </div>
   );
 }

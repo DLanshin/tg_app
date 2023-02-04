@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import Button from "../../common/button/Button";
+import Button from "../../components/Button/Button";
 import {useTelegram} from "../../hooks/useTelegram";
 
 
