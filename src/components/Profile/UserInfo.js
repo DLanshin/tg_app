@@ -6,6 +6,7 @@ const UserInfo = (props) => {
     const {user} = useTelegram();
     return (
         <div className={'user-info'}>
+            {JSON.stringify(user)}
             <img src={user?.photo_url ? user.photo_url : avatarImg} className="user-info__image" alt={user?.name}/>
             <div className="user-info__content">
                 <div className="user-info__title">
