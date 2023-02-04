@@ -1,7 +1,8 @@
 import React from 'react';
 import Header from "../layouts/Header/Header";
 import {useTelegram} from "../hooks/useTelegram";
-
+import productImage from "../assets/images/product.jpg"
+import ProductList from "../components/Catalog/ProductList/ProductList";
 
 
 const categoriesList = [
@@ -23,21 +24,52 @@ const productList = [
         id:1,
         name:"Название",
         description:"Описание товарва",
-        image:"",
+        image:productImage,
         price:600,
-    }
+    },
+    {
+        id:1,
+        name:"Название",
+        description:"Описание товарва",
+        image:productImage,
+        price:600,
+    },
+    {
+        id:1,
+        name:"Название",
+        description:"Описание товарва",
+        image:productImage,
+        price:600,
+    },
+    {
+        id:1,
+        name:"Название",
+        description:"Описание товарва",
+        image:productImage,
+        price:600,
+    },
+    {
+        id:1,
+        name:"Название",
+        description:"Описание товарва",
+        image:productImage,
+        price:600,
+    },
+    {
+        id:1,
+        name:"Название",
+        description:"Описание товарва",
+        image:productImage,
+        price:600,
+    },
 ];
 const Catalog = (props) => {
     const {tg, showMainButton} = useTelegram();
     showMainButton({text:"Корзина"});
     let showText = "";
-    tg.WebApp.onEvent('mainButtonClicked', function (){
-        showText = "ssssssssssss";
-    });
     return (
         <div>
-
-            {showText}
+            <ProductList products={productList}/>
         </div>
     );
 }

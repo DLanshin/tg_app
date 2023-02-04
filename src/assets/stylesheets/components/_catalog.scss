@@ -1,0 +1,39 @@
+.product{
+  &__list{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:15px;
+    max-width: 100%;
+  }
+  &__item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+    background: $secondary_bg_color;
+    padding: 10px;
+    min-height: 100px;
+    border-radius: 10px;
+    font-size: 12px;
+  }
+  &__item-content{
+    cursor: pointer;
+  }
+  &__item-image{
+    max-width: 100%;
+  }
+  &__item-name{
+
+    color:$text_color;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 7px;
+  }
+  &__item-description{
+    color:$hint_color
+  }
+  &__item-button{
+
+  }
+}
