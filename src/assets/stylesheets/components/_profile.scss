@@ -47,3 +47,46 @@
     font-weight: bold;
   }
 }
+.grid-list{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:15px;
+  &__item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: $secondary_bg_color;
+    padding: 10px;
+    min-height: 100px;
+    border-radius: 10px;
+  }
+  &__icon{
+    position: relative;
+    margin-bottom: 10px;
+    svg{
+      width:35px;
+      height: 35px;
+      fill:$text_color;
+      path{
+        fill:$text_color;
+      }
+    }
+
+  }
+  &__hint{
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: $bg_color;
+    color:$text_color;
+    width: 16px;
+    height: 16px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+  }
+}
