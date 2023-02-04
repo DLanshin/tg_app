@@ -4,7 +4,8 @@ import UserAvatar from "../Profile/UserAvatar";
 const CatalogNavPanel = (props) => {
     return (
         <div className={'nav-panel'}>
-            <UserAvatar className={'small'}/>
+            <div></div>
+            <UserAvatar className={'small conic-gradient'}/>
         </div>
     );
 };

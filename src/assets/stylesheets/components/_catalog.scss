@@ -43,5 +43,11 @@
   }
 }
 .nav-panel{
-  background-color: black;
+  padding: 5px 10px;
+  box-shadow: $shadow;
+  margin-bottom: 20px;
+  background: $bg_color;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

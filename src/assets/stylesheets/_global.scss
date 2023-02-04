@@ -19,6 +19,31 @@ body{
   padding: 10px 15px;
   cursor: pointer;
 }
-.button{
-
+.conic-gradient{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding:3px;
+  position: relative;
+  &>*{
+    z-index: 10;
+  }
+  &:after {
+    display: block;
+    border-radius: 9999px;
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-image: conic-gradient(rgba(239, 0, 64, 0.8), #800044, #80007e, rgba(108, 0, 239, 0.8), #af00ef);
+    animation: spin 5s linear infinite;
+  }
+}
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
 }

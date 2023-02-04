@@ -5,7 +5,6 @@ import List from "../components/List/List";
 import catalogIcon from "../assets/images/icons/coffee.svg";
 import basketIcon from "../assets/images/icons/basket.svg";
 import orderIcon from "../assets/images/icons/order.svg";
-import closeIcon from "../assets/images/icons/close.svg";
 import { ReactSVG } from 'react-svg'
 
 
@@ -58,7 +57,7 @@ const Profile = (props) => {
                 </div>
                 <div className="grid-list__item" onClick={onClose}>
                     <div className="grid-list__icon">
-                        <ReactSVG src={closeIcon}/>
+
                     </div>
                     <div className="grid-list__text">
                         Закрыть
