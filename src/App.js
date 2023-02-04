@@ -11,7 +11,7 @@ const App = (props) => {
         tg.ready()
     })
   return (
-      <div className={'App'}>
+      <div className={'app wrapper'}>
           <Profile/>
       </div>
   );

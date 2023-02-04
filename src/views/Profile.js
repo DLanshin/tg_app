@@ -8,7 +8,7 @@ const Profile = (props) => {
         <div className={'profile'}>
             <img src={user?.photo_url ? user.photo_url : avatarImg} className="profile__image" alt={user?.name}/>
             <div className="profile__name">
-                {user?.first_name} {user?.last_name}
+                {user?.first_name} {user?.last_name} qwdsa as sa
             </div>
         </div>
     );
