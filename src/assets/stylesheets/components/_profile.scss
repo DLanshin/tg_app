@@ -32,11 +32,12 @@
   background-color: $secondary_bg_color;
   color:$text_color;
   border-radius: 6px;
+  font-size: 12px;
   & li{
     display: flex;
     justify-content: space-between;
-    padding:5px 10px;
-    border-bottom: $bg_color;
+    padding:8px 10px;
+    border-bottom: 1px solid $bg_color;
     &:last-child{
       border-bottom: none;
     }
