@@ -20,20 +20,30 @@ body {
 }
 
 .profile {
-  display: flex;
+  display: grid;
   padding: 10px 20px;
-  flex-direction: column;
-  align-items: center;
+  grid-template-columns: 50px 1fr;
+  gap: 20px;
 }
 .profile__image {
-  margin: 0 auto 20px;
-  width: 130px;
-  height: 130px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
 }
-.profile__name {
+.profile__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.profile__title {
+  color: var(--tg-theme-text-color);
   font-size: 16px;
   font-weight: bold;
+}
+.profile__subtitle {
+  margin-top: 5px;
+  color: var(--tg-theme-hint-color);
+  font-size: 12px;
 }
 
 /*# sourceMappingURL=main.css.map */

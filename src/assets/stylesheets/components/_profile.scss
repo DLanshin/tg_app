@@ -1,0 +1,26 @@
+.profile{
+  display: grid;
+  padding: 10px 20px;
+  grid-template-columns: 50px 1fr;
+  gap:20px;
+  &__image{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  &__content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__title{
+    color:$text_color;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  &__subtitle{
+    margin-top:5px;
+    color:$hint_color;
+    font-size: 12px;
+  }
+}
