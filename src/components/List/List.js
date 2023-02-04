@@ -4,7 +4,7 @@ const List = (props) => {
 
     return (
         <ul className={'list-info'}>
-            {props.list.map(item=>(
+            {props.list.map(item => (
                 <li>
                     <span>{item.name}</span>
                     <span>{item.value}</span>

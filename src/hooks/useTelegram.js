@@ -10,6 +10,10 @@ export function useTelegram(){
             tg.MainButton.show();
         }
     }
+    const showMainButton = (props) =>{
+        tg.MainButton.setParams(props);
+        tg.MainButton.show();
+    }
     return {
         tg,
         user:tg.initDataUnsafe?.user,
