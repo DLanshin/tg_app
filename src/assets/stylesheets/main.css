@@ -148,6 +148,9 @@ body {
   padding: 0 10px;
   color: var(--tg-theme-hint-color);
 }
+.product__item-footer {
+  width: 100%;
+}
 .product__item-button {
   width: 100%;
 }
