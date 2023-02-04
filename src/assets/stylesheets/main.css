@@ -126,7 +126,6 @@ body {
   align-items: center;
   gap: 10px;
   background: var(--tg-theme-bg-color);
-  padding: 10px;
   min-height: 100px;
   border-radius: 10px;
   font-size: 12px;
@@ -139,13 +138,18 @@ body {
   max-width: 100%;
 }
 .product__item-name {
+  padding: 0 10px;
   color: var(--tg-theme-text-color);
   font-size: 14px;
   font-weight: bold;
-  margin-bottom: 7px;
+  margin: 7px 0;
 }
 .product__item-description {
+  padding: 0 10px;
   color: var(--tg-theme-hint-color);
+}
+.product__item-button {
+  width: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */

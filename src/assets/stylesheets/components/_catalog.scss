@@ -12,7 +12,6 @@
     align-items: center;
     gap:10px;
     background: $bg_color;
-    padding: 10px;
     min-height: 100px;
     border-radius: 10px;
     font-size: 12px;
@@ -25,16 +24,17 @@
     max-width: 100%;
   }
   &__item-name{
-
+    padding: 0 10px;
     color:$text_color;
     font-size: 14px;
     font-weight: bold;
-    margin-bottom: 7px;
+    margin: 7px 0;
   }
   &__item-description{
+    padding:0 10px;
     color:$hint_color
   }
   &__item-button{
-
+    width:100%;
   }
 }
