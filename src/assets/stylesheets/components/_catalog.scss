@@ -47,7 +47,19 @@
   box-shadow: $shadow;
   margin-bottom: 20px;
   background: $bg_color;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 32px;
+  gap:10px
+}
+.category-list{
   align-items: center;
-  justify-content: space-between;
+  overflow: hidden;
+  &__item{
+    box-sizing: border-box;
+    margin: 0 4px;
+    padding:4px 10px;
+    background: $bg_color;
+    border-radius: 10px;
+    color:$text_color;
+  }
 }

@@ -18,6 +18,14 @@ const categoriesList = [
     {
         id:3,
         name:"Рафф"
+    },
+    {
+        id:3,
+        name:"Рафф"
+    },
+    {
+        id:3,
+        name:"Рафф"
     }
 ];
 const productList = [

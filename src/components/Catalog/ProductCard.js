@@ -11,7 +11,7 @@ const ProductCard = (props) => {
     return (
         <div className={"product__item"} data-id={props.product.id}>
             <div className="product__item-content">
-                <img class={"product__item-image"} src={props.product.image} alt={props.product.name}/>
+                <img className={"product__item-image"} src={props.product.image} alt={props.product.name}/>
                 <div className="product__item-name">{props.product.name}</div>
                 <div className="product__item-description">{props.product.description}</div>
             </div>
