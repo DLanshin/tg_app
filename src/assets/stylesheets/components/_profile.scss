@@ -1,4 +1,4 @@
-.profile{
+.user-info{
   display: grid;
   padding: 10px 20px;
   grid-template-columns: 50px 1fr;
@@ -22,5 +22,27 @@
     margin-top:5px;
     color:$hint_color;
     font-size: 12px;
+  }
+}
+.list-info{
+  margin:20px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: $secondary_bg_color;
+  color:$text_color;
+  border-radius: 6px;
+  & li{
+    display: flex;
+    justify-content: space-between;
+    padding:5px 10px;
+    border-bottom: $bg_color;
+    &:last-child{
+      border-bottom: none;
+    }
+  }
+  & li span:last-child{
+    color:$link_color;
+    font-weight: bold;
   }
 }

@@ -19,31 +19,54 @@ body {
   cursor: pointer;
 }
 
-.profile {
+.user-info {
   display: grid;
   padding: 10px 20px;
   grid-template-columns: 50px 1fr;
   gap: 20px;
 }
-.profile__image {
+.user-info__image {
   width: 50px;
   height: 50px;
   border-radius: 50%;
 }
-.profile__content {
+.user-info__content {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.profile__title {
+.user-info__title {
   color: var(--tg-theme-text-color);
   font-size: 16px;
   font-weight: bold;
 }
-.profile__subtitle {
+.user-info__subtitle {
   margin-top: 5px;
   color: var(--tg-theme-hint-color);
   font-size: 12px;
+}
+
+.list-info {
+  margin: 20px 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--tg-theme-secondary-bg-color);
+  color: var(--tg-theme-text-color);
+  border-radius: 6px;
+}
+.list-info li {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 10px;
+  border-bottom: var(--tg-theme-bg-color);
+}
+.list-info li:last-child {
+  border-bottom: none;
+}
+.list-info li span:last-child {
+  color: var(--tg-theme-link-color);
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=main.css.map */
