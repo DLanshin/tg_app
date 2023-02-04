@@ -29,9 +29,9 @@ const productList = [
 ];
 const Catalog = (props) => {
     const {tg, showMainButton} = useTelegram();
-    showMainButton({text:"Корзина"});
+    showMainButton;
     let showText = "";
-    tg.WebApp.onEvent('mainButtonClicked', function (){
+    tg?.WebApp.onEvent('mainButtonClicked', function (){
         showText = "ssssssssssss";
     });
     return (
