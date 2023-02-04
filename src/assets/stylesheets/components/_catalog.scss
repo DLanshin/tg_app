@@ -19,6 +19,7 @@
   }
   &__item-content{
     cursor: pointer;
+    margin-bottom: 10px;
   }
   &__item-image{
     max-width: 100%;
@@ -40,4 +41,7 @@
   &__item-button{
     width:100%;
   }
+}
+.nav-panel{
+  background-color: black;
 }

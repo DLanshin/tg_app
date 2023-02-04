@@ -2,7 +2,8 @@ import React from 'react';
 import Header from "../layouts/Header/Header";
 import {useTelegram} from "../hooks/useTelegram";
 import productImage from "../assets/images/product.jpg"
-import ProductList from "../components/Catalog/ProductList/ProductList";
+import ProductList from "../components/Catalog/ProductList";
+import CatalogNavPanel from "../components/Catalog/CatalogNavPanel";
 
 
 const categoriesList = [
@@ -62,6 +63,27 @@ const productList = [
         image:productImage,
         price:600,
     },
+    {
+        id:1,
+        name:"Название",
+        description:"Описание товарва",
+        image:productImage,
+        price:600,
+    },
+    {
+        id:1,
+        name:"Название",
+        description:"Описание товарва",
+        image:productImage,
+        price:600,
+    },
+    {
+        id:1,
+        name:"Название",
+        description:"Описание товарва",
+        image:productImage,
+        price:600,
+    },
 ];
 const Catalog = (props) => {
     const {tg, showMainButton} = useTelegram();
@@ -69,6 +91,7 @@ const Catalog = (props) => {
     let showText = "";
     return (
         <div>
+            <CatalogNavPanel categories={categoriesList}/>
             <ProductList products={productList}/>
         </div>
     );

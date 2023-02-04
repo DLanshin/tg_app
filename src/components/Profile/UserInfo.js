@@ -1,6 +1,6 @@
 import React from 'react';
-import avatarImg from "../../../assets/images/avatar.png";
-import {useTelegram} from "../../../hooks/useTelegram";
+import avatarImg from "../../assets/images/avatar.png";
+import {useTelegram} from "../../hooks/useTelegram";
 
 const UserInfo = (props) => {
     const {user} = useTelegram();

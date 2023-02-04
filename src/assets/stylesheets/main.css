@@ -1,6 +1,8 @@
 body {
   background-color: var(--tg-theme-bg-color);
   color: var(--tg-theme-text-color);
+  margin: 0;
+  padding: 0;
 }
 
 .wrapper {
@@ -113,6 +115,12 @@ body {
   border-radius: 50%;
 }
 
+.user-avatar.small img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
 .product__list {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -133,6 +141,7 @@ body {
 }
 .product__item-content {
   cursor: pointer;
+  margin-bottom: 10px;
 }
 .product__item-image {
   max-width: 100%;
@@ -153,6 +162,10 @@ body {
 }
 .product__item-button {
   width: 100%;
+}
+
+.nav-panel {
+  background-color: black;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -13,7 +13,8 @@ const App = (props) => {
     })
   return (
       <div className={'app wrapper'}>
-          <Catalog/>
+          {/*<Catalog/>*/}
+          <Profile/>
       </div>
   );
 }

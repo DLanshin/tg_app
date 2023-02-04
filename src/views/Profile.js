@@ -1,6 +1,6 @@
 import React from 'react';
 import {useTelegram} from "../hooks/useTelegram";
-import UserInfo from "../components/Profile/UserInfo/UserInfo";
+import UserInfo from "../components/Profile/UserInfo";
 import List from "../components/List/List";
 import catalogIcon from "../assets/images/icons/coffee.svg";
 import basketIcon from "../assets/images/icons/basket.svg";

@@ -1,7 +1,13 @@
 import React from 'react';
-import Button from "../../Button/Button";
+import Button from "../Button/Button";
+
 
 const ProductCard = (props) => {
+    let showPanel = false;
+    const add2Cart = () => {
+        showPanel = true;
+        console.log("Add to cart");
+    }
     return (
         <div className={"product__item"} data-id={props.product.id}>
             <div className="product__item-content">
@@ -10,7 +16,9 @@ const ProductCard = (props) => {
                 <div className="product__item-description">{props.product.description}</div>
             </div>
             <div className="product__item-footer">
-                <Button className={'product__item-button'}>{props.product.price + ' ₽'}</Button>
+                <Button onClick={add2Cart} className={'product__item-button '+ (showPanel ? "hide": "")}>
+                        {props.product.price + ' ₽'}
+                </Button>
             </div>
         </div>
     );
