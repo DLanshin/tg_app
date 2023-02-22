@@ -83,7 +83,7 @@ a {
 }
 
 .list-info {
-  margin: 20px 0;
+  margin: 20px 10px;
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -110,6 +110,7 @@ a {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 15px;
+  padding: 0 10px;
 }
 .grid-list__item {
   display: flex;
