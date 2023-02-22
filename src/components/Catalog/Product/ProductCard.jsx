@@ -1,12 +1,14 @@
 import React from 'react';
 import Button from "../../Button/Button";
-import {addProductAction, incrementQualityAction} from "../../../store/reducers/cart/cart-reducer";
+import {
+    addProductAction,
+    incrementQualityAction
+} from "../../../store/reducers/cart/cart-reducer";
 import {useDispatch, useSelector} from "react-redux";
 
 const ProductCard = (props) => {
     const dispatch = useDispatch();
     const addProduct = (product) => {
-        dispatch(incrementQualityAction());
         dispatch(addProductAction(product))
     }
     return (
@@ -17,15 +19,9 @@ const ProductCard = (props) => {
                 <div className="product__item-description">{props.product.description}</div>
             </div>
             <div className="product__item-footer">
-                {props.product.show_panel ?
-                    <div>
-                        panel
-                    </div>
-                    :
-                    <Button onClick={() => {addProduct(props.product)}} className={'product__item-button '}>
-                            {props.product.price + ' ₽'}
-                    </Button>
-                }
+                <Button onClick={() => {addProduct(props.product)}} className={'product__item-button '}>
+                        {props.product.price + ' ₽'}
+                </Button>
             </div>
         </div>
     );

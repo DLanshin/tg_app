@@ -1,25 +1,26 @@
 import React, {useEffect} from 'react';
-import ProductList from "../components/Catalog/Product/ProductList";
 import {useDispatch, useSelector} from "react-redux";
-import CatalogNavPanel from "../components/Catalog/Category/CatalogNavPanel";
-import {getProducts} from "../api/products";
+import {fetchCartProductAction} from "../store/reducers/cart/cart-reducer";
+import NavPanel from "../components/Nav/NavPanel";
+import CartList from "../components/Cart/CartList";
 
 
 
 const Cart = (props) => {
 
     const dispatch = useDispatch();
-    const products = useSelector(state => state.products.products);
+    const products = useSelector(state => state.cart.products);
 
     useEffect(()=>{
-        dispatch(getProducts())
+        dispatch(fetchCartProductAction())
     }, []);
 
 
 
     return (
         <div>
-            <ProductList
+            <NavPanel/>
+            <CartList
                 products={products}
                 emptyText={"Ваша корзина пуста"}
             />

@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import ProductList from "../components/Catalog/Product/ProductList";
 import {useDispatch, useSelector} from "react-redux";
-import CatalogNavPanel from "../components/Catalog/Category/CatalogNavPanel";
 import {getProducts} from "../api/products";
+import NavPanel from "../components/Nav/NavPanel";
 
 
 
@@ -19,7 +19,9 @@ const Catalog = (props) => {
 
     return (
         <div>
-            <CatalogNavPanel />
+            <NavPanel
+                type={"catalog"}
+            />
             <ProductList
                 products={products}
                 emptyText={"Товары не найдены"}

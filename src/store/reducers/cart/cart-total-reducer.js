@@ -8,9 +8,6 @@ let initialCartTotalState = {
 export const cartTotalReducer = (state = initialCartTotalState, action) => {
     switch (action){
         case cartTotalActions.SET_TOTAL:
-            state.product.map( () => {
-                console.log("p1");
-            });
             return state;
         default:
             return state;
