@@ -20,7 +20,7 @@ const CategoryList = (props) => {
             {props.category.length > 0 ?
                 props.category.map(item => (
                     <div key={uuid()} onClick={()=>{chooseCategory(item)}} className={'category-list__item'}>
-                        {item}
+                        <span>{item}</span>
                     </div>
                 ))
                 :

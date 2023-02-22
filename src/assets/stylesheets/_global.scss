@@ -42,6 +42,10 @@ body{
     animation: spin 5s linear infinite;
   }
 }
+a{
+  text-decoration: none;
+  color:$text_color;
+}
 @keyframes spin {
   100% {
     transform: rotate(360deg);
