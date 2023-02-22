@@ -1,4 +1,3 @@
-import productImage from "../assets/images/product.jpg";
 import {cartReducer} from "./reducers/cart/cart-reducer";
 import {cartTotalReducer} from "./reducers/cart/cart-total-reducer";
 import {applyMiddleware, combineReducers, createStore} from "redux";
