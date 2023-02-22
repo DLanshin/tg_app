@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {useTelegram} from "../hooks/useTelegram";
 import UserInfo from "../components/Profile/UserInfo";
 import List from "../components/List/List";
@@ -6,14 +6,24 @@ import catalogIcon from "../assets/images/icons/coffee.svg";
 import basketIcon from "../assets/images/icons/basket.svg";
 import orderIcon from "../assets/images/icons/order.svg";
 import { ReactSVG } from 'react-svg'
+import {useDispatch, useSelector} from "react-redux";
+import {NavLink} from "react-router-dom";
+import {getUserInfo} from "../api/user";
 
 
 const Profile = (props) => {
-    const {user, onClose} = useTelegram();
+    const {quantity} = useSelector(state=>state.cart),
+            {id} = useSelector(state => state.user_info),
+            dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(getUserInfo());
+    },[])
+
     const userInfoList = [
         {
             name:"ID",
-            value:user?.id
+            value:id
         },
         {
             name:"Количество заказов",
@@ -29,24 +39,24 @@ const Profile = (props) => {
             <UserInfo/>
             <List list={userInfoList}/>
             <div className="grid-list">
-                <div className="grid-list__item">
+                <NavLink to="/" className="grid-list__item">
                     <div className="grid-list__icon">
                         <ReactSVG src={catalogIcon} />
                     </div>
                     <div className="grid-list__text">
                         Каталог
                     </div>
-                </div>
-                <div className="grid-list__item">
+                </NavLink>
+                <NavLink to="/" className="grid-list__item">
                     <div className="grid-list__icon">
-                        <span className="grid-list__hint">0</span>
+                        <span className="grid-list__hint">{quantity}</span>
                         <ReactSVG src={basketIcon}/>
                     </div>
                     <div className="grid-list__text">
                         Корзина
                     </div>
-                </div>
-                <div className="grid-list__item">
+                </NavLink>
+                <NavLink to="/" className="grid-list__item">
                     <div className="grid-list__icon">
                         <span className="grid-list__hint">0</span>
                         <ReactSVG src={orderIcon}/>
@@ -54,15 +64,15 @@ const Profile = (props) => {
                     <div className="grid-list__text">
                         Мои заказы
                     </div>
-                </div>
-                <div className="grid-list__item" onClick={onClose}>
+                </NavLink>
+                <NavLink to="/" className="grid-list__item">
                     <div className="grid-list__icon">
 
                     </div>
                     <div className="grid-list__text">
                         Закрыть
                     </div>
-                </div>
+                </NavLink>
             </div>
         </div>
     );

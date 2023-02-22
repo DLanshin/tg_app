@@ -1,18 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import avatarImg from "../../assets/images/avatar.png";
 import {useTelegram} from "../../hooks/useTelegram";
+import {useDispatch, useSelector} from "react-redux";
+import {getUserInfo} from "../../api/user";
 
 const UserInfo = (props) => {
-    const {user} = useTelegram();
+    const {id, name} = useSelector(state => state.user_info),
+        dispatch = useDispatch()
+
+    useEffect(()=>{
+        dispatch(getUserInfo());
+    },[])
     return (
         <div className={'user-info'}>
-            <img src={user?.photo_url ? user.photo_url : avatarImg} className="user-info__image" alt={user?.name}/>
+            <img src={avatarImg} className="user-info__image" alt={name}/>
             <div className="user-info__content">
                 <div className="user-info__title">
-                    {user?.first_name} {user?.last_name}
+                    {name}
                 </div>
                 <div className="user-info__subtitle">
-                    {user?.username}
+                    {name}
                 </div>
             </div>
         </div>

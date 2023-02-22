@@ -1,22 +1,18 @@
 import React, {useEffect} from 'react';
 import './assets/stylesheets/main.css';
 import Profile from "./views/Profile";
-import {useTelegram} from "./hooks/useTelegram";
 import Catalog from "./views/Catalog";
+import {Route, Routes} from "react-router-dom";
 
-
-
-const App = (props) => {
-    const {tg} = useTelegram();
-    useEffect(()=>{
-        tg.ready()
-    })
-  return (
-      <div className={'app wrapper'}>
-          <Catalog/>
-          {/*<Profile/>*/}
-      </div>
-  );
+const App = () => {
+    return (
+        <div className={'app wrapper'}>
+            <Routes>
+                <Route path='/' element={<Catalog/>}/>
+                <Route path='/profile' element={<Profile/>}/>
+            </Routes>
+        </div>
+    );
 }
 
 export default App;
