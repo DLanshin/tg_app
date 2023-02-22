@@ -15,7 +15,7 @@ const ProductList = (props) => {
                     ))
                 :
                   <div>
-                      Товары отстутствуют
+                      {props.emptyText}
                   </div>
                 }
             </div>

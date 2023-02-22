@@ -48,7 +48,7 @@ const Profile = (props) => {
                         Каталог
                     </div>
                 </NavLink>
-                <NavLink to="/" className="grid-list__item">
+                <NavLink to="/cart" className="grid-list__item">
                     <div className="grid-list__icon">
                         <span className="grid-list__hint">{quantity}</span>
                         <ReactSVG src={basketIcon}/>

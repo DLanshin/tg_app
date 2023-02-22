@@ -6,7 +6,7 @@ import {getProducts} from "../api/products";
 
 
 
-const Catalog = (props) => {
+const Cart = (props) => {
 
     const dispatch = useDispatch();
     const products = useSelector(state => state.products.products);
@@ -19,12 +19,11 @@ const Catalog = (props) => {
 
     return (
         <div>
-            <CatalogNavPanel />
             <ProductList
                 products={products}
-                emptyText={"Товары не найдены"}
+                emptyText={"Ваша корзина пуста"}
             />
         </div>
     );
 }
-export default Catalog;
+export default Cart;
