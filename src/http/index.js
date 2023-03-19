@@ -1,18 +1,15 @@
 import axios from "axios";
-import {authUserAction} from "../store/reducers/user/user-reducer";
 
 export const setBotID = bot_id =>{
     localStorage.setItem("bot_id", bot_id);
 }
 
 const $api = axios.create({
-    // withCredentials: true,
-    baseURL:`${process.env.REACT_APP_API_URL}`,
+    withCredentials: true,
+    baseURL:`${process.env.REACT_APP_API_URL}`
 });
 const authInterceptor = config => {
-    config.headers.authorization = `Bearer ${localStorage.getItem('accessToken')}`;
-    config.headers.post['Content-Type'] ='application/json;charset=utf-8';
-    config.headers.post['Access-Control-Allow-Origin'] = '*';
+    config.headers.authorization = `Bearer ${localStorage.getItem('accessToken')}`
     return config;
 }
 
