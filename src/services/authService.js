@@ -1,4 +1,3 @@
-import {$api} from "../http";
 import {authUserAction, checkUserAction} from "../store/reducers/user/user-reducer";
 import {useAuth} from "../hooks/useAuth";
 import axios from "axios";
