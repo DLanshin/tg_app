@@ -5,8 +5,6 @@ export const setBotID = bot_id =>{
     localStorage.setItem("bot_id", bot_id);
 }
 
-axios.defaults.headers.post['Content-Type'] ='application/json;charset=utf-8';
-axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
 const $api = axios.create({
     // withCredentials: true,
     baseURL:`${process.env.REACT_APP_API_URL}`,
