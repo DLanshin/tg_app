@@ -1,79 +1,163 @@
-.product{
+
+.products{
   padding: 0 10px;
   &__list{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap:15px;
-    max-width: 100%;
+    gap:10px;
   }
+  &__item{}
+  &__item-image{
+    width: 100%;
+    height:160px;
+    object-fit: cover;
+    object-position: top center;
+    background: $bg_color;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  &__item-content{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  &__item-name{
+    font-family: "Inter", sans-serif;
+    color:$text_color;
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+  &__item-description{
+    color:$hint_color;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  &__item-price{
+
+  }
+  &__item-button{
+    display: inline-flex;
+    background: $bg_color;
+    box-shadow: $shadow;
+    gap:10px;
+    padding: 3px 8px;
+    border-radius: 6px;
+    font-size: 14px;
+    svg{
+      width: 12px;
+      height: 12px;
+    }
+  }
+}
+
+.category-list{
+  display: flex;
+  align-items: center;
+  gap:20px;
+  padding:0 10px;
+
   &__item{
+    cursor: pointer;
+    color:black;
+  }
+}
+.product-item{
+  height: 100vh;
+  width: 100%;
+  &__close{
+    background-color: $bg_color;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    box-shadow: $shadow;
+    padding: 3px 0 0 0;
+    svg{
+      width: 15px;
+      height: 15px;
+    }
+  }
+  &__image{
+    width: 100%;
+    height: 40%;
+    object-fit: cover;
+    object-position: top center;
+  }
+  &__content{
+    min-height: 60%;
+    background: $bg_color;
+    z-index: 1;
+    position: relative;
+    padding: 0 30px 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    &:before{
+      position: absolute;
+      content: '';
+      display: block;
+      width: 100%;
+      height: 40px;
+      border-top-right-radius: 40px;
+      border-top-left-radius: 40px;
+      top: -40px;
+      left: 0;
+      background-color: #fff;
+    }
+  }
+
+  &__title{
+    font-weight: 700;
+    font-size: 18px;
+    color: $text_color;
+    margin-bottom: 16px;
+  }
+  &__variables{
+    margin-bottom: 33px;
+    display: flex;
     align-items: center;
-    gap:10px;
-    background: $bg_color;
-    min-height: 100px;
+    gap: 10px;
+  }
+  &__variables-item{
+    display: flex;
+    padding: 6px 12px;
     border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    background-color: $secondary_bg_color;
+    opacity: 0.7;
     font-size: 12px;
     box-shadow: $shadow;
-  }
-  &__item-content{
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-  &__item-image{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    max-width: 100%;
-    width: 100%;
-    height: 130px;
-  }
-  &__item-name{
-    padding: 0 10px;
-    color:$text_color;
-    font-size: 14px;
-    font-weight: bold;
-    margin: 7px 0;
-  }
-  &__item-description{
-    padding:0 10px;
-    color:$hint_color
-  }
-  &__item-footer{
-    width:100%;
-  }
-  &__item-button{
-    width:100%;
-  }
-}
-.nav-panel{
-  padding: 5px 10px;
-  box-shadow: $shadow;
-  margin-bottom: 20px;
-  background: $bg_color;
-  display: grid;
-  grid-template-columns: 1fr 32px;
-  gap:10px
-}
-.category-list{
-  align-items: center;
-  overflow: hidden;
-  &__item{
-
-    padding: 0 5px;
-    span{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      box-sizing: border-box;
-      margin: 0 4px;
-      padding:4px 10px;
-      background: $button_color;
-      border-radius: 10px;
-      color: $button_text_color;
-      text-align: center;
-      font-size: 14px;
+    &.selected{
+      opacity: 1;
     }
+  }
+  &__panel{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 9px;
+  }
+  &__panel label{
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 24px;
+    color: $text_color;
+  }
+  &__price{
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 17px;
+    text-align: center;
+    color: $link_color;
+  }
+  &__description{
+    font-size: 12px;
+    color: $hint_color;
   }
 }

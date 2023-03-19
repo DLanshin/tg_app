@@ -2,12 +2,13 @@ import React from 'react';
 import uuid from "react-uuid";
 import ProductCard from "./ProductCard";
 
-const ProductList = (props) => {
+const ProductList = ({products, emptyText}) => {
+    
     return (
-        <div className={'product'}>
-            <div className={'product__list'}>
-                {props.products.length > 0 ?
-                    props.products.map(item => (
+        <div className={'products'}>
+            <div className={'products__list'}>
+                {products.length > 0 ?
+                    products.map(item => (
                         <ProductCard
                             key={uuid()}
                             product={item}
@@ -15,7 +16,7 @@ const ProductList = (props) => {
                     ))
                 :
                   <div>
-                      {props.emptyText}
+                      {emptyText}
                   </div>
                 }
             </div>

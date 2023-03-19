@@ -1,20 +1,42 @@
 import React, {useEffect} from 'react';
 import './assets/stylesheets/main.css';
-import Profile from "./views/Profile";
-import Catalog from "./views/Catalog";
-import {Route, Routes} from "react-router-dom";
-import Cart from "./views/Cart";
+import AppRouter from "./components/AppRouter";
+import {BrowserRouter} from "react-router-dom";
+import {useDispatch, useSelector} from "react-redux";
+import {useAuth} from "./hooks/useAuth";
+import {check, login} from "./services/authService";
+import ShopLoader from "./components/Loaders/ShopLoader";
+import Spinner from "./components/Loaders/Spinner";
 
 const App = () => {
-    return (
-        <div className={'app wrapper'}>
-            <Routes>
-                <Route path='/' element={<Catalog/>}/>
-                <Route path='/profile' element={<Profile/>}/>
-                <Route path='/cart' element={<Cart/>}/>
-            </Routes>
-        </div>
-    );
+    const dispatch = useDispatch(),
+        {checkAuth} = useAuth(),
+        {isAuth, isLoading} = useSelector(state => state.user),
+        REACT_APP_BOT_ID=5569923498,
+        REACT_APP_USER_ID=5467763995;
+    useEffect(()=>{
+        if(checkAuth(REACT_APP_BOT_ID, REACT_APP_USER_ID)){
+            dispatch(check(REACT_APP_USER_ID));
+        }else{
+            dispatch(login(REACT_APP_BOT_ID, REACT_APP_USER_ID));
+        }
+    },[]);
+
+    if(!isAuth || isLoading){
+        return (
+            <>
+                <ShopLoader/>
+            </>
+        );
+    }else{
+        return (
+            <BrowserRouter>
+                <div className={'app wrapper'}>
+                    <AppRouter/>
+                </div>
+            </BrowserRouter>
+        );
+    }
 }
 
 export default App;

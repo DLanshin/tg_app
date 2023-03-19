@@ -9,7 +9,9 @@ let initialCategoriesState = {
 export const categoriesReducer = (state = initialCategoriesState, action) => {
     switch (action.type){
         case categoriesActions.FETCH_CATEGORIES:
-            return {...state, categories: action.payload};
+            return {
+                ...state,
+                categories: action.payload};
         default:
             return state;
 

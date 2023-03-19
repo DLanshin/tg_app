@@ -1,27 +1,24 @@
 import React from 'react';
-import Button from "../../Button/Button";
-import {
-    addProductAction,
-    incrementQualityAction
-} from "../../../store/reducers/cart/cart-reducer";
-import {useDispatch, useSelector} from "react-redux";
+import {NavLink} from "react-router-dom";
+import {PRODUCT_ROUTE} from "../../../utils/consts";
+import {icons} from "../../icons";
 
-const ProductCard = (props) => {
-    const dispatch = useDispatch();
-    const addProduct = (product) => {
-        dispatch(addProductAction(product))
-    }
+const ProductCard = ({product}) => {
     return (
-        <div className={"product__item"} data-id={props.product.id}>
-            <div className="product__item-content">
-                <img className={"product__item-image"} src={props.product.thumbnail} alt={props.product.title}/>
-                <div className="product__item-name">{props.product.title}</div>
-                <div className="product__item-description">{props.product.description}</div>
-            </div>
-            <div className="product__item-footer">
-                <Button onClick={() => {addProduct(props.product)}} className={'product__item-button '}>
-                        {props.product.price + ' ₽'}
-                </Button>
+        <div className={"products__item"} data-id={product.id}>
+            <NavLink to={PRODUCT_ROUTE + `/${product.id}`}>
+                <img className={"products__item-image"} src={product.image.path} alt={product.title}/>
+            </NavLink>
+            <div className="products__item-content">
+                <div className="products__item-name">
+                    {product.title}
+                </div>
+                <div className="products__item-description" dangerouslySetInnerHTML={{__html: product.description}}></div>
+
+                <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item-button"}>
+                    <span>{product?.min_price + ' ₽'}</span>
+                    {icons.plus}
+                </NavLink>
             </div>
         </div>
     );

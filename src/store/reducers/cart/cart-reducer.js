@@ -1,5 +1,5 @@
 import {useDispatch} from "react-redux";
-import {isInCartProductAction} from "../catalog/products-reducer";
+import {isInCartProductAction} from "../catalog/catalog-reducer";
 
 let cartActions = {
     FETCH_CART_PRODUCTS: "FETCH_CART_PRODUCTS",

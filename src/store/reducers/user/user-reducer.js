@@ -1,18 +1,28 @@
 
 let userActions = {
-    FETCH_USER:"FETCH_USER"
+    LOGIN_USER:"AUTH_USER",
+    CHECK_USER:"CHECK_USER"
 }
 
 let initialProductsState = {
-    id: 97,
+    isAuth: false,
+    isLoading: true,
+    id:"",
     name: "",
 };
 export const userReducer = (state = initialProductsState, action) => {
     switch (action.type){
-        case userActions.FETCH_USER:
+        case userActions.LOGIN_USER:
             return {
                 ...state,
-                name:action.payload.name,
+                isAuth: true,
+                isLoading: false,
+            }
+        case userActions.CHECK_USER:
+            return {
+                ...state,
+                isAuth: true,
+                isLoading: false
             }
         default:
             return state;
@@ -21,5 +31,6 @@ export const userReducer = (state = initialProductsState, action) => {
 }
 
 
-export const fetchUserAction = (userInfo) => ({type: userActions.FETCH_USER, payload:userInfo});
+export const authUserAction = (tokenData) => ({type: userActions.LOGIN_USER, payload:tokenData});
+export const checkUserAction = (tokenData) => ({type: userActions.CHECK_USER, payload:tokenData});
 

@@ -1,26 +1,26 @@
-import React from 'react';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css"
-import "slick-carousel/slick/slick-theme.css"
-import uuid from "react-uuid";
-import {useSlider} from "../../../hooks/useSlider";
-import {useDispatch} from "react-redux";
-import {getProductsByCategory} from "../../../api/products";
+import React, {useEffect} from 'react';
+import {useDispatch, useSelector} from "react-redux";
+import {getCategories, getProductsByCategory} from "../../../services/productsApi";
 
 const CategoryList = (props) => {
-    const {categorySettings} = useSlider(),
-        dispatch = useDispatch();
+    const dispatch = useDispatch(),
+        categories = useSelector(state => state.categories.categories);
+
+    useEffect(()=>{
+        dispatch(getCategories())
+    }, []);
 
     const chooseCategory= (category) => {
         dispatch(getProductsByCategory(category))
     }
 
+
     return (
-        <Slider {...categorySettings} className={'category-list'}>
-            {props.category.length > 0 ?
-                props.category.map(item => (
-                    <div key={uuid()} onClick={()=>{chooseCategory(item)}} className={'category-list__item'}>
-                        <span>{item}</span>
+        <div className={'category-list'}>
+            {categories.length > 0 ?
+                categories.map(({id,name}) => (
+                    <div key={id} onClick={()=>{chooseCategory(id)}} className={'category-list__item'}>
+                        <span>{name}</span>
                     </div>
                 ))
                 :
@@ -28,7 +28,7 @@ const CategoryList = (props) => {
 
                 </div>
             }
-        </Slider>
+        </div>
     );
 };
 

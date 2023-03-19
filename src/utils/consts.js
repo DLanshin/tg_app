@@ -1,0 +1,10 @@
+export const HOME_ROUTE = '/'
+export const PROFILE_ROUTE = '/profile'
+export const CATALOG_ROUTE = '/catalog'
+export const PRODUCT_ROUTE = '/product'
+export const CART_ROUTE = '/cart'
+export const ORDERS_ROUTE = '/orders'
+export const CONTACTS_ROUTE = '/contacts'
+export const POLICY_ROUTE = '/policy'
+
+
