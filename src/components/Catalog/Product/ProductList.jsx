@@ -3,7 +3,9 @@ import uuid from "react-uuid";
 import ProductCard from "./ProductCard";
 
 const ProductList = ({products, emptyText}) => {
-    
+    if(!products?.length){
+        return (<></>);
+    }
     return (
         <div className={'products'}>
             <div className={'products__list'}>
