@@ -17,7 +17,7 @@ $api.interceptors.response.use((config) => {
     return config;
 },(async error => {
     const originalRequest = error.config;
-    if (error.response.status === 401) {
+    if (error.response?.status === 401) {
         try {
             const bot_id = localStorage.getItem('bot_id'),
                 refreshToken = localStorage.getItem('refreshToken'),
