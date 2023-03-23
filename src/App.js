@@ -26,28 +26,25 @@ const App = observer(() => {
             UserStore.login(REACT_APP_BOT_ID, REACT_APP_USER_ID);
         }
     },[isAuth]);
-    useEffect(()=>{
-        CatalogStore.fetchCatalog();
-    },[])
-    // if(!isAuth || isLoading){
-    //     return (
-    //         <>
-    //             <ShopLoader/>
-    //         </>
-    //     );
-    // }
+    if(!isAuth || isLoading){
+        return (
+            <>
+                 <ShopLoader/>
+             </>
+         );
+    }
     return (
         <BrowserRouter>
-            <br/>
-            <br/>
-            <pre>
-                {UserStore.errors}
-            </pre>
+            {/*<br/>*/}
+            {/*<br/>*/}
+            {/*<pre>*/}
+            {/*    {UserStore.errors}*/}
+            {/*</pre>*/}
             {/*<button onClick={onClose}>Закрыть</button>*/}
             {/*<button onClick={()=>showTelegramAlert("message")}>showAlert</button>*/}
             {/*<button onClick={()=>showTelegramConfirm("message")}>showConfirm</button>*/}
             <div className={'app wrapper'}>
-                {/*<AppRouter/>*/}
+                <AppRouter/>
             </div>
         </BrowserRouter>
     );

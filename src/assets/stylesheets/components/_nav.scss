@@ -55,7 +55,6 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 0 30px;
     height: 0;
     transition: height 0.3s ease-in;
     &.open{
@@ -63,12 +62,12 @@
     }
   }
   &__menu-item{
-    font-size: 12px;
+    font-size: 14px;
     text-align: center;
     padding: 10px 0;
     position: relative;
     color: $text_color;
-    &:after{
+    &:before{
       background-color: $hint_color;
       height: 1px;
       width: 90%;
@@ -76,7 +75,7 @@
       left: 5%;
       display: block;
       position: absolute;
-      bottom: 0;
+      top: 0;
       content: '';
       border-radius: 40px;
     }
@@ -84,9 +83,7 @@
       margin-top: 10px;
     }
     &:last-child{
-      &:after{
-        content: none;
-      }
+
     }
 
   }

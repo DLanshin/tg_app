@@ -426,7 +426,6 @@ p {
   width: 100%;
   display: flex;
   flex-direction: column;
-  padding: 0 30px;
   height: 0;
   transition: height 0.3s ease-in;
 }
@@ -434,13 +433,13 @@ p {
   height: 104px;
 }
 .bottom-panel__menu-item {
-  font-size: 12px;
+  font-size: 14px;
   text-align: center;
   padding: 10px 0;
   position: relative;
   color: var(--tg-theme-text-color);
 }
-.bottom-panel__menu-item:after {
+.bottom-panel__menu-item:before {
   background-color: var(--tg-theme-hint-color);
   height: 1px;
   width: 90%;
@@ -448,15 +447,12 @@ p {
   left: 5%;
   display: block;
   position: absolute;
-  bottom: 0;
+  top: 0;
   content: "";
   border-radius: 40px;
 }
 .bottom-panel__menu-item:first-child {
   margin-top: 10px;
-}
-.bottom-panel__menu-item:last-child:after {
-  content: none;
 }
 .bottom-panel__item {
   width: 25%;
@@ -980,6 +976,7 @@ button {
 .form .form-control {
   border: none !important;
   width: 100% !important;
+  background-color: var(--tg-theme-bg-color) !important;
 }
 
 .react-tel-input .flag-dropdown {

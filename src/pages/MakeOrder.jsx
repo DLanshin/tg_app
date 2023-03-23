@@ -10,11 +10,13 @@ import Button from "../components/Button/Button";
 import RadioGroup from "../components/Form/RadioGroup";
 import Input from "../components/Form/Input";
 import OrdersStore from "../store/order/OrdersStore";
+import {useTelegram} from "../hooks/useTelegram";
 
 
 const MakeOrder = observer((props) => {
     const [shippingMethod, setShippingMethod] = useState(null);
     const [paymentMethod, setPaymentMethod] = useState(null);
+    const {showTelegramAlert} = useTelegram();
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [comment, setComment] = useState("");
@@ -31,6 +33,7 @@ const MakeOrder = observer((props) => {
             shipping_address: address,
             comment: comment,
         }).then(()=>{
+            showTelegramAlert("Ваш заказ успешно создан и отправлен на обработку")
             CartStore.fetchCart()
         })
     }
