@@ -32,17 +32,9 @@ const App = observer(() => {
     // }
     return (
         <BrowserRouter>
-            <br/>
-                <br/>
-            <pre>
-                {JSON.stringify(tg,null,' ')}
-            </pre>
-            <pre>
-                {JSON.stringify(user, null, ' ')}
-            </pre>
-            <button onClick={onClose}>Закрыть</button>
-            <button onClick={()=>showTelegramAlert("message")}>showAlert</button>
-            <button onClick={()=>showTelegramConfirm("message")}>showConfirm</button>
+            {/*<button onClick={onClose}>Закрыть</button>*/}
+            {/*<button onClick={()=>showTelegramAlert("message")}>showAlert</button>*/}
+            {/*<button onClick={()=>showTelegramConfirm("message")}>showConfirm</button>*/}
             <div className={'app wrapper'}>
                 <AppRouter/>
             </div>
