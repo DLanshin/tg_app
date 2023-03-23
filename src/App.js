@@ -32,8 +32,8 @@ const App = observer(() => {
     // }
     return (
         <BrowserRouter>
-            <br>
-                <br>
+            <br/>
+                <br/>
             <pre>
                 {JSON.stringify(tg,null,' ')}
             </pre>
