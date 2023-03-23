@@ -32,8 +32,8 @@ class UserStore {
         this.isAuth=false;
     }
     setErrors (errors) {
-        debugger
-        this.errors =  JSON.stringify(errors, null, " ")
+
+        this.errors +=  JSON.stringify(errors, null, " ")
     }
 }
 export default new UserStore();
