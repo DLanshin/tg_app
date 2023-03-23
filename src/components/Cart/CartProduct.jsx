@@ -1,33 +1,42 @@
 import React from 'react';
-import {useDispatch, useSelector} from "react-redux";
 import QuantityControl from "../Button/QuantityControl";
 import Button from "../Button/Button";
-import {decrementQualityAction, incrementQualityAction} from "../../store/reducers/cart/cart-reducer";
+import {icons} from "../icons";
+import CartStore from "../../store/cart/CartStore";
+import {observer} from "mobx-react-lite";
 
-const CartProduct = ({product}) => {
-    const dispatch = useDispatch();
-    const incrementProductQuality = (product) => {
-        dispatch(incrementQualityAction(product));
+const CartProduct = observer(({product}) => {
+
+    const increment = (sku_id, count) => {
+        CartStore.updateProduct(sku_id, count);
     }
-    const decrementProductQuality = (product) => {
-        dispatch(decrementQualityAction(product));
+    const decrement = (sku_id, count) => {
+        if(count > 0){
+            CartStore.updateProduct(sku_id, count);
+        }else{
+            CartStore.deleteProduct(sku_id);
+        }
+    }
+    const deleteProductFromCart = (sku_id) => {
+        CartStore.deleteProduct(sku_id);
     }
     return (
         <div className={"cart__item"} data-id={product.id}>
-            <img className={"cart__item-image"} src={product.thumbnail} alt={product.title}/>
+            <img className={"cart__item-image"} src={product.image?.path} alt={product.title}/>
             <div className="cart__item-content">
                 <div className="cart__item-name">{product.title}</div>
                 <QuantityControl
                     count={product.count}
-                    incrementAction={()=>{incrementProductQuality(product)}}
-                    decrementAction={()=>{decrementProductQuality(product)}}
+                    incrementAction={()=>{increment(product.sku_id, product.count+1)}}
+                    decrementAction={()=>{decrement(product.sku_id, product.count-1)}}
                 />
             </div>
             <div className="cart__item-price">
-                {product.totalPrice ? product.totalPrice + ' ₽' : product.price + ' ₽'}
+                {product.price * product.count + ' ₽'}
             </div>
+            <Button className={'cart__item-remove-button'} onClick={()=>deleteProductFromCart(product.sku_id)}>{icons.close}</Button>
         </div>
     );
-};
+});
 
 export default CartProduct;

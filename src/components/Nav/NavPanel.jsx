@@ -5,9 +5,11 @@ import CategoryList from "../Catalog/Category/CategoryList";
 import BarContactsPanel from "../Bar/BarContactsPanel";
 
 const NavPanel = (props) => {
-    let component = null;
+    let component = null,
+        containerClasses = "";
     switch (props?.type){
         case "catalog":
+            containerClasses = 'top-panel--bg-color';
             component = <CategoryList/>;
             break;
         case "contacts":
@@ -16,7 +18,7 @@ const NavPanel = (props) => {
 
     }
     return (
-        <div className={'top-panel'}>
+        <div className={'top-panel '+containerClasses}>
             {component}
         </div>
     );

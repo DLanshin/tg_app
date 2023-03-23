@@ -3,6 +3,11 @@ $text_color:var(--tg-theme-text-color);
 $hint_color:var(--tg-theme-hint-color);
 $link_color:var(--tg-theme-link-color);
 $button_color:var(--tg-theme-button-color);
+$button_primary-color: #5e72e4;
+$button_warning-color: #fb6340;
+$button_info-color: #11cdef;
+$button_success-color: #2dce89;
+$button_danger-color: #f5365c;
 $button_text_color: var(--tg-theme-button-text-color);
 $secondary_bg_color:var(--tg-theme-secondary-bg-color);
 
@@ -12,6 +17,7 @@ $text_color:#424242;
 $hint_color:#c3c3c3;
 $link_color:#51b1fc;
 $button_color:#51b1fc;
+$button_success-color: #19d387;
 $button_text_color: #ffffff;
 $secondary_bg_color: #f9f9fa;
 

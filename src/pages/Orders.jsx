@@ -1,19 +1,30 @@
 import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {fetchCartProductAction} from "../store/reducers/cart/cart-reducer";
-import NavPanel from "../components/Nav/NavPanel";
-import CartList from "../components/Cart/CartList";
-import BottomNavPanel from "../components/Nav/BottomNavPanel";
+import OrdersStore from "../store/order/OrdersStore";
+import {observer} from "mobx-react-lite";
+import OrderCard from "../components/Order/OrderCard";
 
 
 
-const Orders = (props) => {
+const Orders = observer(() => {
+    useEffect(()=>{
+        OrdersStore.fetchOrders();
+    },[]);
 
+    const cancelOrder = (order) =>{
+        OrdersStore.cancelOrder(order.id)
+    }
 
     return (
-        <div>
-            ORDERS
+        <div className="orders">
+            <div className="orders__list">
+                {
+                    OrdersStore.orders.map((order)=>(
+                        <OrderCard object={order} cancelOrder={cancelOrder}/>
+                    ))
+                }
+            </div>
+
         </div>
     );
-}
+});
 export default Orders;

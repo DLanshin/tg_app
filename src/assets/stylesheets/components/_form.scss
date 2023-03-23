@@ -1,0 +1,114 @@
+.form-block{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  &__title{
+    font-size: 13px;
+    color: $hint_color;
+  }
+}
+.input-container{
+  display: flex;
+  width: 100%;
+}
+.input{
+  width: 100%;
+  position: relative;
+  font-size: 14px;
+  letter-spacing: .01rem;
+  padding: 0 10px;
+  background: $bg_color;
+  border: none;
+  line-height: 25px;
+  height: 35px;
+  outline: none;
+}
+.form{
+  border-radius: 8px;
+  background-color: $bg_color;
+  box-shadow: $shadow;
+  & > *{
+    border-bottom: 1px solid $secondary_bg_color;
+  }
+  & > *:first-child{
+    input{
+      border-top-right-radius: 8px;
+      border-top-left-radius: 8px;
+    }
+  }
+  & > *:last-child{
+    border-bottom: none;
+    input{
+      border-bottom-right-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+  }
+  .form-control{
+    border: none!important;
+    width: 100%!important;
+  }
+}
+
+.react-tel-input .flag-dropdown{
+  background-color: $secondary_bg_color;
+  border: none!important;
+}
+.radio-group{
+  display: flex;
+  flex-direction: column;
+  box-shadow: $shadow;
+  border-radius: 10px;
+
+  & > *:first-child > span{
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+  }
+  & > *:last-child > span{
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    border-bottom: none;
+  }
+
+  *>input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+
+
+  * > span {
+    display: flex;
+    background-color: $bg_color;
+    padding: 10px 10px;
+    font-size: 14px;
+    color:$text_color;
+    border-bottom: 1px solid $secondary_bg_color;
+  }
+
+  *>input:not(:disabled):not(:checked)+span:hover {
+    background-color: $button_color;
+    color:$button_text_color
+  }
+
+
+  *>input:not(:disabled):active+span {
+    background-color: $secondary_bg_color;
+    color:$hint_color
+  }
+
+  *>input:focus:not(:checked)+span {
+    background-color: $button_color;
+    color:$button_text_color
+  }
+
+  *>input:checked+span {
+    background-color: $button_color;
+    color:$button_text_color
+  }
+
+
+  *>input:disabled+span {
+    background-color: #e9ecef;
+    color:$hint_color;
+  }
+}

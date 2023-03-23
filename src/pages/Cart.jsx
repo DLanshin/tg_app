@@ -1,30 +1,33 @@
 import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
-import {fetchCartProductAction} from "../store/reducers/cart/cart-reducer";
-import NavPanel from "../components/Nav/NavPanel";
 import CartList from "../components/Cart/CartList";
-import BottomNavPanel from "../components/Nav/BottomNavPanel";
+import {NavLink} from "react-router-dom";
+import {MAKE_ORDER_ROUTE} from "../utils/consts";
+import CartStore from "../store/cart/CartStore";
+import {observer} from "mobx-react-lite";
 
 
 
-const Cart = (props) => {
 
-    const dispatch = useDispatch();
-    const products = useSelector(state => state.cart.products);
-
+const Cart = observer((props) => {
     useEffect(()=>{
-        dispatch(fetchCartProductAction())
-    }, []);
-
-
-
+        CartStore.fetchCart()
+    },[])
     return (
-        <>
+        <div className={'cart'}>
             <CartList
-                products={products}
+                products={CartStore.products}
                 emptyText={"Ваша корзина пуста"}
             />
-        </>
+            {
+                CartStore.quality ?
+                    <div className={"cart__total-info"}>
+                        <NavLink to={MAKE_ORDER_ROUTE} className={"cart__button"}>Оформить заказ  {CartStore.total_price ? " · "+CartStore.total_price+" P": ""}</NavLink>
+                    </div>
+                    :
+                    ""
+            }
+
+        </div>
     );
-}
+});
 export default Cart;

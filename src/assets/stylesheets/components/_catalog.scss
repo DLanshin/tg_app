@@ -6,15 +6,24 @@
     grid-template-columns: repeat(2, 1fr);
     gap:10px;
   }
-  &__item{}
+  &__item{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
   &__item-image{
     width: 100%;
     height:160px;
-    object-fit: cover;
-    object-position: top center;
     background: $bg_color;
-    border-radius: 10px;
     margin-bottom: 8px;
+    img{
+      border-radius: 10px;
+      width: 100%;
+      height:100%;
+      object-fit: cover;
+      object-position: top center;
+    }
   }
   &__item-content{
     display: flex;
@@ -40,26 +49,51 @@
     display: inline-flex;
     background: $bg_color;
     box-shadow: $shadow;
+    color: $text_color;
     gap:10px;
     padding: 3px 8px;
     border-radius: 6px;
     font-size: 14px;
+
     svg{
       width: 12px;
       height: 12px;
+    }
+    &--success{
+      background-color: $button_success-color;
+      color: $button_text_color;
+      svg{
+        path{
+          stroke: $button_text_color;
+        }
+      }
     }
   }
 }
 
 .category-list{
-  display: flex;
-  align-items: center;
-  gap:20px;
   padding:0 10px;
-
+  width: 100%;
+  overflow: hidden;
+  &__wrapper{
+    display: flex;
+    align-items: center;
+    gap:20px;
+    overflow-x: auto;
+  }
   &__item{
+    border-radius: 8px;
+    padding: 2px 8px;
+    font-size: 14px;
+    color: $text_color;
+    background-color: $secondary_bg_color;
+    white-space: nowrap;
     cursor: pointer;
-    color:black;
+    &.active{
+      color:$button_text_color;
+      background-color: $button_color;
+    }
+
   }
 }
 .product-item{
@@ -89,8 +123,8 @@
     object-position: top center;
   }
   &__content{
-    min-height: 60%;
-    background: $bg_color;
+    min-height: calc(60% - 45px);
+    background: $secondary_bg_color;
     z-index: 1;
     position: relative;
     padding: 0 30px 30px;
@@ -107,7 +141,7 @@
       border-top-left-radius: 40px;
       top: -40px;
       left: 0;
-      background-color: #fff;
+      background-color: $secondary_bg_color;
     }
   }
 

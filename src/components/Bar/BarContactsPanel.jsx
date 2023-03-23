@@ -1,29 +1,29 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {icons} from "../icons";
 import {NavLink} from "react-router-dom";
-import {useDispatch, useSelector} from "react-redux";
-import {fetchContactsAction} from "../../store/reducers/settings/contacts-reducer";
-import {getContacts} from "../../services/contactsApi";
+import ContactsStore from "../../store/settings/ContactsStore";
+import {observer} from "mobx-react-lite";
 
-const BarContactsPanel = () => {
-    const dispatch = useDispatch(),
-        {address, phone} = useSelector(state => state.contacts);
+const BarContactsPanel = observer(() => {
+
     useEffect(()=>{
-        dispatch(getContacts());
+        if(ContactsStore.isLoading){
+            ContactsStore.fetchContacts()
+        }
     },[]);
     return (
         <NavLink to={'/contacts'} className={'bar-contacts'}>
             <div className="bar-contacts__content">
                 <div className="bar-contacts__title">
-                    {phone ? phone : "Наши контакты"}
+                    {ContactsStore.info.phone ? ContactsStore.info.phone : "Наши контакты"}
                 </div>
                 <div className="bar-contacts__subtitle">
-                    {address}
+                    {ContactsStore.info.address}
                 </div>
             </div>
             {icons.arrow_right_2}
         </NavLink>
     );
-};
+});
 
 export default BarContactsPanel;

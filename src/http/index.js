@@ -1,8 +1,6 @@
 import axios from "axios";
+import UserStore from "../store/user/UserStore";
 
-export const setBotID = bot_id =>{
-    localStorage.setItem("bot_id", bot_id);
-}
 
 const $api = axios.create({
     withCredentials: false,
@@ -28,6 +26,7 @@ $api.interceptors.response.use((config) => {
             localStorage.setItem("refreshToken", data.data.refresh_token);
             return $api.request(originalRequest);
         }catch (e){
+            UserStore.logout()
             console.log("Ошибка авторизации");
         }
     }

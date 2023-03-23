@@ -1,20 +1,22 @@
 import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from "react-redux";
 import ProductList from "../components/Catalog/Product/ProductList";
-import {getContacts} from "../services/contactsApi";
-import {getProduct, getProducts} from "../services/productsApi";
+import CatalogStore from "../store/catalog/CatalogStore";
+import {observer} from "mobx-react-lite";
+import CartStore from "../store/cart/CartStore";
 
 
 
-const Catalog = () => {
-    const dispatch = useDispatch();
-    const products = useSelector(state => state.catalog.products);
+
+const Catalog = observer(() => {
+    const products = CatalogStore.products;
     useEffect(()=>{
-        dispatch(getProducts())
-    }, []);
+        if(!CatalogStore.products.length){
+            CatalogStore.fetchCatalog()
+                .then(()=>CartStore.fetchCart())
+        }
+    },[])
     return (
         <div>
-
             <ProductList
                 products={products}
                 emptyText={"Товары не найдены"}
@@ -22,5 +24,5 @@ const Catalog = () => {
 
         </div>
     );
-}
+});
 export default Catalog;

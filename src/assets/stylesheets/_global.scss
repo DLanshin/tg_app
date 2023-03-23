@@ -9,11 +9,7 @@ body{
 *{
   box-sizing: border-box;
 }
-button{
-  background-color: transparent;
-  border: none;
-  padding: 0;
-}
+
 .wrapper{
   display: flex;
   flex-direction: column;
@@ -32,93 +28,35 @@ button{
     justify-content: center;
   }
 }
-.button{
-  background-color: $button_color;
-  color:$button_text_color;
-  border: none;
-  outline: none;
-  border-radius: 5px;
-  padding: 10px 15px;
-  cursor: pointer;
-}
+
 a{
   text-decoration: none;
-  color:$text_color;
+  color:$link_color;
 }
 p{
   margin: 0 0 5px 0;
-}
-.button{
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 19px;
-  padding: 18px 38px;
-  text-align: center;
-  &.button-primary{
-    background: $button_color;
-    color: $button_text_color;
-  }
-  &.button-outline-primary{
-    background: transparent;
-    color: #1E1E1E;
-  }
-}
-.button-group{
-  display: flex;
-  align-items: center;
-  width: 100%;
-  box-shadow: $shadow;
-  border-radius: 8px;
-  & > *{
-    height:30px;
-    padding: 0;
-    display: flex;
-    align-items: center;
-  }
-  & > *:first-child{
-    border-radius: 8px 0 0 8px;
-  }
-  & > *:last-child{
-    border-radius: 0 8px 8px 0;
-  }
-  &__button{
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
-    background-color: $button_color;
-    color:$button_text_color;
-    border: none;
-    width: 100%;
-    font-size: 12px;
-    font-weight: bold;
-  }
-}
-.quality-button{
-  padding: 0 8px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  background-color: $bg_color;
-  &__btn{
-    border:none;
-    background-color: transparent;
-    svg{
-      width: 10px;
-      height: 10px;
-    }
-  }
-  &__result{
-    font-size: 11px;
-    padding: 0 5px;
-  }
 }
 .with-top-panel{
   padding-top: 65px;
 }
 .with-bottom-panel{
-  padding-bottom: 45px;
+  padding-bottom: 65px;
 }
 .ymap{
   width: 100%;
+}
+.text-primary{
+  color:$button_primary-color;
+}
+.text-success{
+  color:$button_success-color;
+}
+.text-danger{
+  color:$button_danger-color;
+}
+.text-info{
+  color:$button_info-color;
+}
+.text-warning{
+  color:$button_warning-color;
 }

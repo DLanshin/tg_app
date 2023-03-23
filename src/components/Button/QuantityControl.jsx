@@ -1,5 +1,6 @@
 import React from 'react';
 import Button from "./Button";
+import {icons} from "../icons";
 
 const QuantityControl = (props) => {
     const decrement = () =>{
@@ -14,9 +15,9 @@ const QuantityControl = (props) => {
     }
     return (
         <div className={"quality-control"}>
-            <Button onClick={()=>{decrement()}} className={"quality-control__button"}>-</Button>
+            <Button onClick={()=>{decrement()}} className={"quality-control__button"}>{icons.minus}</Button>
             <span className={"quality-control__value"}>{props.count}</span>
-            <Button onClick={()=>{increment()}} className={"quality-control__button"}>+</Button>
+            <Button onClick={()=>{increment()}} className={"quality-control__button"}>{icons.plus}</Button>
         </div>
     );
 };

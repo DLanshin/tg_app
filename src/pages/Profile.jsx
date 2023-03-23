@@ -1,5 +1,4 @@
 import React, {useEffect} from 'react';
-import NavPanel from "../components/Nav/NavPanel";
 
 
 const Profile = (props) => {

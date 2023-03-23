@@ -1,40 +1,42 @@
 import React, {useEffect} from 'react';
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
-import {useDispatch, useSelector} from "react-redux";
 import {Link, NavLink} from "react-router-dom";
 import {icons} from "../components/icons";
-import {getContacts} from "../services/contactsApi";
 import Social from "../components/Social/Social";
 import {POLICY_ROUTE} from "../utils/consts";
+import contacts from "../store/settings/ContactsStore";
+import ContactsStore from "../store/settings/ContactsStore";
+import {observer} from "mobx-react-lite";
 
 
-const Contacts = () => {
-    const dispatch = useDispatch(),
-        contacts = useSelector(state => state.contacts);
-    let defaultState = null;
+const Contacts = observer(() => {
+    const info = ContactsStore.info;
+
     useEffect(()=>{
-        dispatch(getContacts());
+        if(ContactsStore.isLoading){
+            ContactsStore.fetchContacts()
+        }
+    },[])
+    let defaultState = null;
 
-    },[]);
-
-    if(contacts.geo_lat && contacts.geo_lon){
+    if(info.geo_lat && info.geo_lon){
         defaultState = {
-            center: [contacts.geo_lat, contacts.geo_lon],
+            center: [info.geo_lat, info.geo_lon],
             zoom: 12,
         };
     }
     const socials = [
         {
             name:'vk',
-            link:contacts.vk
+            link:info.vk
         },
         {
             name:'instagram',
-            link:contacts.instagram
+            link:info.instagram
         },
         {
             name:'youtube',
-            link:contacts.youtube
+            link:info.youtube
         }
     ];
 
@@ -45,7 +47,7 @@ const Contacts = () => {
                     defaultState ?
                         <YMaps>
                             <Map defaultState={defaultState} width={'100%'} height={'70vh'}>
-                                <Placemark geometry={[contacts.geo_lat, contacts.geo_lon]} />
+                                <Placemark geometry={[info.geo_lat, info.geo_lon]} />
                             </Map>
                         </YMaps>:""
                 }
@@ -53,9 +55,9 @@ const Contacts = () => {
             <div className="contacts__info">
                 <div className="contacts__info-row">
                     {
-                        contacts.address ?
+                        info.address ?
                             <div className="contacts__info-header">
-                                {contacts.address}
+                                {info.address}
                             </div>
                             :
                             <div className="contacts__info-header">
@@ -63,24 +65,24 @@ const Contacts = () => {
                             </div>
                     }
                     {
-                        contacts.phone ?
-                            <Link to={'tel:'+contacts.phone} className="contacts__info-phone">
+                        info.phone ?
+                            <Link to={'tel:'+info.phone} className="contacts__info-phone">
                                 {icons.phone}
                             </Link>:""
                     }
                 </div>
                 {
-                    contacts.email ?
-                        <Link to={'mailto:'+contacts.email} className="contacts__info-item">
+                    info.email ?
+                        <Link to={'mailto:'+info.email} className="contacts__info-item">
                             {icons.mail}
-                            <span>{contacts.email}</span>
+                            <span>{info.email}</span>
                         </Link>:""
                 }
                 {
-                    contacts.site ?
-                        <Link to={contacts.site} className="contacts__info-item">
+                    info.site ?
+                        <Link to={info.site} className="contacts__info-item">
                             {icons.site}
-                            <span>{contacts.site}</span>
+                            <span>{info.site}</span>
                         </Link>:""
                 }
                 <Social socials={socials}/>
@@ -88,6 +90,6 @@ const Contacts = () => {
             </div>
         </div>
     );
-};
+});
 
 export default Contacts;
