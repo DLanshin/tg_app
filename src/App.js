@@ -16,7 +16,7 @@ const App = observer(() => {
         REACT_APP_USER_ID=5467763995;
     const {tg, user, onClose, showTelegramAlert, expandApp, showTelegramConfirm} = useTelegram();
     expandApp();
-    UserStore.logout();
+
     useEffect(()=>{
         if(checkAuth(REACT_APP_BOT_ID, REACT_APP_USER_ID)){
             UserStore.check(REACT_APP_USER_ID);
