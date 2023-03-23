@@ -20,13 +20,13 @@ const App = observer(() => {
             UserStore.login(REACT_APP_BOT_ID, REACT_APP_USER_ID);
         }
     },[isAuth]);
-    if(!isAuth || isLoading){
-        return (
-            <>
-                <ShopLoader/>
-            </>
-        );
-    }
+    // if(!isAuth || isLoading){
+    //     return (
+    //         <>
+    //             <ShopLoader/>
+    //         </>
+    //     );
+    // }
     return (
         <BrowserRouter>
             <div className={'app wrapper'}>
