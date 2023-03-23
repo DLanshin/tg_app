@@ -6,6 +6,7 @@ import {useAuth} from "./hooks/useAuth";
 import ShopLoader from "./components/Loaders/ShopLoader";
 import {observer} from "mobx-react-lite";
 import UserStore from "./store/user/UserStore";
+import {useTelegram} from "./hooks/useTelegram";
 
 
 const App = observer(() => {
@@ -13,6 +14,8 @@ const App = observer(() => {
         {isAuth, isLoading} = UserStore,
         REACT_APP_BOT_ID=5569923498,
         REACT_APP_USER_ID=5467763995;
+
+    const {tg, user, onClose} = useTelegram();
     useEffect(()=>{
         if(checkAuth(REACT_APP_BOT_ID, REACT_APP_USER_ID)){
             UserStore.check(REACT_APP_USER_ID);
@@ -29,6 +32,9 @@ const App = observer(() => {
     // }
     return (
         <BrowserRouter>
+            {JSON.stringify(tg)}
+            {JSON.stringify(user)}
+            <button onClick={onClose}>Закрыть</button>
             <div className={'app wrapper'}>
                 <AppRouter/>
             </div>
