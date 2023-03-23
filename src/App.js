@@ -18,7 +18,6 @@ const App = observer(() => {
     expandApp();
 
     useEffect(()=>{
-        UserStore.login(REACT_APP_BOT_ID, REACT_APP_USER_ID);
         if(checkAuth(REACT_APP_BOT_ID, REACT_APP_USER_ID)){
             UserStore.check(REACT_APP_USER_ID);
         }else{
