@@ -15,7 +15,7 @@ const App = observer(() => {
         REACT_APP_BOT_ID=5569923498,
         REACT_APP_USER_ID=5467763995;
 
-    const {tg, user, onClose} = useTelegram();
+    const {tg, user, onClose, showAlert} = useTelegram();
     useEffect(()=>{
         if(checkAuth(REACT_APP_BOT_ID, REACT_APP_USER_ID)){
             UserStore.check(REACT_APP_USER_ID);
@@ -41,6 +41,7 @@ const App = observer(() => {
                 {JSON.stringify(user, null, ' ')}
             </pre>
             <button onClick={onClose}>Закрыть</button>
+            <button onClick={()=>showAlert("message")}>showAlert</button>
             <div className={'app wrapper'}>
                 <AppRouter/>
             </div>
