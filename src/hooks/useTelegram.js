@@ -8,8 +8,11 @@ export function useTelegram(){
         tg.MainButton.setParams(props);
         tg.MainButton.show();
     }
-    const showTelegramAlert = message =>{
-        tg.showAlert(message)
+    const showTelegramAlert = (message, callback) =>{
+        tg.showAlert(message, callback)
+    }
+    const showTelegramConfirm = (message, callback) => {
+        tg.showConfirm(message,callback)
     }
     const expandApp = () =>{
         tg.expand()
@@ -19,6 +22,7 @@ export function useTelegram(){
         user:tg.initDataUnsafe?.user,
         onClose,
         showMainButton,
+        showTelegramConfirm,
         showTelegramAlert,
         expandApp
     }
