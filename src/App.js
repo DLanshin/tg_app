@@ -7,6 +7,7 @@ import ShopLoader from "./components/Loaders/ShopLoader";
 import {observer} from "mobx-react-lite";
 import UserStore from "./store/user/UserStore";
 import {useTelegram} from "./hooks/useTelegram";
+import ProductStore from "./store/catalog/ProductStore";
 
 
 const App = observer(() => {
@@ -24,6 +25,9 @@ const App = observer(() => {
             UserStore.login(REACT_APP_BOT_ID, REACT_APP_USER_ID);
         }
     },[isAuth]);
+    useEffect(()=>{
+        ProductStore.fetchProduct();
+    },[])
     // if(!isAuth || isLoading){
     //     return (
     //         <>
@@ -42,7 +46,7 @@ const App = observer(() => {
             {/*<button onClick={()=>showTelegramAlert("message")}>showAlert</button>*/}
             {/*<button onClick={()=>showTelegramConfirm("message")}>showConfirm</button>*/}
             <div className={'app wrapper'}>
-                <AppRouter/>
+                {/*<AppRouter/>*/}
             </div>
         </BrowserRouter>
     );
