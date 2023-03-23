@@ -1,5 +1,6 @@
 import axios from "axios";
 import UserStore from "../store/user/UserStore";
+import {useTelegram} from "../hooks/useTelegram";
 
 
 const $api = axios.create({
@@ -18,8 +19,9 @@ $api.interceptors.request.use(authInterceptor);
 $api.interceptors.response.use((config) => {
     return config;
 },(async error => {
+    const {showTelegramAlert} = useTelegram()
     const originalRequest = error.config;
-    UserStore.setErrors({axios:$api, error:error});
+
     if (error.response?.status === 401) {
         try {
             const bot_id = localStorage.getItem('bot_id'),
@@ -33,7 +35,8 @@ $api.interceptors.response.use((config) => {
             console.log("Ошибка авторизации");
         }
     }
-
+    showTelegramAlert("Произошла непредвиденная ошибка, попробуйте позже");
+    UserStore.setErrors({axios:$api, error:error});
 }));
 
 export {
