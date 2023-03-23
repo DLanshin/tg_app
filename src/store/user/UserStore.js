@@ -1,5 +1,6 @@
 import {action, makeAutoObservable} from "mobx";
 import axios from "axios";
+import {$api} from "../../http";
 
 class UserStore {
     isAuth = false
@@ -12,7 +13,7 @@ class UserStore {
     
     login(bot_id, user_id) {
         localStorage.setItem("bot_id", bot_id);
-        axios.get(`${process.env.REACT_APP_API_URL}${bot_id}/auth/login?user_id=${user_id}`).then(({data})=>{
+        $api.get(`${process.env.REACT_APP_API_URL}${bot_id}/auth/login?user_id=${user_id}`).then(({data})=>{
             localStorage.setItem("accessToken", data.data.token);
             localStorage.setItem("refreshToken", data.data.refresh_token);
             this.isAuth = true;

@@ -21,7 +21,7 @@ $api.interceptors.response.use((config) => {
         try {
             const bot_id = localStorage.getItem('bot_id'),
                 refreshToken = localStorage.getItem('refreshToken'),
-                {data} = await axios.get(`${process.env.REACT_APP_API_URL}${bot_id}/auth/refresh?refresh_token=${refreshToken}`);
+                {data} = await $api.get(`${process.env.REACT_APP_API_URL}${bot_id}/auth/refresh?refresh_token=${refreshToken}`);
             localStorage.setItem("accessToken", data.data.token);
             localStorage.setItem("refreshToken", data.data.refresh_token);
             return $api.request(originalRequest);
