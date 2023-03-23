@@ -7,7 +7,9 @@ const $api = axios.create({
     baseURL:`${process.env.REACT_APP_API_URL}`
 });
 const authInterceptor = config => {
-    config.headers.authorization = `Bearer ${localStorage.getItem('accessToken')}`
+    if(localStorage.getItem('accessToken')){
+        config.headers.authorization = `Bearer ${localStorage.getItem('accessToken')}`
+    }
     return config;
 }
 
