@@ -33,6 +33,9 @@ const App = observer(() => {
     // }
     return (
         <BrowserRouter>
+            <pre>
+                {UserStore.errors}
+            </pre>
             {/*<button onClick={onClose}>Закрыть</button>*/}
             {/*<button onClick={()=>showTelegramAlert("message")}>showAlert</button>*/}
             {/*<button onClick={()=>showTelegramConfirm("message")}>showConfirm</button>*/}

@@ -7,6 +7,7 @@ class UserStore {
     isLoading = true
     id = null
     name = null
+    errors=null;
     constructor() {
         makeAutoObservable(this)
     }
@@ -29,6 +30,9 @@ class UserStore {
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
         this.isAuth=false;
+    }
+    setErrors (errors) {
+        this.errors =  JSON.stringify(errors, null, " ")
     }
 }
 export default new UserStore();
