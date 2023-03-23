@@ -3,7 +3,7 @@ import UserStore from "../store/user/UserStore";
 
 
 const $api = axios.create({
-    withCredentials: false,
+    withCredentials: true,
     baseURL:`${process.env.REACT_APP_API_URL}`
 });
 const authInterceptor = config => {
