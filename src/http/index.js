@@ -5,7 +5,7 @@ import {useTelegram} from "../hooks/useTelegram";
 
 const $api = axios.create({
     withCredentials: true,
-    // crossDomain: true,
+    crossDomain: true,
     baseURL:`${process.env.REACT_APP_API_URL}`
 });
 const authInterceptor = config => {
