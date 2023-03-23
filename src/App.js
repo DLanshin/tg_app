@@ -32,11 +32,13 @@ const App = observer(() => {
     // }
     return (
         <BrowserRouter>
+            <br>
+                <br>
             <pre>
-                {JSON.stringify(tg,null,'<br>')}
+                {JSON.stringify(tg,null,' ')}
             </pre>
             <pre>
-                {JSON.stringify(user, null, '<br>')}
+                {JSON.stringify(user, null, ' ')}
             </pre>
             <button onClick={onClose}>Закрыть</button>
             <div className={'app wrapper'}>
