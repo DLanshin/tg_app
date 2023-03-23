@@ -14,6 +14,7 @@ class CatalogStore {
     async fetchCatalog() {
         this.isLoading = true;
         let getRequest = "";
+        console.log(this.filter.category_id)
         if(this.filter.category_id){
             getRequest = `?category_id=${this.filter.category_id}`;
         }

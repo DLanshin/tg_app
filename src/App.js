@@ -8,6 +8,7 @@ import {observer} from "mobx-react-lite";
 import UserStore from "./store/user/UserStore";
 import {useTelegram} from "./hooks/useTelegram";
 import ProductStore from "./store/catalog/ProductStore";
+import CatalogStore from "./store/catalog/CatalogStore";
 
 
 const App = observer(() => {
@@ -26,7 +27,7 @@ const App = observer(() => {
         }
     },[isAuth]);
     useEffect(()=>{
-        ProductStore.fetchProduct();
+        CatalogStore.fetchCatalog();
     },[])
     // if(!isAuth || isLoading){
     //     return (

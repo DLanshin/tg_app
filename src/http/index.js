@@ -5,14 +5,13 @@ import {useTelegram} from "../hooks/useTelegram";
 
 const $api = axios.create({
     withCredentials: true,
-    crossDomain: true,
+    // crossDomain: true,
     baseURL:`${process.env.REACT_APP_API_URL}`
 });
 const authInterceptor = config => {
     if(localStorage.getItem('accessToken')){
         config.headers.authorization = `Bearer ${localStorage.getItem('accessToken')}`
     }
-    config.headers.allowac
     return config;
 }
 
