@@ -33,6 +33,8 @@ const App = observer(() => {
     // }
     return (
         <BrowserRouter>
+            <br/>
+            <br/>
             <pre>
                 {UserStore.errors}
             </pre>

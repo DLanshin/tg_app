@@ -32,6 +32,7 @@ class UserStore {
         this.isAuth=false;
     }
     setErrors (errors) {
+        debugger
         this.errors =  JSON.stringify(errors, null, " ")
     }
 }
