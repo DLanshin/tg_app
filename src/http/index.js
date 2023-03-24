@@ -32,8 +32,8 @@ $api.interceptors.response.use((config) => {
             localStorage.setItem("refreshToken", data.data.refresh_token);
             return $api.request(originalRequest);
         }catch (e){
-            UserStore.logout()
             console.log("Ошибка авторизации");
+            UserStore.logout()
         }
     }
     showTelegramAlert("Произошла непредвиденная ошибка, попробуйте позже");

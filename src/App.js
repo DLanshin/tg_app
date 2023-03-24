@@ -9,6 +9,7 @@ import UserStore from "./store/user/UserStore";
 import {useTelegram} from "./hooks/useTelegram";
 import ProductStore from "./store/catalog/ProductStore";
 import CatalogStore from "./store/catalog/CatalogStore";
+import {$api} from "./http";
 
 
 const App = observer(() => {
