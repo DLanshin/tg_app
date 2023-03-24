@@ -2,7 +2,9 @@ import React from 'react';
 
 const ShopLoader = () => {
     return (
-        <div className="spinner"></div>
+        <div className={"shop-loader"}>
+            <div className="spinner"></div>
+        </div>
     );
 };
 
