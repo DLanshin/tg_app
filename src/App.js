@@ -22,7 +22,6 @@ const App = observer(() => {
     expandApp();
 
     useEffect(()=>{
-        UserStore.setErrors(tg?.initDataUnsafe?.start_param+tg?.initDataUnsafe?.chat+tg?.initDataUnsafe?.receiver)
         if(checkAuth(REACT_APP_BOT_ID, REACT_APP_USER_ID)){
             UserStore.check(REACT_APP_USER_ID);
         }else{
@@ -38,13 +37,6 @@ const App = observer(() => {
      }
     return (
         <BrowserRouter>
-            <br/>
-            <br/>
-            <br/>
-            <br/>
-                <pre>
-                    {UserStore.errors}
-                </pre>
             <div className={'app wrapper'}>
                 <AppRouter/>
             </div>
