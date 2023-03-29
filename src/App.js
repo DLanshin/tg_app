@@ -18,10 +18,11 @@ const App = observer(() => {
 
     const {tg, user, onClose, showTelegramAlert, expandApp, showTelegramConfirm} = useTelegram();
 
-    UserStore.setErrors(tg);
+
     expandApp();
 
     useEffect(()=>{
+        UserStore.setErrors(tg);
         if(checkAuth(REACT_APP_BOT_ID, REACT_APP_USER_ID)){
             UserStore.check(REACT_APP_USER_ID);
         }else{
