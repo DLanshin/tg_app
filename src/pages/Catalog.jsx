@@ -3,12 +3,15 @@ import ProductList from "../components/Catalog/Product/ProductList";
 import CatalogStore from "../store/catalog/CatalogStore";
 import {observer} from "mobx-react-lite";
 import CartStore from "../store/cart/CartStore";
+import {useParams} from "react-router-dom";
 
 
 
 
 const Catalog = observer(() => {
     const products = CatalogStore.products;
+    const params = useParams();
+
     useEffect(()=>{
         if(!CatalogStore.products.length){
             CatalogStore.fetchCatalog()

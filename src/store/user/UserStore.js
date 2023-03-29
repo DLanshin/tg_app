@@ -5,7 +5,7 @@ import {$api} from "../../http";
 class UserStore {
     isAuth = false
     isLoading = true
-    botId = false
+    botId = null
     id = null
     name = null
     errors=null;
@@ -14,13 +14,14 @@ class UserStore {
     }
     
     async login(bot_id, user_id) {
-        localStorage.setItem("bot_id", bot_id);
         await $api.get(`${process.env.REACT_APP_API_URL}${bot_id}/auth/login?user_id=${user_id}`).then(({data})=>{
             this.setErrors({name:"Auth user:", data:data})
             localStorage.setItem("accessToken", data.data.token);
             localStorage.setItem("refreshToken", data.data.refresh_token);
             this.isAuth = true;
             this.isLoading = false;
+            this.botId = bot_id;
+            this.id = user_id;
         })
     }
     
@@ -34,7 +35,6 @@ class UserStore {
         this.isAuth=false;
     }
     setErrors (errors) {
-
         this.errors +=  JSON.stringify(errors, null, " ")
     }
 }

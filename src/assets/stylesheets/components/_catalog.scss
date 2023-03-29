@@ -26,6 +26,7 @@
     }
   }
   &__item-content{
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -123,6 +124,7 @@
     object-position: top center;
   }
   &__content{
+    width: 100%;
     min-height: calc(60% - 45px);
     background: $secondary_bg_color;
     z-index: 1;

@@ -1,7 +1,8 @@
-import React, {Component} from 'react';
-import {Routes, Route, Navigate, redirect, useParams} from 'react-router-dom';
+import React, {useEffect} from 'react';
+import {Routes, Route} from 'react-router-dom';
 import {routes} from "../routes";
 import AccessDenied from "../pages/AccessDenied";
+import {observer} from "mobx-react-lite";
 
 
 const AppRouter = () => {
@@ -17,6 +18,6 @@ const AppRouter = () => {
             }
         </Routes>
     );
-}
+};
 
 export default AppRouter;

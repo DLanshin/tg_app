@@ -35,9 +35,9 @@ $api.interceptors.response.use((config) => {
             console.log("Ошибка авторизации");
             UserStore.logout()
         }
+    }else{
+        showTelegramAlert("Произошла непредвиденная ошибка, попробуйте позже");
     }
-    showTelegramAlert("Произошла непредвиденная ошибка, попробуйте позже");
-    UserStore.setErrors({axios:$api, error:error});
 }));
 
 export {

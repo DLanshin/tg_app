@@ -2,7 +2,7 @@ import React from 'react';
 import {observer} from "mobx-react-lite";
 
 const OrderCard = observer(({object, cancelOrder}) => {
-
+    console.log(object)
     return (
         <div className={"order-card"}>
             <div className="order-card__header">
@@ -33,7 +33,7 @@ const OrderCard = observer(({object, cancelOrder}) => {
                 <div className="order-card__info">
                     <ul>
                         {
-                            object.products.map(product=>(<li key={product.id}>{product.count+' шт.'} - {product.name}</li>))
+                            object.products.map(product=>(<li key={product.id}>{product.quality+' шт.'} - {product.name}</li>))
                         }
                     </ul>
                 </div>
