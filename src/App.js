@@ -22,7 +22,7 @@ const App = observer(() => {
     expandApp();
 
     useEffect(()=>{
-        UserStore.setErrors(tg)
+        UserStore.setErrors(tg?.initDataUnsafe?.start_param+tg?.initDataUnsafe?.chat+tg?.initDataUnsafe?.receiver)
         if(checkAuth(REACT_APP_BOT_ID, REACT_APP_USER_ID)){
             UserStore.check(REACT_APP_USER_ID);
         }else{
