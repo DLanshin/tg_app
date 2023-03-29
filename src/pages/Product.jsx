@@ -8,7 +8,7 @@ import {ReactSVG} from "react-svg";
 import CartStore from "../store/cart/CartStore";
 import ProductStore from "../store/catalog/ProductStore";
 import {observer} from "mobx-react-lite";
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 
 
 const Product = observer((props) => {

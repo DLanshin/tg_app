@@ -5,6 +5,7 @@ import {$api} from "../../http";
 class UserStore {
     isAuth = false
     isLoading = true
+    botId = false
     id = null
     name = null
     errors=null;

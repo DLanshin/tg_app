@@ -1,15 +1,12 @@
 import React, {useEffect} from 'react';
 import './assets/stylesheets/main.css';
 import AppRouter from "./components/AppRouter";
-import {BrowserRouter} from "react-router-dom";
+import {BrowserRouter, useParams} from "react-router-dom";
 import {useAuth} from "./hooks/useAuth";
 import ShopLoader from "./components/Loaders/ShopLoader";
 import {observer} from "mobx-react-lite";
 import UserStore from "./store/user/UserStore";
 import {useTelegram} from "./hooks/useTelegram";
-import ProductStore from "./store/catalog/ProductStore";
-import CatalogStore from "./store/catalog/CatalogStore";
-import {$api} from "./http";
 
 
 const App = observer(() => {
@@ -17,7 +14,11 @@ const App = observer(() => {
         {isAuth, isLoading} = UserStore,
         REACT_APP_BOT_ID=5569923498,
         REACT_APP_USER_ID=5467763995;
+
+
     const {tg, user, onClose, showTelegramAlert, expandApp, showTelegramConfirm} = useTelegram();
+
+    UserStore.setErrors(tg);
     expandApp();
 
     useEffect(()=>{
@@ -36,9 +37,9 @@ const App = observer(() => {
      }
     return (
         <BrowserRouter>
-            {/*<button onClick={onClose}>Закрыть</button>*/}
-            {/*<button onClick={()=>showTelegramAlert("message")}>showAlert</button>*/}
-            {/*<button onClick={()=>showTelegramConfirm("message")}>showConfirm</button>*/}
+            <pre>
+                {UserStore.errors}
+            </pre>
             <div className={'app wrapper'}>
                 <AppRouter/>
             </div>

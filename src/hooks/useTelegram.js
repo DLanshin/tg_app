@@ -1,21 +1,21 @@
 const tg = window.Telegram.WebApp;
 export function useTelegram(){
     const onClose = () =>{
-        tg.close()
+        tg?.close()
     }
 
     const showMainButton = (props) =>{
-        tg.MainButton.setParams(props);
-        tg.MainButton.show();
+        tg?.MainButton.setParams(props);
+        tg?.MainButton.show();
     }
     const showTelegramAlert = (message, callback) =>{
-        tg.showAlert(message, callback)
+        tg?.showAlert(message, callback)
     }
     const showTelegramConfirm = (message, callback) => {
-        tg.showConfirm(message,callback)
+        tg?.showConfirm(message,callback)
     }
     const expandApp = () =>{
-        tg.expand()
+        tg?.expand()
     }
     return {
         tg,
