@@ -414,8 +414,8 @@ button {
   height: 12px;
 }
 .cart__item-remove-button svg * {
-  fill: #424242;
-  stroke: #424242;
+  fill: #ffffff;
+  stroke: #ffffff;
 }
 .cart .quality-control {
   border-radius: 8px;

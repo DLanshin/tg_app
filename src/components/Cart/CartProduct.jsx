@@ -34,7 +34,7 @@ const CartProduct = observer(({product}) => {
             <div className="cart__item-price">
                 {product.price * product.count + ' ₽'}
             </div>
-            <Button className={'cart__item-remove-button'} onClick={()=>deleteProductFromCart(product.sku_id)}>{icons.close}</Button>
+            <button className={'cart__item-remove-button'} onClick={()=>deleteProductFromCart(product.sku_id)}>{icons.close}</button>
         </div>
     );
 });
