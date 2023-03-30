@@ -5,7 +5,7 @@ import {icons} from "../../icons";
 import cart from "../../../store/cart/CartStore";
 import {observer} from "mobx-react-lite";
 
-const ProductCard = observer(({product}) => {
+const ProductCard = observer(({product, type}) => {
     const cartProducts = cart.products
     let inCart = false,
         cartQuality = 0;
@@ -23,7 +23,7 @@ const ProductCard = observer(({product}) => {
 
 
     return (
-        <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item"} data-id={product.id}>
+        <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item "+type} data-id={product.id}>
             <div className={"products__item-image"}>
                 <img src={product.image.path} alt={product.title}/>
             </div>

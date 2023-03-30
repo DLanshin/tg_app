@@ -18,12 +18,13 @@ import Contacts from "./pages/Contacts";
 import Policy from "./pages/Policy";
 import Product from "./pages/Product";
 import Orders from "./pages/Orders";
+import Home from "./pages/Home";
 
 
 export const routes = [
     {
         path: HOME_ROUTE,
-        Component: <Page showTopPanel={true} element={<Catalog/>}/>,
+        Component: <Page showTopPanel={true} element={<Home/>}/>,
     },
     {
         path: CATALOG_ROUTE,

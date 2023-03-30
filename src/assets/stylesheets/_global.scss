@@ -111,3 +111,10 @@ button{
   }
 }
 
+.item__slider{
+  display: flex;
+  padding: 0 10px;
+  & > * {
+    height: 100%;
+  }
+}

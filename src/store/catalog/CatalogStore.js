@@ -4,6 +4,7 @@ import {$api} from "../../http";
 class CatalogStore {
     isLoading= true
     products= []
+    popular = []
     filter = {
         category_id:null
     }
@@ -21,8 +22,11 @@ class CatalogStore {
         await $api.get(`${localStorage.getItem('bot_id')}/products${getRequest}`).then(({data})=>{
             this.isLoading = false;
             this.products = data.data;
+            this.popular = this.products.filter((item)=>{
+                if(item.popular) return item});
         });
     }
+
     setFilter(filter){
         this.filter = filter
     }
