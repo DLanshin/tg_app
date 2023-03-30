@@ -1,199 +1,165 @@
-
+.category-list{
+  padding: 10px 15px;
+  border-bottom: 1px solid $bg_color;
+  &__wrapper{
+    display: flex;
+    gap:15px;
+  }
+  &__item{
+    background-color: $bg_color;
+    padding: 5px 22px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
+    &.active{
+      background-color: $button_color;
+      color: $button_text_color;
+    }
+  }
+}
 .products{
-  padding: 0 10px;
+  padding: 15px;
   &__list{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap:10px;
+    gap: 15px;
   }
   &__item{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
+    isolation: isolate;
+    background: $bg_color;
+    border-radius: 14px;
+    position: relative;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
   }
+
   &__item-image{
     width: 100%;
-    height:160px;
-    background: $bg_color;
-    margin-bottom: 8px;
     img{
-      border-radius: 10px;
       width: 100%;
-      height:100%;
-      object-fit: cover;
-      object-position: top center;
+      height: 160px;
+      border-top-left-radius: 14px;
+      border-top-right-radius: 14px;
     }
   }
+
   &__item-content{
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    padding: 14px 14px 10px;
   }
+
   &__item-name{
-    font-family: "Inter", sans-serif;
-    color:$text_color;
-    font-weight: bold;
-    margin-bottom: 5px;
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 500;
     font-size: 14px;
+    margin-bottom: 4px;
+    line-height: 16px;
+    color: $text_color
   }
   &__item-description{
-    color:$hint_color;
-    font-size: 14px;
-    margin-bottom: 5px;
-  }
-  &__item-price{
+    font-family: 'Raleway', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+    color: $hint_color;
 
   }
   &__item-button{
-    display: inline-flex;
-    background: $bg_color;
-    box-shadow: $shadow;
-    color: $text_color;
-    gap:10px;
-    padding: 3px 8px;
-    border-radius: 6px;
-    font-size: 14px;
-
+    width: 34px;
+    height: 34px;
+    background-color: $button_color;
+    color: $button_text_color;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top-left-radius: 14px;
+    border-bottom-right-radius: 14px;
     svg{
-      width: 12px;
-      height: 12px;
-    }
-    &--success{
-      background-color: $button_success-color;
-      color: $button_text_color;
-      svg{
-        path{
-          stroke: $button_text_color;
-        }
+      width: 22px;
+      height: 22px;
+      * {
+        stroke: $button-text_color;
+        fill: $button-text_color;
       }
     }
   }
-}
-
-.category-list{
-  padding:0 10px;
-  width: 100%;
-  overflow: hidden;
-  &__wrapper{
-    display: flex;
-    align-items: center;
-    gap:20px;
-    overflow-x: auto;
-  }
-  &__item{
-    border-radius: 8px;
-    padding: 2px 8px;
+  &__item-price{
+    margin-top: 15px;
+    display: inline-flex;
+    color:$button_success-color;
+    border: 1px solid $button_success-color;
+    border-radius: 5px;
+    padding: 2px 6px;
     font-size: 14px;
-    color: $text_color;
-    background-color: $secondary_bg_color;
-    white-space: nowrap;
-    cursor: pointer;
-    &.active{
-      color:$button_text_color;
-      background-color: $button_color;
-    }
-
+    font-family: "Poppins", sans-serif;
   }
 }
 .product-item{
-  height: 100vh;
-  width: 100%;
-  &__close{
-    background-color: $bg_color;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    box-shadow: $shadow;
-    padding: 3px 0 0 0;
-    svg{
-      width: 15px;
-      height: 15px;
-    }
-  }
+  min-height: 100vh;
+  background-color: $bg_color;
   &__image{
-    width: 100%;
-    height: 40%;
-    object-fit: cover;
-    object-position: top center;
+    height: 50vh;
   }
   &__content{
-    width: 100%;
-    min-height: calc(60% - 45px);
-    background: $secondary_bg_color;
-    z-index: 1;
     position: relative;
-    padding: 0 30px 30px;
+    margin-top: -60px;
+    background-color: $bg_color;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 20px 14px 14px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    &:before{
-      position: absolute;
-      content: '';
-      display: block;
-      width: 100%;
-      height: 40px;
-      border-top-right-radius: 40px;
-      border-top-left-radius: 40px;
-      top: -40px;
-      left: 0;
-      background-color: $secondary_bg_color;
-    }
+    min-height: calc(50vh + 50px);
   }
-
   &__title{
-    font-weight: 700;
-    font-size: 18px;
-    color: $text_color;
-    margin-bottom: 16px;
+    font-size: 24px;
+    font-weight: bold;
+    font-family: "Poppins", sans-serif;
+  }
+  &__row{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: flex-start;
   }
   &__variables{
-    margin-bottom: 33px;
+    margin: 10px 0 ;
+    padding: 10px 0;
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-wrap: wrap;
+    gap: 15px;
   }
   &__variables-item{
-    display: flex;
-    padding: 6px 12px;
-    border-radius: 10px;
-    justify-content: center;
-    align-items: center;
+    font-family: "Poppins", sans-serif;
     background-color: $secondary_bg_color;
-    opacity: 0.7;
-    font-size: 12px;
-    box-shadow: $shadow;
+    padding: 5px 22px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
     &.selected{
-      opacity: 1;
+      background-color: $button_color;
+      color: $button_text_color;
     }
   }
-  &__panel{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 9px;
-  }
-  &__panel label{
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 24px;
-    color: $text_color;
+  &__hint{
+    color: $hint_color;
+    margin-right: 5px;
   }
   &__price{
-    font-weight: 700;
-    font-size: 13px;
-    line-height: 17px;
-    text-align: center;
-    color: $link_color;
-  }
-  &__description{
-    font-size: 12px;
-    color: $hint_color;
+    margin-bottom: 10px;
+    margin-top: 15px;
+    font-size: 16px;
+    display: inline-flex;
+    color:$button_success-color;
+    border: 1px solid $button_success-color;
+    border-radius: 5px;
+    padding: 2px 6px;
+    font-family: "Poppins", sans-serif;
   }
 }

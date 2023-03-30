@@ -1,13 +1,11 @@
-import NavPanel from "./Nav/NavPanel";
-import BottomNavPanel from "./Nav/BottomNavPanel";
 import {useAuth} from "../hooks/useAuth";
 import UserStore from "../store/user/UserStore";
-import {useLocation, useParams, useSearchParams} from "react-router-dom";
-import React, {useEffect} from "react";
+import {useSearchParams} from "react-router-dom";
+import React, {useEffect, useState} from "react";
 import ShopLoader from "./Loaders/ShopLoader";
 import {useTelegram} from "../hooks/useTelegram";
 import {observer} from "mobx-react-lite";
-import Spinner from "./Loaders/Spinner";
+import MenuButton from "./Nav/MenuButton";
 
 const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const {checkCredential} = useAuth()
@@ -21,13 +19,13 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
 
 
     useEffect(()=>{
+
         if(checkCredential(bot_id, user_id)){
             UserStore.check(user_id);
         }else{
             UserStore.login(bot_id, user_id);
         }
     },[isAuth]);
-
 
     if(!isAuth || isLoading){
         return (
@@ -38,11 +36,8 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     }
 
     return (
-        <div className={"page "+(showTopPanel ? "with-top-panel" : "")+" "+(showBottomPanel ? "with-bottom-panel" : "")}>
-            {showTopPanel ? <NavPanel type={navType}/> : ""}
-                {element}
-            {showBottomPanel ? <BottomNavPanel/> : ""}
-
+        <div className={"page"}>
+            {element}
         </div>
     );
 });

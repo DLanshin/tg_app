@@ -32,6 +32,7 @@
     border-radius: 25px;
     justify-content: space-between;
     position: relative;
+    align-items: flex-start;
   }
   &__item-image{
     width: 95px;
@@ -48,15 +49,23 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
+    height: 100%;
   }
   &__item-name{
-    font-size: 14px;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.2;
+    font-size: 15px;
   }
   &__item-price{
-    color:$link_color;
-    white-space: nowrap;
-    padding: 12px 20px 12px 12px;
+    margin: 15px 10px 10px;
     font-size: 14px;
+    display: inline-flex;
+    color:$button_success-color;
+    border: 1px solid $button_success-color;
+    border-radius: 5px;
+    padding: 2px 6px;
+    font-family: "Poppins", sans-serif;
+    white-space: nowrap;
     font-weight: bold;
   }
   &__item-remove-button{
@@ -70,12 +79,16 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: $secondary_bg_color;
+    background-color: $button_danger-color;
     color:$text_color;
     box-shadow: $btn_shadow;
     svg{
       width: 12px;
       height: 12px;
+      *{
+        fill: $text_color;
+        stroke: $text_color;
+      }
     }
   }
   .quality-control{
@@ -84,7 +97,7 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background-color: #fff;
+    background-color: $secondary_bg_color;
     height: 30px;
     box-shadow:$shadow;
     &__button{
@@ -96,7 +109,8 @@
         width: 12px;
         height: 12px;
         *{
-          background:#fff;
+          fill: $text_color;
+          stroke: $text_color;
         }
       }
     }

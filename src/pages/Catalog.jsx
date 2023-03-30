@@ -4,6 +4,7 @@ import CatalogStore from "../store/catalog/CatalogStore";
 import {observer} from "mobx-react-lite";
 import CartStore from "../store/cart/CartStore";
 import {useParams} from "react-router-dom";
+import CategoryList from "../components/Catalog/Category/CategoryList";
 
 
 
@@ -20,6 +21,7 @@ const Catalog = observer(() => {
     },[])
     return (
         <div>
+            <CategoryList/>
             <ProductList
                 products={products}
                 emptyText={"Товары не найдены"}

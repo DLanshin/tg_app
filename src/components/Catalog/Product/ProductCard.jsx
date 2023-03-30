@@ -24,17 +24,17 @@ const ProductCard = observer(({product}) => {
 
     return (
         <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item"} data-id={product.id}>
+            <div className={"products__item-image"}>
+                <img src={product.image.path} alt={product.title}/>
+            </div>
             <div className="products__item-content">
-                <div className={"products__item-image"}>
-                    <img src={product.image.path} alt={product.title}/>
-                </div>
                 <div className="products__item-name">
                     {product.title}
                 </div>
                 <div className="products__item-description" dangerouslySetInnerHTML={{__html: product.description}}></div>
+                <span className="products__item-price">{product?.min_price + ' ₽'} {inCart ? " · "+cartQuality:""}</span>
             </div>
             <div className={"products__item-button"+ (inCart?  " products__item-button--success": "")}>
-                <span>{product?.min_price + ' ₽'} {inCart ? " · "+cartQuality:""}</span>
                 {icons.plus}
             </div>
         </NavLink>

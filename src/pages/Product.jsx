@@ -56,47 +56,46 @@ const Product = observer((props) => {
         }
     }
 
-    const closeProduct = () =>{
-        history.back()
-    }
-
     if(ProductStore.isLoading){
         return <Spinner/>
     }
     return (
         <div className={'product-item'} key={ProductStore.item.id}>
-
-            <button className={'product-item__close'} onClick={closeProduct}>
-                <ReactSVG src={closeIcon}/>
-            </button>
             <img src={ProductStore.item.image?.path} alt={ProductStore.item.title} className="product-item__image"/>
             <div className="product-item__content">
                 <div className="product-item__content-body">
                     <div className="product-item__title">
                         {ProductStore.item.title}
                     </div>
-                    <div className="product-item__variables">
-                        {
-                            ProductStore.item.skus?.length > 1 ?
-                                ProductStore.item.skus?.map(sku => (
+                    <div className="product-item__row">
+                        <div className="product-item__variables">
+                            {
+                                ProductStore.item.skus?.length > 1 ?
+                                    ProductStore.item.skus?.map(sku => (
                                         <div key={sku.id}
                                              className={'product-item__variables-item '+(sku.id === selectedSku?.id ? "selected" : "")}
-                                            onClick={()=>{setSelectedSku(sku)}}
+                                             onClick={()=>{setSelectedSku(sku)}}
                                         >
                                             {sku.title}
                                         </div>
                                     ))
-                                :
-                                ""
-                        }
-                    </div>
-                    <div className="product-item__panel">
-                        <label>Описание</label>
+                                    :
+                                    ""
+                            }
+                        </div>
                         <span className="product-item__price">
                             {selectedSku?.price + ' ₽'}
                         </span>
                     </div>
 
+                    {
+                        ProductStore.item.description ?
+                            <div className="product-item__panel">
+                                <label>Описание</label>
+                            </div>
+                            :
+                            null
+                    }
                     <div className="product-item__description" dangerouslySetInnerHTML={{__html: ProductStore.item.description}}></div>
                 </div>
                 <div className="product-item__content-footer">

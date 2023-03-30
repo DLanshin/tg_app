@@ -23,41 +23,41 @@ import Orders from "./pages/Orders";
 export const routes = [
     {
         path: HOME_ROUTE,
-        Component: <Page showTopPanel={true} showBottomPanel={true} navType={'contacts'} element={<Catalog/>}/>,
+        Component: <Page showTopPanel={true} element={<Catalog/>}/>,
     },
     {
         path: CATALOG_ROUTE,
-        Component: <Page showTopPanel={true} showBottomPanel={true} navType={'catalog'} element={<Catalog/>}/>,
+        Component: <Page showTopPanel={true} element={<Catalog/>}/>,
     },
     {
         path: PRODUCT_ROUTE + '/:id',
-        Component: <Page showTopPanel={false} showBottomPanel={true} element={<Product/>}/>,
+        Component: <Page showTopPanel={false} element={<Product/>}/>,
         showTopPanel: false,
         showBottomPanel:false,
     },
     {
         path: PROFILE_ROUTE,
-        Component: <Page showTopPanel={false} showBottomPanel={true} element={<Profile/>}/>,
+        Component: <Page showTopPanel={false} element={<Profile/>}/>,
     },
     {
         path: CART_ROUTE,
-        Component: <Page showTopPanel={false} showBottomPanel={true} element={<Cart/>}/>,
+        Component: <Page showTopPanel={false} element={<Cart/>}/>,
     },
     {
         path: MAKE_ORDER_ROUTE,
-        Component: <Page showTopPanel={false} showBottomPanel={true} element={<MakeOrder/>}/>,
+        Component: <Page showTopPanel={false}  element={<MakeOrder/>}/>,
     },
     {
         path: ORDERS_ROUTE,
-        Component: <Page showTopPanel={false} showBottomPanel={true} element={<Orders/>}/>,
+        Component: <Page showTopPanel={false}  element={<Orders/>}/>,
     },
     {
         path: CONTACTS_ROUTE,
-        Component: <Page showTopPanel={false} showBottomPanel={true} element={<Contacts/>}/>,
+        Component: <Page showTopPanel={false}  element={<Contacts/>}/>,
     },
     {
         path: POLICY_ROUTE,
-        Component: <Page showTopPanel={false} showBottomPanel={true} element={<Policy/>}/>,
+        Component: <Page showTopPanel={false}  element={<Policy/>}/>,
     },
 
 ];

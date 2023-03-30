@@ -8,8 +8,8 @@ class CategoriesStore {
         makeAutoObservable(this)
     }
     
-    fetchCategories() {
-        $api.get(`${localStorage.getItem('bot_id')}/categories`).then(({data})=>{
+    async fetchCategories() {
+        await $api.get(`${localStorage.getItem('bot_id')}/categories`).then(({data})=>{
             this.isLoading = false;
             this.categories = data.data;
         });

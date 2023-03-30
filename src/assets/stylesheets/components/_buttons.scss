@@ -1,23 +1,13 @@
-button{
-  background-color: transparent;
-  border: none;
-  padding: 0;
-}
 .button{
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 19px;
-  height: 30px;
+  border-radius: 12px;
+  background-color: $button_color;
+  color: $button_text_color;
+  padding: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-align: center;
-  border-radius: 8px;
-  &.button-primary{
-    background: $button_color;
-    color: $button_text_color;
-  }
-  &.button-outline-primary{
-    background: transparent;
-    color: #1E1E1E;
-  }
+  width: 100%;
 }
 .button-group{
   display: flex;
@@ -66,8 +56,14 @@ button{
     border:none;
     background-color: transparent;
     svg{
+      fill: $text_color;
+      stroke: $text_color;
       width: 10px;
       height: 10px;
+      * {
+        fill: $text_color;
+        stroke: $text_color
+      }
     }
   }
   &__result{
@@ -86,9 +82,11 @@ button{
   color: $button_text_color;
   background-color: $button_color;
   &--circle{
-    width: 15px;
-    height: 15px;
-    font-size: 9px;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
     border-radius: 50%;
   }
 }
