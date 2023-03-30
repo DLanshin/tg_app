@@ -1,14 +1,14 @@
 const tg = window.Telegram.WebApp;
 export function useAuth(){
 
-    const checkAuth = (bot_id, user_id) => {
+    const checkCredential = (bot_id) => {
         return !!(checkBot(bot_id) && localStorage.getItem("accessToken"));
     }
 
     const checkBot = (bot_id) => {
         if(localStorage.getItem("bot_id")){
             return true;
-        }else{
+        }else if(bot_id){
             _setBot(bot_id)
         }
     };
@@ -24,7 +24,7 @@ export function useAuth(){
 
 
     return {
-        checkAuth,
+        checkCredential,
         checkBot,
     }
 }

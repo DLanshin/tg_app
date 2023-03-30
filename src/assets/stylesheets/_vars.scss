@@ -3,24 +3,29 @@ $text_color:var(--tg-theme-text-color);
 $hint_color:var(--tg-theme-hint-color);
 $link_color:var(--tg-theme-link-color);
 $button_color:var(--tg-theme-button-color);
+$button_text_color: var(--tg-theme-button-text-color);
+$secondary_bg_color:var(--tg-theme-secondary-bg-color);
+
+
 $button_primary-color: #5e72e4;
 $button_warning-color: #fb6340;
 $button_info-color: #11cdef;
 $button_success-color: #2dce89;
 $button_danger-color: #f5365c;
-$button_text_color: var(--tg-theme-button-text-color);
-$secondary_bg_color:var(--tg-theme-secondary-bg-color);
 
-//light
-$bg_color:#ffffff;
-$text_color:#424242;
-$hint_color:#c3c3c3;
-$link_color:#51b1fc;
-$button_color:#51b1fc;
-$button_success-color: #19d387;
-$button_text_color: #ffffff;
-$secondary_bg_color: #f9f9fa;
-//dark
+//
+//
+////light
+//$bg_color:#ffffff;
+//$text_color:#424242;
+//$hint_color:#c3c3c3;
+//$link_color:#51b1fc;
+//$button_color:#51b1fc;
+//$button_success-color: #19d387;
+//$button_text_color: #ffffff;
+//$secondary_bg_color: #f9f9fa;
+//
+////dark
 //$bg_color:#181819;
 //$text_color:#ffffff;
 //$hint_color:#7d7d7d;
@@ -29,7 +34,7 @@ $secondary_bg_color: #f9f9fa;
 //$button_success-color: #19d387;
 //$button_text_color: #ffffff;
 //$secondary_bg_color: #000000;
-
+//
 
 $shadow: 0 0px 11px -6px rgb(17 32 43 / 62%);
 $btn_shadow: 0 0px 11px -4px rgb(17 32 43 / 70%);
