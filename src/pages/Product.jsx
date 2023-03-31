@@ -16,7 +16,11 @@ const Product = observer((props) => {
     const {id} = useParams();
     const [selectedSku, setSelectedSku] = useState(null);
     const [itemCart, setItemCart] = useState(null);
+    const {initBackButton} = useTelegram();
 
+    useEffect(()=>{
+        initBackButton(true, ()=>{history.back()})
+    },[])
     useEffect(()=>{
         CartStore.fetchCart()
             .then(()=>ProductStore.fetchProduct(id)

@@ -23,8 +23,8 @@ export function useTelegram(){
         tg?.expand()
     }
     const initBackButton = (isShow, onClick) => {
-        tg?.BackButton.onClick(onClick)
         if(isShow){
+            tg?.BackButton.onClick(onClick)
             tg?.BackButton.show()
         }else{
             tg?.BackButton.hide()
