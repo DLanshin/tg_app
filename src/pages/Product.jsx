@@ -19,9 +19,6 @@ const Product = observer((props) => {
     const {initBackButton} = useTelegram();
 
     useEffect(()=>{
-        initBackButton(true, ()=>{history.back()})
-    },[])
-    useEffect(()=>{
         CartStore.fetchCart()
             .then(()=>ProductStore.fetchProduct(id)
                 .then(()=>{

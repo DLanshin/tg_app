@@ -980,6 +980,9 @@ button {
 .list__item:last-child {
   border: none;
 }
+.list__item-value {
+  color: #424242;
+}
 .list__item-value--icon {
   display: grid;
   grid-template-columns: 20px 1fr;

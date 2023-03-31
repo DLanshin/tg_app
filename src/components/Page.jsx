@@ -12,39 +12,35 @@ import {CART_ROUTE, CATALOG_ROUTE, HOME_ROUTE, MAKE_ORDER_ROUTE, PRODUCT_ROUTE} 
 const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const {checkCredential} = useAuth()
     const {isAuth, isLoading} = UserStore;
-    const {user, showMainButton} = useTelegram()
+    const {user, showMainButton, initBackButton} = useTelegram()
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const {pathname} = useLocation()
 
     const user_id= user ? user.id : 5467763995;
     const bot_id = searchParams.get("bot_id") ? searchParams.get("bot_id") : 5569923498;
-    let mainButtonProps = {
-        text:'',
-        isVisitable:false,
-        path:null
-    }
     useEffect(()=>{
-        console.log(location.pathname)
-        console.log(CART_ROUTE)
         switch (location.pathname){
             case CART_ROUTE:
-                mainButtonProps = {
+                showMainButton({
                     text: `Оформить заказ  ${CartStore.total_price} Р`,
                     is_visible: !!CartStore.quality,
-                    path: MAKE_ORDER_ROUTE
-                }
+                }, () => {navigate(MAKE_ORDER_ROUTE)})
                 break
             case HOME_ROUTE:
             case CATALOG_ROUTE:
             case PRODUCT_ROUTE:
-                mainButtonProps = {
+                initBackButton(true, ()=>{history.back()})
+                showMainButton({
                     text: `В корзине ${CartStore.quality} товаров`,
                     is_visible: !!CartStore.quality,
-                    path:CART_ROUTE
-                }
+                }, () => {navigate(CART_ROUTE)})
+                break;
+            default:
+                initBackButton(false)
+                break
         }
-        showMainButton({...mainButtonProps}, () => {navigate(mainButtonProps.path)})
+
     },[CartStore.quality, pathname]);
 
     useEffect(()=>{

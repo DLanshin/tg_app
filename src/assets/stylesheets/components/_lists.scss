@@ -47,6 +47,7 @@
   }
 
   &__item-value{
+    color:$text_color;
     &--icon{
       display: grid;
       grid-template-columns: 20px 1fr;
