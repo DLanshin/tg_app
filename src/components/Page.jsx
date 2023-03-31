@@ -7,7 +7,7 @@ import {useTelegram} from "../hooks/useTelegram";
 import {observer} from "mobx-react-lite";
 import AppStore from "../store/AppStore";
 import CartStore from "../store/cart/CartStore";
-import {CART_ROUTE, MAKE_ORDER_ROUTE} from "../utils/consts";
+import {CART_ROUTE, CATALOG_ROUTE, HOME_ROUTE, MAKE_ORDER_ROUTE, PRODUCT_ROUTE} from "../utils/consts";
 
 const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const {checkCredential} = useAuth()
@@ -30,20 +30,20 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
         switch (location.pathname){
             case CART_ROUTE:
                 mainButtonProps = {
-                    text: `Оформить заказ  ${CartStore.total_price}`,
+                    text: `Оформить заказ  ${CartStore.total_price} Р`,
                     is_visible: !!CartStore.quality,
                     path: MAKE_ORDER_ROUTE
                 }
                 break
-            default:
+            case HOME_ROUTE:
+            case CATALOG_ROUTE:
+            case PRODUCT_ROUTE:
                 mainButtonProps = {
                     text: `В корзине ${CartStore.quality} товаров`,
                     is_visible: !!CartStore.quality,
                     path:CART_ROUTE
                 }
-                break;
         }
-        console.log(mainButtonProps)
         showMainButton({...mainButtonProps}, () => {navigate(mainButtonProps.path)})
     },[CartStore.quality, pathname]);
 

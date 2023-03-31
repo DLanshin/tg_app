@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import ContactsStore from "../store/settings/ContactsStore";
 import {observer} from "mobx-react-lite";
-import {icons} from "../components/icons";
 
 
 const Policy = observer(() => {
