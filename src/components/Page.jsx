@@ -30,15 +30,11 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
             case HOME_ROUTE:
             case CATALOG_ROUTE:
             case PRODUCT_ROUTE:
-                initBackButton(true, ()=>{history.back()})
                 showMainButton({
                     text: `В корзине ${CartStore.quality} товаров`,
                     is_visible: !!CartStore.quality,
                 }, () => {navigate(CART_ROUTE)})
                 break;
-            default:
-                initBackButton(false)
-                break
         }
 
     },[CartStore.quality, pathname]);

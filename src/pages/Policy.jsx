@@ -1,15 +1,20 @@
 import React, {useEffect} from 'react';
 import ContactsStore from "../store/settings/ContactsStore";
 import {observer} from "mobx-react-lite";
+import {useTelegram} from "../hooks/useTelegram";
 
 
 const Policy = observer(() => {
     const {policy_text} = ContactsStore.info;
-
+    const {initBackButton} = useTelegram();
 
     useEffect(() => {
         if (!policy_text) {
             ContactsStore.fetchContacts();
+        }
+        initBackButton(true, ()=>{history.back()})
+        return ()=>{
+            initBackButton(false);
         }
     }, []);
     return (

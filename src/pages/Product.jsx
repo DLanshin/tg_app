@@ -2,9 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Spinner from "../components/Loaders/Spinner";
 import minusIcon from "../assets/images/icons/minus_icon.svg";
 import plusIcon from "../assets/images/icons/plus_icon.svg";
-import closeIcon from "../assets/images/icons/close_icon.svg";
 import {ReactSVG} from "react-svg";
-
 import CartStore from "../store/cart/CartStore";
 import ProductStore from "../store/catalog/ProductStore";
 import {observer} from "mobx-react-lite";
@@ -17,7 +15,12 @@ const Product = observer((props) => {
     const [selectedSku, setSelectedSku] = useState(null);
     const [itemCart, setItemCart] = useState(null);
     const {initBackButton} = useTelegram();
-
+    useEffect(()=>{
+        initBackButton(true, ()=>{history.back()})
+        return ()=>{
+            initBackButton(false);
+        }
+    },[])
     useEffect(()=>{
         CartStore.fetchCart()
             .then(()=>ProductStore.fetchProduct(id)

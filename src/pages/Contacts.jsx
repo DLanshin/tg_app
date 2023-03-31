@@ -1,7 +1,6 @@
 import React, {useEffect} from 'react';
 import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
-import {Link, NavLink} from "react-router-dom";
-import {icons} from "../components/icons";
+import {NavLink} from "react-router-dom";
 import Social from "../components/Social/Social";
 import {POLICY_ROUTE} from "../utils/consts";
 import contacts from "../store/settings/ContactsStore";
