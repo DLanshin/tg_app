@@ -16,9 +16,6 @@ const Policy = observer(() => {
     return (
         <div className="policy container">
             <div className="block-list">
-                <div className="block-list__title">
-                    Политика конфиденциальности
-                </div>
                 <div className="block-list__body">
                     <div className="list">
                         <div className="list__item">
