@@ -31,6 +31,13 @@ const ProductCard = observer(({product, type}) => {
                 <div className="products__item-name">
                     {product.title}
                 </div>
+                {
+                    product.skus.length > 1 ?
+                        <div className="products__item-subname">
+                            {product.skus.map((item)=>(<span>{item.title}</span>))}
+                        </div>
+                        :null
+                }
                 <div className="products__item-description" dangerouslySetInnerHTML={{__html: product.description}}></div>
                 <span className="products__item-price">{product?.min_price + ' ₽'} {inCart ? " · "+cartQuality:""}</span>
             </div>

@@ -182,15 +182,16 @@ button {
 .products__item-image img {
   width: 100%;
   height: 160px;
-  border-top-left-radius: 14px;
-  border-top-right-radius: 14px;
+  border-radius: 14px 14px 0 0;
 }
 .products__item.line .products__item-image {
   width: 100px;
+  height: 130px;
 }
 .products__item.line .products__item-image img {
+  border-radius: 14px 0 0 14px;
   width: 100px;
-  height: 100px;
+  height: 130px;
 }
 .products__item-content {
   width: 100%;
@@ -211,6 +212,25 @@ button {
   margin-bottom: 4px;
   line-height: 16px;
   color: #424242;
+}
+.products__item-subname {
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  margin: 4px 0;
+  line-height: 14px;
+  color: #c3c3c3;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.products__item-subname > * {
+  padding: 0 5px;
+  border-right: 1px solid #c3c3c3;
+}
+.products__item-subname > *:last-child {
+  border-right: none;
 }
 .products__item-description {
   font-family: "Raleway", sans-serif;
