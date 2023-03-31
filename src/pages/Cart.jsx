@@ -1,17 +1,17 @@
 import React, {useEffect} from 'react';
 import CartList from "../components/Cart/CartList";
-import {NavLink} from "react-router-dom";
-import {MAKE_ORDER_ROUTE} from "../utils/consts";
+import {NavLink, useNavigate} from "react-router-dom";
+import {CART_ROUTE, MAKE_ORDER_ROUTE} from "../utils/consts";
 import CartStore from "../store/cart/CartStore";
 import {observer} from "mobx-react-lite";
-
-
+import {useTelegram} from "../hooks/useTelegram";
 
 
 const Cart = observer((props) => {
-    useEffect(()=>{
-        CartStore.fetchCart()
-    },[])
+
+    useEffect(() => {
+        CartStore.fetchCart();
+    }, [])
     return (
         <div className={'cart'}>
             <CartList
@@ -21,7 +21,8 @@ const Cart = observer((props) => {
             {
                 CartStore.quality ?
                     <div className={"cart__total-info"}>
-                        <NavLink to={MAKE_ORDER_ROUTE} className={"cart__button"}>Оформить заказ  {CartStore.total_price ? " · "+CartStore.total_price+" P": ""}</NavLink>
+                        <NavLink to={MAKE_ORDER_ROUTE} className={"cart__button"}>Оформить
+                            заказ {CartStore.total_price ? " · " + CartStore.total_price + " P" : ""}</NavLink>
                     </div>
                     :
                     ""
