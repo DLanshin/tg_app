@@ -94,18 +94,14 @@ const Contacts = observer(() => {
                     </div>
                 </div>
             </div>
-            {
-                socials.count ?
-                    <div className="block-list">
-                        <div className="block-list__title">
-                            Социальные сети
-                        </div>
-                        <div className="block-list__body">
-                            <Social socials={socials}/>
-                        </div>
-                    </div>
-                    :null
-            }
+            <div className="block-list">
+                <div className="block-list__title">
+                    Социальные сети
+                </div>
+                <div className="block-list__body">
+                    <Social socials={socials}/>
+                </div>
+            </div>
             {
                 contacts.info.policy_text.length ?
                     <NavLink to={POLICY_ROUTE} className="contacts__button">Политика конфиденциальности</NavLink>
