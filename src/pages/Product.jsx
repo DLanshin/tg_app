@@ -9,14 +9,17 @@ import CartStore from "../store/cart/CartStore";
 import ProductStore from "../store/catalog/ProductStore";
 import {observer} from "mobx-react-lite";
 import {useParams} from "react-router-dom";
+import {useTelegram} from "../hooks/useTelegram";
 
 
 const Product = observer((props) => {
     const {id} = useParams();
     const [selectedSku, setSelectedSku] = useState(null);
     const [itemCart, setItemCart] = useState(null);
+    const {initBackButton} = useTelegram();
 
     useEffect(()=>{
+        initBackButton(true)
         CartStore.fetchCart()
             .then(()=>ProductStore.fetchProduct(id)
                 .then(()=>{
@@ -43,11 +46,9 @@ const Product = observer((props) => {
 
     }
     const increment = (cartProduct) => {
-        console.log("increment")
         CartStore.updateProduct(cartProduct.sku_id, cartProduct.count+1);
     }
     const decrement = (cartProduct) => {
-        console.log("decrement")
         if(cartProduct.count === 1){
             CartStore.deleteProduct(cartProduct.sku_id);
             setItemCart(null)

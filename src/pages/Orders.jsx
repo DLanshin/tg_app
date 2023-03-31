@@ -19,7 +19,7 @@ const Orders = observer(() => {
             <div className="orders__list">
                 {
                     OrdersStore.orders.map((order)=>(
-                        <OrderCard object={order} cancelOrder={cancelOrder}/>
+                        <OrderCard key={order.id} object={order} cancelOrder={cancelOrder}/>
                     ))
                 }
             </div>

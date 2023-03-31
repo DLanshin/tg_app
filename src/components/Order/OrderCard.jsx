@@ -2,7 +2,6 @@ import React from 'react';
 import {observer} from "mobx-react-lite";
 
 const OrderCard = observer(({object, cancelOrder}) => {
-    console.log(object)
     return (
         <div className={"order-card"}>
             <div className="order-card__header">

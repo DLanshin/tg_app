@@ -36,8 +36,8 @@ const Home = observer(() => {
                 </div>
                 <Slider {...settings} className={"popular__slider"}>
                     {popular.map((item)=>(
-                        <div className={'item__slider'}>
-                            <ProductCard key={item.id} product={item}/>
+                        <div key={item.id} className={'item__slider'}>
+                            <ProductCard  product={item}/>
                         </div>
                     ))}
                 </Slider>

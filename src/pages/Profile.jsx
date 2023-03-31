@@ -1,13 +1,68 @@
 import React, {useEffect} from 'react';
+import {icons} from "../components/icons";
+import {useTelegram} from "../hooks/useTelegram";
+import OrdersStore from "../store/order/OrdersStore";
+import {observer} from "mobx-react-lite";
 
 
-const Profile = (props) => {
-
+const Profile = observer((props) => {
+    const {user} = useTelegram();
+    const ordersCount = OrdersStore.count;
+    useEffect(()=>{
+        if(!ordersCount){
+            OrdersStore.fetchOrders();
+        }
+    },[ordersCount]);
     return (
-        <div className={'profile'}>
-            PROFILE
+
+        <div className={'profile container'}>
+            <div className="block-list">
+                <div className="block-list__title">
+                    Информация о пользователе
+                </div>
+                <div className="block-list__body">
+                    <div className="list">
+                        <div className="list__item">
+                            <div className="list__item-value list__item-value--icon">
+                                {icons.profile}
+                                <span>Имя</span>
+                            </div>
+                            <div className="list__item-value list__item-value--primary">
+                                {user?.first_name+" "+user?.last_name}
+                            </div>
+                        </div>
+                        <div className="list__item">
+                            <div className="list__item-value list__item-value--icon">
+                                {icons.award}
+                                <span>ID</span>
+                            </div>
+                            <div className="list__item-value list__item-value--primary">
+                                {user?.ID}
+                            </div>
+                        </div>
+                        <div className="list__item">
+                            <div className="list__item-value list__item-value--icon">
+                                {icons.phone}
+                                <span>Телефон</span>
+                            </div>
+                            <div className="list__item-value list__item-value--primary">
+                                Имя
+                            </div>
+                        </div>
+                        <div className="list__item">
+                            <div className="list__item-value list__item-value--icon">
+                                {icons.orders}
+                                <span>Кол-во заказов</span>
+                            </div>
+                            <div className="list__item-value list__item-value--primary">
+                                {ordersCount}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     );
-};
+});
 
 export default Profile;

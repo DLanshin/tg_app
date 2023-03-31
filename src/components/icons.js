@@ -45,5 +45,13 @@ export const icons = {
     vk: <ReactSVG className={'svg-icon'} src={vk}/>,
     instagram: <ReactSVG className={'svg-icon'} src={instagram}/>,
     youtube: <ReactSVG className={'svg-icon'} src={youtube}/>,
+    award:<ReactSVG className={'svg-icon'} src={award}/>,
+    backward:<ReactSVG className={'svg-icon'} src={backward}/>,
+    discount:<ReactSVG className={'svg-icon'} src={discount}/>,
+    order:<ReactSVG className={'svg-icon'} src={order}/>,
+    orders:<ReactSVG className={'svg-icon'} src={orders}/>,
+    profile:<ReactSVG className={'svg-icon'} src={profile}/>,
+    settings:<ReactSVG className={'svg-icon'} src={settings}/>,
+    shipping:<ReactSVG className={'svg-icon'} src={shipping}/>,
 
 }

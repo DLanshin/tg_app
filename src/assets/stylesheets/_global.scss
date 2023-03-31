@@ -54,12 +54,15 @@ button{
   border: none;
   background-color: transparent;
 }
+.container{
+  padding: 15px;
+}
 
 .wrapper{
   display: flex;
   flex-direction: column;
   width:100%;
-  padding: 0px 0px;
+  padding: 0;
   background: $secondary_bg_color;
   min-height: 100vh;
   position: relative;

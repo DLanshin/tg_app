@@ -4,9 +4,14 @@ export function useTelegram(){
         tg?.close()
     }
 
-    const showMainButton = (props) =>{
-        tg?.MainButton.setParams(props);
-        tg?.MainButton.show();
+    const showMainButton = (props, onClick) =>{
+        if(props.is_visible){
+            tg?.MainButton.setParams(props);
+            tg.MainButton.onClick(onClick);
+            tg?.MainButton.show();
+        }else{
+            tg?.MainButton.hide();
+        }
     }
     const showTelegramAlert = (message, callback) =>{
         tg?.showAlert(message, callback)
@@ -17,6 +22,14 @@ export function useTelegram(){
     const expandApp = () =>{
         tg?.expand()
     }
+    const initBackButton = (isShow) => {
+        tg?.BackButton.onClick(history.back())
+        if(isShow){
+            tg?.BackButton.show()
+        }else{
+            tg?.BackButton.hide()
+        }
+    }
     return {
         tg,
         user:tg.initDataUnsafe?.user,
@@ -24,7 +37,8 @@ export function useTelegram(){
         showMainButton,
         showTelegramConfirm,
         showTelegramAlert,
-        expandApp
+        expandApp,
+        initBackButton
     }
 }
 

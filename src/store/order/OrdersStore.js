@@ -4,6 +4,7 @@ import {$api} from "../../http";
 class OrderStore {
     isLoading= true
     orders = []
+    count =  0
     constructor() {
         makeAutoObservable(this)
     }
@@ -12,6 +13,7 @@ class OrderStore {
         await $api.get(`${localStorage.getItem('bot_id')}/orders`).then(({data})=>{
             this.isLoading = false;
             this.orders = data.data
+            this.count = data.data.length
         });
     }
 
