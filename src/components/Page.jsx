@@ -20,7 +20,7 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const user_id= user ? user.id : 5467763995;
     const bot_id = searchParams.get("bot_id") ? searchParams.get("bot_id") : 5569923498;
     useEffect(()=>{
-        switch (location.pathname){
+        switch (pathname){
             case CART_ROUTE:
                 showMainButton({
                     text: `Оформить заказ  ${CartStore.total_price} Р`,
