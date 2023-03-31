@@ -3,6 +3,8 @@ import {icons} from "../components/icons";
 import {useTelegram} from "../hooks/useTelegram";
 import OrdersStore from "../store/order/OrdersStore";
 import {observer} from "mobx-react-lite";
+import {NavLink} from "react-router-dom";
+import {ORDERS_ROUTE} from "../utils/consts";
 
 
 const Profile = observer((props) => {
@@ -40,7 +42,7 @@ const Profile = observer((props) => {
                                 Имя
                             </div>
                         </div>
-                        <div className="list__item">
+                        <NavLink to={ORDERS_ROUTE} className="list__item">
                             <div className="list__item-value list__item-value--icon">
                                 {icons.orders}
                                 <span>Кол-во заказов</span>
@@ -48,7 +50,7 @@ const Profile = observer((props) => {
                             <div className="list__item-value list__item-value--primary">
                                 {ordersCount}
                             </div>
-                        </div>
+                        </NavLink>
                     </div>
                 </div>
             </div>
