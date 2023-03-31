@@ -22,8 +22,8 @@ export function useTelegram(){
     const expandApp = () =>{
         tg?.expand()
     }
-    const initBackButton = (isShow) => {
-        tg?.BackButton.onClick(history.back())
+    const initBackButton = (isShow, onClick) => {
+        tg?.BackButton.onClick(onClick)
         if(isShow){
             tg?.BackButton.show()
         }else{

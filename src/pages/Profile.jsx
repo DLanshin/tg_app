@@ -33,15 +33,6 @@ const Profile = observer((props) => {
                         </div>
                         <div className="list__item">
                             <div className="list__item-value list__item-value--icon">
-                                {icons.award}
-                                <span>ID</span>
-                            </div>
-                            <div className="list__item-value list__item-value--primary">
-                                {user?.ID}
-                            </div>
-                        </div>
-                        <div className="list__item">
-                            <div className="list__item-value list__item-value--icon">
                                 {icons.phone}
                                 <span>Телефон</span>
                             </div>
