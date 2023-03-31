@@ -855,6 +855,7 @@ button {
   line-height: 25px;
   height: 35px;
   outline: none;
+  color: var(--tg-theme-text-color);
 }
 
 .form {
@@ -866,6 +867,7 @@ button {
   border-bottom: 1px solid var(--tg-theme-secondary-bg-color);
 }
 .form > *:first-child input {
+  color: var(--tg-theme-text-color);
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
 }
@@ -883,8 +885,24 @@ button {
 }
 
 .react-tel-input .flag-dropdown {
-  background-color: var(--tg-theme-secondary-bg-color);
+  background-color: var(--tg-theme-secondary-bg-color) !important;
+  color: var(--tg-theme-text-color) !important;
   border: none !important;
+}
+.react-tel-input .flag-dropdown.open {
+  background-color: var(--tg-theme-bg-color) !important;
+}
+
+.react-tel-input .country-list {
+  background-color: var(--tg-theme-secondary-bg-color) !important;
+  color: var(--tg-theme-text-color) !important;
+}
+
+.react-tel-input .country-list .country.highlight,
+.react-tel-input .flag-dropdown.open .selected-flag,
+.react-tel-input .country-list .country:hover {
+  background-color: var(--tg-theme-bg-color) !important;
+  color: var(--tg-theme-text-color) !important;
 }
 
 .radio-group {

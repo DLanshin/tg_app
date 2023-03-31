@@ -39,7 +39,7 @@ const Profile = observer((props) => {
                                 <span>Телефон</span>
                             </div>
                             <div className="list__item-value list__item-value--primary">
-                                Имя
+                                -
                             </div>
                         </div>
                         <NavLink to={ORDERS_ROUTE} className="list__item">

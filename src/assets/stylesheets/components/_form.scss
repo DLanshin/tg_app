@@ -22,6 +22,7 @@
   line-height: 25px;
   height: 35px;
   outline: none;
+  color: $text_color;
 }
 .form{
   border-radius: 8px;
@@ -32,6 +33,7 @@
   }
   & > *:first-child{
     input{
+      color: $text_color;
       border-top-right-radius: 8px;
       border-top-left-radius: 8px;
     }
@@ -50,8 +52,22 @@
   }
 }
 .react-tel-input .flag-dropdown{
-  background-color: $secondary_bg_color;
+  background-color: $secondary_bg_color!important;
+  color:$text_color!important;
   border: none!important;
+  &.open{
+    background-color: $bg_color!important;
+  }
+}
+.react-tel-input .country-list{
+  background-color: $secondary_bg_color!important;
+  color:$text_color!important;
+}
+.react-tel-input .country-list .country.highlight,
+.react-tel-input .flag-dropdown.open .selected-flag,
+.react-tel-input .country-list .country:hover{
+  background-color: $bg_color!important;
+  color:$text_color!important;
 }
 .radio-group{
   display: flex;

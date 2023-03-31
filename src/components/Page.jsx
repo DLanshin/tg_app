@@ -17,9 +17,10 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const navigate = useNavigate();
     const {pathname} = useLocation()
 
-    const user_id= user ? user.id : 5467763995;
-    const bot_id = searchParams.get("bot_id") ? searchParams.get("bot_id") : 5569923498;
-    useEffect(()=>{
+    const user_id= user ? user.id : null;
+    const bot_id = searchParams.get("bot_id") ? searchParams.get("bot_id") : null;
+
+    const toggleMainButton = (pathmanu) =>{
         switch (pathname){
             case CART_ROUTE:
                 console.log("order button")
@@ -42,10 +43,13 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
                     is_visible:false
                 },null)
         }
-
-    },[CartStore.quality, pathname]);
+    }
+    useEffect(()=>{
+        toggleMainButton(pathname)
+    },[CartStore.quality]);
 
     useEffect(()=>{
+        toggleMainButton(pathname)
         AppStore.toggleMenu(false);
     },[pathname])
 
