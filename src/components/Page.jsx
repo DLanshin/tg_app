@@ -22,6 +22,7 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     useEffect(()=>{
         switch (pathname){
             case CART_ROUTE:
+                console.log("order button")
                 showMainButton({
                     text: `Оформить заказ  ${CartStore.total_price} Р`,
                     is_visible: !!CartStore.quality,
@@ -30,11 +31,16 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
             case HOME_ROUTE:
             case CATALOG_ROUTE:
             case PRODUCT_ROUTE:
+                console.log("cart button")
                 showMainButton({
                     text: `В корзине ${CartStore.quality} товаров`,
                     is_visible: !!CartStore.quality,
                 }, () => {navigate(CART_ROUTE)})
                 break;
+            default:
+                showMainButton({
+                    is_visible:false
+                },null)
         }
 
     },[CartStore.quality, pathname]);
