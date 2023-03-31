@@ -7,6 +7,7 @@ import {useTelegram} from "../hooks/useTelegram";
 import {observer} from "mobx-react-lite";
 import AppStore from "../store/AppStore";
 import CartStore from "../store/cart/CartStore";
+import {CART_ROUTE} from "../utils/consts";
 
 const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const {checkCredential} = useAuth()
@@ -14,7 +15,7 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const {user, showMainButton, initBackButton, showTelegramAlert} = useTelegram()
     const [searchParams] = useSearchParams();
     const {pathname} = useLocation()
-    console.log(history);
+
 
     const user_id= user ? user.id : 5467763995;
     const bot_id = searchParams.get("bot_id") ? searchParams.get("bot_id") : 5569923498;
@@ -25,11 +26,12 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
             text: 'Оформить заказ' + (CartStore.total_price ? " · "+CartStore.total_price+" P": ""),
             is_visible: !!CartStore.quality
         },()=>{
-            showTelegramAlert("go to cart", ()=>{});
+            history.go(CART_ROUTE);
         })
     },[CartStore.quality]);
     useEffect(()=>{
-        AppStore.toggleMenu(false)
+        AppStore.toggleMenu(false);
+
         if(history.length){
             initBackButton(true, ()=>{history.back()})
         }
