@@ -25,6 +25,8 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
         path:null
     }
     useEffect(()=>{
+        console.log(location.pathname)
+        console.log(CART_ROUTE)
         switch (location.pathname){
             case CART_ROUTE:
                 mainButtonProps = {
@@ -41,8 +43,9 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
                 }
                 break;
         }
+        console.log(mainButtonProps)
         showMainButton({...mainButtonProps}, () => {navigate(mainButtonProps.path)})
-    },[CartStore.quality]);
+    },[CartStore.quality, pathname]);
 
     useEffect(()=>{
         AppStore.toggleMenu(false);

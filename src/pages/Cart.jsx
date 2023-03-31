@@ -18,16 +18,6 @@ const Cart = observer((props) => {
                 products={CartStore.products}
                 emptyText={"Ваша корзина пуста"}
             />
-            {
-                CartStore.quality ?
-                    <div className={"cart__total-info"}>
-                        <NavLink to={MAKE_ORDER_ROUTE} className={"cart__button"}>Оформить
-                            заказ {CartStore.total_price ? " · " + CartStore.total_price + " P" : ""}</NavLink>
-                    </div>
-                    :
-                    ""
-            }
-
         </div>
     );
 });
