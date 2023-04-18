@@ -46,7 +46,7 @@ const OrderCard = observer(({object, cancelOrder}) => {
                     }
                 </div>
                 <div className="order-card__price">
-                    {object.total_price+ " ₽"}
+                    {object.total_price+ object.delivery_price+ " ₽"}
                 </div>
             </div>
         </div>
