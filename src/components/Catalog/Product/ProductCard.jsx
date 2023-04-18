@@ -4,12 +4,12 @@ import {PRODUCT_ROUTE} from "../../../utils/consts";
 import {icons} from "../../icons";
 import cart from "../../../store/cart/CartStore";
 import {observer} from "mobx-react-lite";
+import uuid from "react-uuid";
 
 const ProductCard = observer(({product, type}) => {
     const cartProducts = cart.products
     let inCart = false,
         cartQuality = 0;
-
     const skusInCartIds = cartProducts.map(function (item){
         return item.sku_id;
     });
@@ -34,7 +34,7 @@ const ProductCard = observer(({product, type}) => {
                 {
                     product.skus.length > 1 ?
                         <div className="products__item-subname">
-                            {product.skus.map((item)=>(<span>{item.title}</span>))}
+                            {product.skus.map((item)=>(<span key={uuid()}>{item.title}</span>))}
                         </div>
                         :null
                 }

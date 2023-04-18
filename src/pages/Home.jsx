@@ -7,6 +7,9 @@ import ProductCard from "../components/Catalog/Product/ProductCard";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import BannersSlider from "../components/Banners/BannersSlider";
+import uuid from "react-uuid";
+import ProductSlider from "../components/Catalog/Product/ProductSlider";
 
 
 
@@ -28,20 +31,12 @@ const Home = observer(() => {
         }
 
     },[])
+
     return (
         <div>
-            <div className={'popular'}>
-                <div className={"popular__header"}>
-                    <div className={"popular__title"}>Популярное</div>
-                </div>
-                <Slider {...settings} className={"popular__slider"}>
-                    {popular.map((item)=>(
-                        <div key={item.id} className={'item__slider'}>
-                            <ProductCard  product={item}/>
-                        </div>
-                    ))}
-                </Slider>
-            </div>
+            <ProductSlider
+                products={popular}/>
+            <BannersSlider/>
             <ProductList
                 products={products}
                 type={'line'}

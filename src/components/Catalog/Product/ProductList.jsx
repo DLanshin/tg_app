@@ -13,7 +13,7 @@ const ProductList = ({products, emptyText, type}) => {
                     products.map(item => (
                         <ProductCard
                             type={type}
-                            key={uuid()}
+                            key={item.id}
                             product={item}
                         />
                     ))

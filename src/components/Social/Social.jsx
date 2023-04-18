@@ -3,7 +3,6 @@ import {Link} from "react-router-dom";
 import {icons} from "../icons";
 
 const Social = ({socials}) => {
-    console.log(socials)
     return (
         <div className={"socials"}>
             {
