@@ -21,7 +21,7 @@ const ProductCard = observer(({product, type}) => {
         }
     });
 
-
+    const description = product.description ? product.description.slice(0, 120) : "";
     return (
         <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item "+type} data-id={product.id}>
             <div className={"products__item-image"}>
@@ -38,7 +38,7 @@ const ProductCard = observer(({product, type}) => {
                         </div>
                         :null
                 }
-                <div className="products__item-description" dangerouslySetInnerHTML={{__html: product.description}}></div>
+                <div className="products__item-description" dangerouslySetInnerHTML={{__html: description}}></div>
                 <span className="products__item-price">{product?.min_price + ' ₽'} {inCart ? " · "+cartQuality:""}</span>
             </div>
             <div className={"products__item-button"+ (inCart?  " products__item-button--success": "")}>
