@@ -99,7 +99,7 @@ const Product = observer((props) => {
                             :
                             null
                     }
-                    <div className="product-item__description" dangerouslySetInnerHTML={{__html: ProductStore.item.description}}></div>
+                    <div className="product-item__description" dangerouslySetInnerHTML={{__html: ProductStore.item.description.slice(0, 100)}}></div>
                 </div>
                 <div className="product-item__content-footer">
                     <div className="button-group">
