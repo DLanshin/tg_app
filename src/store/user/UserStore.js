@@ -22,6 +22,7 @@ class UserStore {
             this.isLoading = false;
             this.botId = bot_id;
             this.id = user_id;
+            this.phone = data.data.profile.phone
         })
     }
     

@@ -5,11 +5,13 @@ import OrdersStore from "../store/order/OrdersStore";
 import {observer} from "mobx-react-lite";
 import {NavLink} from "react-router-dom";
 import {ORDERS_ROUTE} from "../utils/consts";
+import UserStore from "../store/user/UserStore";
 
 
 const Profile = observer((props) => {
     const {user} = useTelegram();
     const ordersCount = OrdersStore.count;
+    const {phone} = UserStore
     useEffect(()=>{
         if(!ordersCount){
             OrdersStore.fetchOrders();
@@ -39,7 +41,7 @@ const Profile = observer((props) => {
                                 <span>Телефон</span>
                             </div>
                             <div className="list__item-value list__item-value--primary">
-                                -
+                                {phone ? phone : "-"}
                             </div>
                         </div>
                         <NavLink to={ORDERS_ROUTE} className="list__item">
