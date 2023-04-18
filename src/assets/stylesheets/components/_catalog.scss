@@ -158,10 +158,14 @@
     justify-content: space-between;
     min-height: calc(50vh + 50px);
   }
+
   &__title{
     font-size: 24px;
     font-weight: bold;
     font-family: "Poppins", sans-serif;
+  }
+  &__description{
+    margin-bottom: 20px;
   }
   &__row{
     display: flex;

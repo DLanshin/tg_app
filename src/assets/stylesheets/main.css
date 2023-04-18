@@ -297,6 +297,9 @@ button {
   font-weight: bold;
   font-family: "Poppins", sans-serif;
 }
+.product-item__description {
+  margin-bottom: 20px;
+}
 .product-item__row {
   display: flex;
   gap: 10px;
