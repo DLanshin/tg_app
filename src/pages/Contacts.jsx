@@ -24,20 +24,16 @@ const Contacts = observer(() => {
             zoom: 12,
         };
     }
-    const socials = [
-        {
-            name:'vk',
-            link:info.vk
-        },
-        {
-            name:'instagram',
-            link:info.instagram
-        },
-        {
-            name:'youtube',
-            link:info.youtube
-        }
-    ];
+    let socials = [];
+    if(info?.vk){
+        socials.push({name:'vk',link:info.vk});
+    }
+    if(info?.instagram){
+        socials.push({name:'instagram',link:info.instagram});
+    }
+    if(info?.youtube){
+        socials.push({name:'youtube',link:info.youtube});
+    }
 
     return (
         <div className={'contacts container'}>

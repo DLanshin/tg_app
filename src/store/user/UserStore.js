@@ -7,7 +7,7 @@ class UserStore {
     isLoading = true
     botId = null
     id = null
-    name = null
+    phone = null
     errors=null;
     constructor() {
         makeAutoObservable(this)
