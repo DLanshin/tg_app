@@ -8,6 +8,7 @@ import ProductStore from "../store/catalog/ProductStore";
 import {observer} from "mobx-react-lite";
 import {useParams} from "react-router-dom";
 import {useTelegram} from "../hooks/useTelegram";
+import placeholderImage from "../../../assets/images/placeholder.jpg"
 
 
 const Product = observer((props) => {
@@ -64,7 +65,7 @@ const Product = observer((props) => {
     }
     return (
         <div className={'product-item'} key={ProductStore.item.id}>
-            <img src={ProductStore.item.image?.path} alt={ProductStore.item.title} className="product-item__image"/>
+            <img src={ProductStore.item.image? ProductStore.item.image.path : placeholderImage} alt={ProductStore.item.title} className="product-item__image"/>
             <div className="product-item__content">
                 <div className="product-item__content-body">
                     <div className="product-item__title">
