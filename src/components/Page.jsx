@@ -18,11 +18,11 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const {pathname} = useLocation()
 
     //prod
-    const user_id= user ? user.id : null;
+    // const user_id= user ? user.id : null;
     const bot_id = searchParams.get("bot_id") ? searchParams.get("bot_id") : null;
 
     //dev
-    // const user_id= user ? user.id : 5467763995;
+    const user_id= user ? user.id : 5467763995;
     // const bot_id = searchParams.get("bot_id") ? searchParams.get("bot_id") : null;
 
     const toggleMainButton = (pathmanu) =>{
