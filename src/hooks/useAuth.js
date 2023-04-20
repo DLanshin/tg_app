@@ -6,7 +6,7 @@ export function useAuth(){
     }
 
     const checkBot = (bot_id) => {
-        if(localStorage.getItem("bot_id")){
+        if(localStorage.getItem("bot_id") && localStorage.getItem("bot_id") === bot_id){
             return true;
         }else if(bot_id){
             _setBot(bot_id)
