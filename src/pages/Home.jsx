@@ -31,7 +31,6 @@ const Home = observer(() => {
         }
 
     },[])
-
     return (
         <div>
             <ProductSlider

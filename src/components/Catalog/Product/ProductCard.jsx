@@ -4,6 +4,7 @@ import {PRODUCT_ROUTE} from "../../../utils/consts";
 import {icons} from "../../icons";
 import cart from "../../../store/cart/CartStore";
 import {observer} from "mobx-react-lite";
+import placeholderImage from "../../../assets/images/placeholder.jpg"
 import uuid from "react-uuid";
 
 const ProductCard = observer(({product, type}) => {
@@ -20,12 +21,12 @@ const ProductCard = observer(({product, type}) => {
             cartQuality++;
         }
     });
-
+    console.log(product);
     const description = product.description ? product.description.slice(0, 120) : "";
     return (
         <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item "+type} data-id={product.id}>
             <div className={"products__item-image"}>
-                <img src={product.image.path} alt={product.title}/>
+                <img src={product.image ?product.image.path: placeholderImage} alt={product.title}/>
             </div>
             <div className="products__item-content">
                 <div className="products__item-name">
