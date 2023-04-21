@@ -51,13 +51,21 @@
     background-color: $bg_color!important;
   }
 }
+
 .react-tel-input .flag-dropdown{
-  background-color: $secondary_bg_color!important;
+  left:1px;
+  top: 1px!important;
+  height:calc(100% - 2px);
+  background-color: transparent!important;
   color:$text_color!important;
   border: none!important;
+  border-radius: 6px 0 0 6px;
   &.open{
     background-color: $bg_color!important;
   }
+}
+.react-tel-input .selected-flag{
+  border-radius: 6px 0 0 6px;
 }
 .react-tel-input .country-list{
   background-color: $secondary_bg_color!important;
@@ -127,4 +135,7 @@
     background-color: #e9ecef;
     color:$hint_color;
   }
+}
+.form .form-control.invalid{
+  border:1px solid red!important;
 }

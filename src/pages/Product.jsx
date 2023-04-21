@@ -8,7 +8,7 @@ import ProductStore from "../store/catalog/ProductStore";
 import {observer} from "mobx-react-lite";
 import {useParams} from "react-router-dom";
 import {useTelegram} from "../hooks/useTelegram";
-import placeholderImage from "../../../assets/images/placeholder.jpg"
+import placeholderImage from "../assets/images/placeholder.jpg"
 
 
 const Product = observer((props) => {

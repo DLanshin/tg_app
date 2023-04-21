@@ -1,6 +1,7 @@
 import React from 'react';
 import uuid from "react-uuid";
 import CartProduct from "./CartProduct";
+import {icons} from "../icons";
 
 const CartList = (props) => {
     return (
@@ -13,8 +14,11 @@ const CartList = (props) => {
                     />
                 ))
             :
-              <div>
-                  {props.emptyText}
+              <div className={'empty-cart opacity-4'}>
+                  {icons.cart}
+                  <div className="empty-cart__text">
+                      {props.emptyText}
+                  </div>
               </div>
             }
         </div>

@@ -18,12 +18,15 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const {pathname} = useLocation()
 
     //prod
-    const user_id= user ? user.id : null;
-    const bot_id = searchParams.get("bot_id") ? searchParams.get("bot_id") : null;
-
+    let user_id= user ? user.id : null;
+    let bot_id = searchParams.get("bot_id") ? searchParams.get("bot_id") : null;
     //dev
-    // const user_id= user ? user.id : 5467763995;
-    // const bot_id = searchParams.get("bot_id") ? searchParams.get("bot_id") : null;
+    if(process.env.REACT_APP_MODE==="dev"){
+        user_id = 5467763995;
+        bot_id = 5569923498;
+    }
+
+
 
     const toggleMainButton = (pathmanu) =>{
         switch (pathname){

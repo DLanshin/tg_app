@@ -25,7 +25,7 @@ class OrderSettingsStore {
             this.shippingMethods = data.data.methods;
             this.paymentsMethods = data.data.payments;
             this.pickupPaymentsMethods = data.data.pickup_payments;
-            this.price_type = data.data;
+            this.price_type = data.data.price_type;
 
         });
     }
