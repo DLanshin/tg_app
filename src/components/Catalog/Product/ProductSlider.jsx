@@ -4,6 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import ProductCard from "./ProductCard";
+import SliderProductCard from "./SliderProductCard";
 
 
 
@@ -28,7 +29,7 @@ const ProductSlider = observer(({products}) => {
                 <Slider {...settings} className={"popular__slider"}>
                     {products.map((item)=>(
                         <div key={item.id} className={'item__slider'}>
-                            <ProductCard hideDescription={true} product={item}/>
+                            <SliderProductCard hideDescription={true} product={item}/>
                         </div>
                     ))}
                 </Slider>
