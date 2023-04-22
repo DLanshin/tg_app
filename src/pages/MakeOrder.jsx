@@ -241,7 +241,7 @@ const MakeOrder = observer((props) => {
 
             <OrderInfo
                 totalPrice={CartStore.total_price}
-                deliveryPrice={price_type.slug === 'fix' ? fix_shipping_price : 0}/>
+                deliveryPrice={price_type.slug === 'fix' && shippingMethod?.slug !== 'pickup' ? fix_shipping_price : 0}/>
             {CartStore.total_price >= min_order_price ?
                 <Button type={"submit"} className={'button-primary'}>Оформить заказ</Button>:
 
