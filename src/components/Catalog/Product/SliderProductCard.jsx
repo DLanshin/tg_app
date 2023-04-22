@@ -7,7 +7,7 @@ import {observer} from "mobx-react-lite";
 import placeholderImage from "../../../assets/images/placeholder.jpg"
 import uuid from "react-uuid";
 
-const ProductCard = observer(({product, type}) => {
+const SliderProductCard = observer(({hideDescription, product, type}) => {
     const cartProducts = cart.products
     let inCart = false,
         cartQuality = 0;
@@ -22,7 +22,6 @@ const ProductCard = observer(({product, type}) => {
         }
     });
     console.log(product);
-    const description = product.description ? product.description.slice(0, 120) : "";
     return (
         <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item "+type} data-id={product.id}>
             <div className={"products__item-image"}>
@@ -32,14 +31,6 @@ const ProductCard = observer(({product, type}) => {
                 <div className="products__item-name">
                     {product.title}
                 </div>
-                {
-                    product.skus.length > 1 ?
-                        <div className="products__item-subname">
-                            {product.skus.map((item)=>(<span key={uuid()}>{item.title}</span>))}
-                        </div>
-                        :null
-                }
-                <div className="products__item-description" dangerouslySetInnerHTML={{__html: description}}></div>
                 <span className="products__item-price">{product?.min_price + ' ₽'} {inCart ? " · "+cartQuality:""}</span>
             </div>
             <div className={"products__item-button"+ (inCart?  " products__item-button--success": "")}>
@@ -49,4 +40,4 @@ const ProductCard = observer(({product, type}) => {
     );
 });
 
-export default ProductCard;
+export default SliderProductCard;
