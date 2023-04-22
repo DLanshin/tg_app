@@ -23,7 +23,7 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     //dev
     if(process.env.REACT_APP_MODE==="dev"){
         user_id = 5467763995;
-        bot_id = 5569923498;
+        bot_id = 6200850849;
     }
 
 
