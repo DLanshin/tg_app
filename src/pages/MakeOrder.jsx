@@ -11,6 +11,7 @@ import RadioGroup from "../components/Form/RadioGroup";
 import Input from "../components/Form/Input";
 import OrdersStore from "../store/order/OrdersStore";
 import {useTelegram} from "../hooks/useTelegram";
+import {icons} from "../components/icons";
 
 
 const receiversList = [
@@ -83,10 +84,10 @@ const MakeOrder = observer((props) => {
     },[shippingDateMethod])
     const createOrderHandler = (event) => {
         event.preventDefault();
-        const date = null
+        let date = null;
         if(shippingDate){
-            const date = new Date(shippingDate);
-            let a = new Intl.DateTimeFormat('ru-Ru').format(date)+" "+date.getHours()+":"+date.getMinutes()
+            date = new Date(shippingDate);
+            date = new Intl.DateTimeFormat('ru-Ru').format(date)+" "+date.getHours()+":"+date.getMinutes()
 
         }
         if(!phone){
@@ -113,7 +114,12 @@ const MakeOrder = observer((props) => {
     }
     if(!CartStore.quality){
         return (
-            <>Ваша корзина пуста, добавьте товары в корзину</>
+            <div className={'empty-cart opacity-4'}>
+                {icons.cart}
+                <div className="empty-cart__text">
+                    Ваша корзина пуста, добавьте товары в корзину
+                </div>
+            </div>
         );
     }
 
