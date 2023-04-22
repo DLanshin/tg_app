@@ -28,7 +28,7 @@ const ProductSlider = observer(({products}) => {
                 <Slider {...settings} className={"popular__slider"}>
                     {products.map((item)=>(
                         <div key={item.id} className={'item__slider'}>
-                            <ProductCard product={item}/>
+                            <ProductCard hideDescription={true} product={item}/>
                         </div>
                     ))}
                 </Slider>

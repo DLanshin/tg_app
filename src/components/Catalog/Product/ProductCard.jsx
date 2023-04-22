@@ -7,7 +7,7 @@ import {observer} from "mobx-react-lite";
 import placeholderImage from "../../../assets/images/placeholder.jpg"
 import uuid from "react-uuid";
 
-const ProductCard = observer(({product, type}) => {
+const ProductCard = observer(({hideDescription, product, type}) => {
     const cartProducts = cart.products
     let inCart = false,
         cartQuality = 0;
@@ -39,7 +39,9 @@ const ProductCard = observer(({product, type}) => {
                         </div>
                         :null
                 }
-                <div className="products__item-description" dangerouslySetInnerHTML={{__html: description}}></div>
+                {!hideDescription ?
+                <div className="products__item-description" dangerouslySetInnerHTML={{__html: description}}></div>:null
+                }
                 <span className="products__item-price">{product?.min_price + ' ₽'} {inCart ? " · "+cartQuality:""}</span>
             </div>
             <div className={"products__item-button"+ (inCart?  " products__item-button--success": "")}>
