@@ -982,6 +982,29 @@ button {
   border-bottom-right-radius: 8px;
   border-bottom: none;
 }
+.radio-group--horizontal {
+  flex-direction: row;
+}
+.radio-group--horizontal > * {
+  width: 50%;
+}
+.radio-group--horizontal-3 > * {
+  width: 33%;
+}
+.radio-group--horizontal-4 > * {
+  width: 25%;
+}
+.radio-group--horizontal > *:first-child > span {
+  border-radius: 8px 0 0 8px;
+}
+.radio-group--horizontal > *:last-child > span {
+  border-radius: 0 8px 8px 0;
+  border-bottom: none;
+}
+.radio-group--horizontal > * > span {
+  text-align: center;
+  justify-content: center;
+}
 .radio-group * > input {
   position: absolute;
   z-index: -1;

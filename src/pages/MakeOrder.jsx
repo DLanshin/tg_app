@@ -150,6 +150,7 @@ const MakeOrder = observer((props) => {
             <div className={"form-block"}>
                 <div className={"form-block__title"}>Для кого</div>
                 <RadioGroup
+                    listType={'horizontal'}
                     required={true}
                     name={"shipping_name"}
                     type={"radio"}
@@ -171,6 +172,33 @@ const MakeOrder = observer((props) => {
                         />: null
                 }
             </div>
+            <div className={"form-block"}>
+                <div className={"form-block__title"}>Когда доставить</div>
+                <RadioGroup
+                    listType={'horizontal'}
+                    required={true}
+                    name={"shipping_date_switcher"}
+                    type={"radio"}
+                    elements={shippingDateSwitcherList}
+                    value={shippingDateMethod}
+                    setValue={setShippingDateMethod}
+                />
+            </div>
+            <div className={"form-block"}>
+                {
+                    shippingDateMethod?.slug === 'time' ?
+                        <Input
+                            required={true}
+                            type={"datetime-local"}
+                            name={"receiver_name"}
+                            placeholder={"Выберите дату"}
+                            min={getDefaultDate()}
+                            value={shippingDate}
+                            onChange={setShippingDate}
+                        />: null
+                }
+            </div>
+
 
             <div className={"form-block"}>
                 <div className={"form-block__title"}>Контактные данные</div>
@@ -209,31 +237,8 @@ const MakeOrder = observer((props) => {
                     />
                 </div>
             </div>
-            <div className={"form-block"}>
-                <div className={"form-block__title"}>Когда доставить</div>
-                <RadioGroup
-                    required={true}
-                    name={"shipping_date_switcher"}
-                    type={"radio"}
-                    elements={shippingDateSwitcherList}
-                    value={shippingDateMethod}
-                    setValue={setShippingDateMethod}
-                />
-            </div>
-            <div className={"form-block"}>
-                {
-                    shippingDateMethod?.slug === 'time' ?
-                        <Input
-                            required={true}
-                            type={"datetime-local"}
-                            name={"receiver_name"}
-                            placeholder={"Выберите дату"}
-                            min={getDefaultDate()}
-                            value={shippingDate}
-                            onChange={setShippingDate}
-                        />: null
-                }
-            </div>
+
+
             <OrderInfo
                 totalPrice={CartStore.total_price}
                 deliveryPrice={price_type.slug === 'fix' ? fix_shipping_price : 0}/>

@@ -1,8 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {observer} from "mobx-react-lite";
 
-const RadioGroup = observer(({elements, required, name, type, value, setValue}) => {
-
+const RadioGroup = observer((props) => {
+    const {
+        listType,
+        elements,
+        required,
+        name,
+        type,
+        value,
+        setValue
+    } = props
     if (!elements.length) {
         return (
             <></>
@@ -10,7 +18,7 @@ const RadioGroup = observer(({elements, required, name, type, value, setValue}) 
     }
 
     return (
-        <div className={"radio-group"}>
+        <div className={"radio-group"+(listType === "horizontal" ? " radio-group--horizontal": "")}>
             {
                 elements.map((item, key) => (
                     <label key={item.id}>

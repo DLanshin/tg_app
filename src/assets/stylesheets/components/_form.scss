@@ -92,6 +92,33 @@
     border-bottom-right-radius: 8px;
     border-bottom: none;
   }
+  &--horizontal{
+    flex-direction: row;
+    & > *{
+      width: 50%
+    }
+    &-3{
+      & > *{
+        width: 33%
+      }
+    }
+    &-4{
+      & > *{
+        width: 25%
+      }
+    }
+    & > *:first-child > span{
+      border-radius: 8px 0 0 8px;
+    }
+    & > *:last-child > span{
+      border-radius: 0 8px 8px 0 ;
+      border-bottom: none;
+    }
+    & > * > span{
+      text-align: center;
+      justify-content: center;
+    }
+  }
 
   *>input {
     position: absolute;
