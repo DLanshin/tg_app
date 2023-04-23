@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import ContactsStore from "../store/settings/ContactsStore";
 import {observer} from "mobx-react-lite";
 import {useTelegram} from "../hooks/useTelegram";
+import Spinner from "../components/Loaders/Spinner";
 
 
 const Policy = observer(() => {
@@ -17,6 +18,9 @@ const Policy = observer(() => {
             initBackButton(false);
         }
     }, []);
+    if(ContactsStore.isLoading){
+        return <Spinner/>
+    }
     return (
         <div className="policy container">
             <div className="block-list">

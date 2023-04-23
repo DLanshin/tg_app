@@ -12,6 +12,10 @@ class OrderSettingsStore {
         slug: null,
         name: null
     }
+    loyalty = {
+        active: false,
+        available_bonus_payments: 0
+    }
 
     constructor() {
         makeAutoObservable(this)
@@ -26,6 +30,7 @@ class OrderSettingsStore {
             this.paymentsMethods = data.data.payments;
             this.pickupPaymentsMethods = data.data.pickup_payments;
             this.price_type = data.data.price_type;
+            this.loyalty = data.data.loyalty
 
         });
     }

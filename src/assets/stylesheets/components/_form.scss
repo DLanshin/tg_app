@@ -136,10 +136,6 @@
     border-bottom: 1px solid $secondary_bg_color;
   }
 
-  *>input:not(:disabled):not(:checked)+span:hover {
-    background-color: $button_color;
-    color:$button_text_color
-  }
 
 
   *>input:not(:disabled):active+span {
@@ -147,10 +143,6 @@
     color:$hint_color
   }
 
-  *>input:focus:not(:checked)+span {
-    background-color: $button_color;
-    color:$button_text_color
-  }
 
   *>input:checked+span {
     background-color: $button_color;

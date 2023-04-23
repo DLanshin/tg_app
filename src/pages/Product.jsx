@@ -59,7 +59,6 @@ const Product = observer((props) => {
             CartStore.updateProduct(cartProduct.sku_id, cartProduct.count-1);
         }
     }
-
     if(ProductStore.isLoading){
         return <Spinner/>
     }

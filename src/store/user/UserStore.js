@@ -8,7 +8,8 @@ class UserStore {
     botId = null
     id = null
     phone = null
-    errors=null;
+    bonus = 0
+    errors=null
     constructor() {
         makeAutoObservable(this)
     }
@@ -23,6 +24,7 @@ class UserStore {
             this.botId = bot_id;
             this.id = user_id;
             this.phone = data.data.profile.phone
+            this.bonus = data.data.profile.bonus
         })
     }
     

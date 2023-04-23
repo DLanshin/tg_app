@@ -2,10 +2,14 @@ import React, {useEffect} from 'react';
 import OrdersStore from "../store/order/OrdersStore";
 import {observer} from "mobx-react-lite";
 import OrderCard from "../components/Order/OrderCard";
+import ProductStore from "../store/catalog/ProductStore";
+import Spinner from "../components/Loaders/Spinner";
+import {icons} from "../components/icons";
 
 
 
 const Orders = observer(() => {
+    const {orders, isLoading} = OrdersStore;
     useEffect(()=>{
         OrdersStore.fetchOrders();
     },[]);
@@ -13,17 +17,27 @@ const Orders = observer(() => {
     const cancelOrder = (order) =>{
         OrdersStore.cancelOrder(order.id)
     }
-
+    if(isLoading){
+        return <Spinner/>
+    }
     return (
         <div className="orders">
-            <div className="orders__list">
-                {
-                    OrdersStore.orders.map((order)=>(
-                        <OrderCard key={order.id} object={order} cancelOrder={cancelOrder}/>
-                    ))
-                }
-            </div>
-
+            {orders.length ?
+                <div className="orders__list">
+                    {
+                        orders.map((order)=>(
+                            <OrderCard key={order.id} object={order} cancelOrder={cancelOrder}/>
+                        ))
+                    }
+                </div>
+            :
+                <div className={'empty-cart opacity-4'}>
+                    {icons.cart}
+                    <div className="empty-cart__text">
+                        У вас пока что нет заказов
+                    </div>
+                </div>
+            }
         </div>
     );
 });

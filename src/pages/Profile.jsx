@@ -6,17 +6,22 @@ import {observer} from "mobx-react-lite";
 import {NavLink} from "react-router-dom";
 import {ORDERS_ROUTE} from "../utils/consts";
 import UserStore from "../store/user/UserStore";
+import Spinner from "../components/Loaders/Spinner";
 
 
 const Profile = observer((props) => {
     const {user} = useTelegram();
     const ordersCount = OrdersStore.count;
-    const {phone} = UserStore
+    const {phone, bonus} = UserStore
     useEffect(()=>{
         if(!ordersCount){
             OrdersStore.fetchOrders();
         }
     },[ordersCount]);
+
+    if(OrdersStore.isLoading){
+        return <Spinner/>
+    }
     return (
 
         <div className={'profile container'}>
@@ -42,6 +47,15 @@ const Profile = observer((props) => {
                             </div>
                             <div className="list__item-value list__item-value--primary">
                                 {phone ? phone : "-"}
+                            </div>
+                        </div>
+                        <div className="list__item">
+                            <div className="list__item-value list__item-value--icon">
+                                {icons.award}
+                                <span>Бонусы</span>
+                            </div>
+                            <div className="list__item-value list__item-value--primary">
+                                {bonus ? bonus : 0}
                             </div>
                         </div>
                         <NavLink to={ORDERS_ROUTE} className="list__item">

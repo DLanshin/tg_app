@@ -1,40 +1,42 @@
 import React, {useEffect} from 'react';
-import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
+import {YMaps, Map, Placemark} from '@pbe/react-yandex-maps';
 import {NavLink} from "react-router-dom";
 import Social from "../components/Social/Social";
 import {POLICY_ROUTE} from "../utils/consts";
-import contacts from "../store/settings/ContactsStore";
 import ContactsStore from "../store/settings/ContactsStore";
 import {observer} from "mobx-react-lite";
+import Spinner from "../components/Loaders/Spinner";
 
 
 const Contacts = observer(() => {
     const info = ContactsStore.info;
 
-    useEffect(()=>{
-        if(ContactsStore.isLoading){
+    useEffect(() => {
+        if (ContactsStore.isLoading) {
             ContactsStore.fetchContacts()
         }
-    },[])
+    }, [])
     let defaultState = null;
 
-    if(info.geo_lat && info.geo_lon){
+    if (info.geo_lat && info.geo_lon) {
         defaultState = {
             center: [info.geo_lat, info.geo_lon],
             zoom: 12,
         };
     }
     let socials = [];
-    if(info?.vk){
-        socials.push({name:'vk',link:info.vk});
+    if (info?.vk) {
+        socials.push({name: 'vk', link: info.vk});
     }
-    if(info?.instagram){
-        socials.push({name:'instagram',link:info.instagram});
+    if (info?.instagram) {
+        socials.push({name: 'instagram', link: info.instagram});
     }
-    if(info?.youtube){
-        socials.push({name:'youtube',link:info.youtube});
+    if (info?.youtube) {
+        socials.push({name: 'youtube', link: info.youtube});
     }
-
+    if (ContactsStore.isLoading) {
+        return <Spinner/>
+    }
     return (
         <div className={'contacts container'}>
             <div className="contacts__map">
@@ -42,9 +44,9 @@ const Contacts = observer(() => {
                     defaultState ?
                         <YMaps>
                             <Map defaultState={defaultState} width={'100%'} height={'40vh'}>
-                                <Placemark geometry={[info.geo_lat, info.geo_lon]} />
+                                <Placemark geometry={[info.geo_lat, info.geo_lon]}/>
                             </Map>
-                        </YMaps>:""
+                        </YMaps> : ""
                 }
             </div>
 
@@ -68,7 +70,7 @@ const Contacts = observer(() => {
                                 <span>Телефон</span>
                             </div>
                             <div className="list__item-value list__item-value--primary">
-                                {info.phone ? info.phone:'-'}
+                                {info.phone ? info.phone : '-'}
                             </div>
                         </div>
                         <div className="list__item">
@@ -76,7 +78,7 @@ const Contacts = observer(() => {
                                 <span>Email</span>
                             </div>
                             <div className="list__item-value list__item-value--primary">
-                                {info.email ? info.email:'-'}
+                                {info.email ? info.email : '-'}
                             </div>
                         </div>
                         <div className="list__item">
@@ -84,7 +86,7 @@ const Contacts = observer(() => {
                                 <span>Web-сайт</span>
                             </div>
                             <div className="list__item-value list__item-value--primary">
-                                {info.site ? info.site:'-'}
+                                {info.site ? info.site : '-'}
                             </div>
                         </div>
                     </div>
@@ -100,12 +102,12 @@ const Contacts = observer(() => {
                             <Social socials={socials}/>
                         </div>
                     </div>
-                    :null
+                    : null
             }
             {
                 info?.policy_text?.length ?
                     <NavLink to={POLICY_ROUTE} className="contacts__button">Политика конфиденциальности</NavLink>
-                :null
+                    : null
             }
         </div>
     );

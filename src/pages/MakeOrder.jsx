@@ -12,6 +12,9 @@ import Input from "../components/Form/Input";
 import OrdersStore from "../store/order/OrdersStore";
 import {useTelegram} from "../hooks/useTelegram";
 import {icons} from "../components/icons";
+import Spinner from "../components/Loaders/Spinner";
+import UserStore from "../store/user/UserStore";
+import Radio from "../components/Form/Radio";
 
 
 const receiversList = [
@@ -47,6 +50,8 @@ const MakeOrder = observer((props) => {
     const [paymentMethod, setPaymentMethod] = useState(null);
     const [receiverMethod, setReceiverMethod] = useState(receiversList[0]);
     const [shippingDateMethod, setShippingDateMethod] = useState(shippingDateSwitcherList[0]);
+    const [isPayBonuses, setIsPayBonuses] = useState(false);
+    const [payBonusesSum, setPayBonusesSum] = useState(0);
 
 
     const {showTelegramAlert} = useTelegram();
@@ -72,6 +77,7 @@ const MakeOrder = observer((props) => {
                 setReceiverMethod(receiversList[0])
             })
     }, []);
+
     useEffect(()=>{
         setShippingMethod(shippingMethods[0]);
         setPaymentMethod(shippingMethod?.slug === 'pickup' ? pickupPaymentsMethods[0] : paymentsMethods[0])
@@ -81,7 +87,9 @@ const MakeOrder = observer((props) => {
         if(shippingDateMethod.slug === 'time'){
             setShippingDate(getDefaultDate())
         }
-    },[shippingDateMethod])
+    },[shippingDateMethod]);
+
+
     const createOrderHandler = (event) => {
         event.preventDefault();
         let date = null;
@@ -102,6 +110,7 @@ const MakeOrder = observer((props) => {
                 shipping_name: receiverName,
                 shipping_date: date,
                 comment: comment,
+                pay_bonuses_sum: payBonusesSum
             }).then(()=>{
                 showTelegramAlert("Ваш заказ успешно создан и отправлен на обработку")
                 CartStore.fetchCart()
@@ -112,7 +121,15 @@ const MakeOrder = observer((props) => {
         let local = new Date();
         return local.toJSON().slice(0,16);
     }
-    if(!CartStore.quality){
+
+    const handlerIsPayBonuses = () =>{
+        setIsPayBonuses(!isPayBonuses);
+        setPayBonusesSum(!isPayBonuses ? CartStore.total_price * OrderSettingsStore.loyalty.available_bonus_payments / 100 : 0)
+    }
+
+    if(OrderSettingsStore.isLoading || CartStore.isLoading){
+        return <Spinner/>
+    }else if(!CartStore.quality){
         return (
             <div className={'empty-cart opacity-4'}>
                 {icons.cart}
@@ -198,6 +215,19 @@ const MakeOrder = observer((props) => {
                         />: null
                 }
             </div>
+            {
+                OrderSettingsStore.loyalty?.active ?
+                    <div className={"form-block"}>
+                        <Radio
+                            required={false}
+                            name={"shipping_date_switcher"}
+                            type={"checkbox"}
+                            item={{slug:'pay_bonus',name:`Оплатить бонусами - ${UserStore.bonus} баллов`}}
+                            value={isPayBonuses}
+                            onChange={handlerIsPayBonuses}
+                        />
+                    </div>:null
+            }
 
 
             <div className={"form-block"}>
@@ -241,7 +271,10 @@ const MakeOrder = observer((props) => {
 
             <OrderInfo
                 totalPrice={CartStore.total_price}
-                deliveryPrice={price_type.slug === 'fix' && shippingMethod?.slug !== 'pickup' ? fix_shipping_price : 0}/>
+                payBonusSum={payBonusesSum}
+                deliveryPrice={price_type.slug === 'fix' && shippingMethod?.slug !== 'pickup' ? fix_shipping_price : 0}
+
+            />
             {CartStore.total_price >= min_order_price ?
                 <Button type={"submit"} className={'button-primary'}>Оформить заказ</Button>:
 

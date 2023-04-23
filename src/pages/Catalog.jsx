@@ -5,6 +5,7 @@ import {observer} from "mobx-react-lite";
 import CartStore from "../store/cart/CartStore";
 import {useParams} from "react-router-dom";
 import CategoryList from "../components/Catalog/Category/CategoryList";
+import Spinner from "../components/Loaders/Spinner";
 
 
 
@@ -19,6 +20,9 @@ const Catalog = observer(() => {
                 .then(()=>CartStore.fetchCart())
         }
     },[])
+    if(CatalogStore.isLoading || CartStore.isLoading){
+        return <Spinner/>
+    }
     return (
         <div>
             <CategoryList/>

@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import CartList from "../components/Cart/CartList";
 import CartStore from "../store/cart/CartStore";
 import {observer} from "mobx-react-lite";
+import Spinner from "../components/Loaders/Spinner";
 
 
 const Cart = observer((props) => {
@@ -9,6 +10,9 @@ const Cart = observer((props) => {
     useEffect(() => {
         CartStore.fetchCart();
     }, [])
+    if(CartStore.isLoading){
+        return <Spinner/>
+    }
     return (
         <div className={'cart'}>
             <CartList
