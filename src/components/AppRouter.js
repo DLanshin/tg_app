@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react';
 import {Routes, Route} from 'react-router-dom';
 import {routes} from "../routes";
-import AccessDenied from "../pages/AccessDenied";
-import {observer} from "mobx-react-lite";
+import AccessDenied from "../pages/Common/AccessDenied";
 
 
 const AppRouter = () => {

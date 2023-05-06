@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import ContactsStore from "../store/settings/ContactsStore";
+import ContactsStore from "../../store/settings/ContactsStore";
 import {observer} from "mobx-react-lite";
-import {useTelegram} from "../hooks/useTelegram";
-import Spinner from "../components/Loaders/Spinner";
+import {useTelegram} from "../../hooks/useTelegram";
+import Spinner from "../../components/Loaders/Spinner";
 
 
 const Policy = observer(() => {

@@ -37,7 +37,13 @@ $api.interceptors.response.use((config) => {
         }
     }
     if(error.response?.status === 500){
+        if(process.env.REACT_APP_MODE==="dev"){
+            alert("Произошла непредвиденная ошибка, попробуйте позже");
+        }
         showTelegramAlert("Произошла непредвиденная ошибка, попробуйте позже");
+    }
+    if(error.response?.status === 420){
+        return error.response
     }
 }));
 

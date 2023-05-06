@@ -1,7 +1,7 @@
 import {makeAutoObservable} from "mobx";
-import {$api} from "../../http";
+import {$api} from "../../../http";
 
-class CatalogStore {
+class ProductCatalogStore {
     isLoading= true
     products= []
     popular = []
@@ -31,4 +31,4 @@ class CatalogStore {
         this.filter = filter
     }
 }
-export default new CatalogStore();
+export default new ProductCatalogStore();

@@ -6,9 +6,8 @@ import {
     CONTACTS_ROUTE,
     HOME_ROUTE,
     ORDERS_ROUTE,
-    PROFILE_ROUTE
+    PROFILE_ROUTE,
 } from "../../utils/consts";
-import {icons} from "../icons";
 import {observer} from "mobx-react-lite";
 import CartStore from "../../store/cart/CartStore";
 
@@ -33,10 +32,10 @@ const Menu = observer((props) => {
                         Корзина
                     </NavLink>
                     <NavLink to={ORDERS_ROUTE} className={'menu__item'}>
-                        Мои заказы
+                        Заказы
                     </NavLink>
                     <NavLink to={PROFILE_ROUTE} className={'menu__item'}>
-                        Мой профиль
+                        Профиль
                     </NavLink>
                     <NavLink to={CONTACTS_ROUTE} className={'menu__item'}>
                         Контакты

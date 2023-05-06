@@ -1,5 +1,5 @@
 .category-list{
-  padding: 10px 15px;
+  padding: 15px 0;
   border-bottom: 1px solid $bg_color;
   &__wrapper{
     overflow-x: auto;
@@ -19,7 +19,7 @@
   }
 }
 .products{
-  padding: 15px;
+  padding: 15px 0;
   &__list{
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -212,7 +212,7 @@
 .popular{
   margin: 20px 0 ;
   &__header{
-    padding: 10px 15px;
+    padding: 10px 0;
   }
   &__title{
     font-size: 18px;

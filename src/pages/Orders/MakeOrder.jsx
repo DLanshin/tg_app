@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from "react";
 import {observer} from "mobx-react-lite";
-import CartStore from "../store/cart/CartStore";
-import OrderInfo from "../components/Order/OrderInfo";
-import OrderSettingsStore from "../store/order/OrderSettingsStore";
+import CartStore from "../../store/cart/CartStore";
+import OrderInfo from "../../components/Order/OrderInfo";
+import OrderSettingsStore from "../../store/order/OrderSettingsStore";
 import PhoneInput from 'react-phone-input-2'
 import 'react-phone-input-2/lib/style.css'
 import ru from 'react-phone-input-2/lang/ru.json'
-import Button from "../components/Button/Button";
-import RadioGroup from "../components/Form/RadioGroup";
-import Input from "../components/Form/Input";
-import OrdersStore from "../store/order/OrdersStore";
-import {useTelegram} from "../hooks/useTelegram";
-import {icons} from "../components/icons";
-import Spinner from "../components/Loaders/Spinner";
-import UserStore from "../store/user/UserStore";
-import Radio from "../components/Form/Radio";
+import Button from "../../components/Button/Button";
+import RadioGroup from "../../components/Form/RadioGroup";
+import Input from "../../components/Form/Input";
+import OrdersStore from "../../store/order/OrdersStore";
+import {useTelegram} from "../../hooks/useTelegram";
+import {icons} from "../../components/icons";
+import Spinner from "../../components/Loaders/Spinner";
+import UserStore from "../../store/user/UserStore";
+import Radio from "../../components/Form/Radio";
 
 
 const receiversList = [
@@ -252,7 +252,7 @@ const MakeOrder = observer((props) => {
                                 required={true}
                                 type={"text"}
                                 name={"address"}
-                                placeholder={"Адрес доставки"}
+                                placeholder={"Куда доставить"}
                                 value={address}
                                 onChange={setAddress}
                             />: null

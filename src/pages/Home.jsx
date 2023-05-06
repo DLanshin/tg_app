@@ -1,43 +1,68 @@
 import React, {useEffect} from 'react';
 import ProductList from "../components/Catalog/Product/ProductList";
-import CatalogStore from "../store/catalog/CatalogStore";
 import {observer} from "mobx-react-lite";
 import CartStore from "../store/cart/CartStore";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import BannersSlider from "../components/Banners/BannersSlider";
 import ProductSlider from "../components/Catalog/Product/ProductSlider";
-
-
+import ProductCatalogStore from "../store/catalog/products/ProductCatalogStore";
+import Tabs from "../components/Tabs/Tabs";
+import BookingCatalog from "./Catalog/Booking/BookingCatalog";
+import BookingList from "../components/Catalog/Booking/BookingList";
+import ApartmentCatalogStore from "../store/booking/apartments/ApartmentCatalogStore";
+import ServiceCatalogStore from "../store/catalog/services/ServiceCatalogStore";
+import ServicesList from "../components/Catalog/Services/ServicesList";
 
 
 const Home = observer(() => {
-    const {products, popular} = CatalogStore;
+    const {services} = ServiceCatalogStore;
+    const {products, popular} = ProductCatalogStore;
+    const {apartments} = ApartmentCatalogStore;
     const settings = {
         dots: true,
-        arrows:false,
+        arrows: false,
         infinite: true,
         speed: 500,
         slidesToShow: 2,
         slidesToScroll: 1
     };
-    useEffect(()=>{
-        if(!CatalogStore.products.length){
-            CatalogStore.fetchCatalog()
-                .then(()=>CartStore.fetchCart())
+    useEffect(() => {
+        if (!ServiceCatalogStore.services.length) {
+            ProductCatalogStore.fetchCatalog()
+                .then(() => ServiceCatalogStore.fetchServiceCatalog())
+                .then(() => CartStore.fetchCart())
+                .then(() => ApartmentCatalogStore.fetchApartmentsCatalog())
         }
 
-    },[])
+    }, [])
+
     return (
-        <div>
-            <ProductSlider
-                products={popular}/>
+        <div className="container">
+            {services.length ?
+                <ProductSlider
+                    title={"Наши услуги"}
+                    products={services}/>
+                : null
+            }
+
             <BannersSlider/>
-            <ProductList
-                products={products}
-                type={'line'}
-                emptyText={"Товары не найдены"}
-            />
+            {apartments.length ?
+                <BookingList
+                    items={apartments}
+                    type={'line'}
+                    emptyText={"Товары не найдены"}
+                />
+                : null
+            }
+
+            {products.length ?
+                <ProductList
+                    products={products}
+
+                    emptyText={"Товары не найдены"}
+                /> : null
+            }
 
         </div>
     );

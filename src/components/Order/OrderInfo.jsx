@@ -4,7 +4,7 @@ const OrderInfo = ({totalPrice, deliveryPrice, payBonusSum}) => {
     return (
         <div className={"order-info"}>
             <div className={"order-info__item"}>
-                <span>Стоимость товаров</span>
+                <span>Стоимость</span>
                 <span>{totalPrice ? totalPrice+ " ₽": "-"}</span>
             </div>
             {payBonusSum ?

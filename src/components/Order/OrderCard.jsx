@@ -2,6 +2,7 @@ import React from 'react';
 import {observer} from "mobx-react-lite";
 
 const OrderCard = observer(({object, cancelOrder}) => {
+    console.log(object)
     return (
         <div className={"order-card"}>
             <div className="order-card__header">
@@ -17,7 +18,7 @@ const OrderCard = observer(({object, cancelOrder}) => {
                     {object.shipping_method.slug === "pickup" ?
                         object.shipping_method.name
                         :
-                        'Адрес доставки: '+object.shipping_address
+                        'Куда доставить: '+object.shipping_address
                     }
                 </div>
                 {
@@ -46,7 +47,7 @@ const OrderCard = observer(({object, cancelOrder}) => {
                     }
                 </div>
                 <div className="order-card__price">
-                    {object.total_price+ object.delivery_price+ " ₽"}
+                    {object.order_price + object.delivery_price+ " ₽"}
                 </div>
             </div>
         </div>

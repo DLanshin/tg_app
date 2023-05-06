@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import CartList from "../components/Cart/CartList";
-import CartStore from "../store/cart/CartStore";
 import {observer} from "mobx-react-lite";
-import Spinner from "../components/Loaders/Spinner";
+import CartStore from "../../store/cart/CartStore";
+import CartList from "../../components/Cart/CartList";
+import Spinner from "../../components/Loaders/Spinner";
 
 
 const Cart = observer((props) => {

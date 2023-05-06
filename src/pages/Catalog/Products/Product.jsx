@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import Spinner from "../components/Loaders/Spinner";
-import minusIcon from "../assets/images/icons/minus_icon.svg";
-import plusIcon from "../assets/images/icons/plus_icon.svg";
+import minusIcon from "../../../assets/images/icons/minus_icon.svg";
+import plusIcon from "../../../assets/images/icons/plus_icon.svg";
 import {ReactSVG} from "react-svg";
-import CartStore from "../store/cart/CartStore";
-import ProductStore from "../store/catalog/ProductStore";
 import {observer} from "mobx-react-lite";
 import {useParams} from "react-router-dom";
-import {useTelegram} from "../hooks/useTelegram";
-import placeholderImage from "../assets/images/placeholder.jpg"
+import placeholderImage from "../../../assets/images/placeholder.jpg"
+import CartStore from "../../../store/cart/CartStore";
+import ProductStore from "../../../store/catalog/products/ProductStore";
+import Spinner from "../../../components/Loaders/Spinner";
+import {useTelegram} from "../../../hooks/useTelegram";
 
 
 const Product = observer((props) => {

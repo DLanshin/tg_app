@@ -1,12 +1,11 @@
 import React, {useEffect} from 'react';
-import {icons} from "../components/icons";
-import {useTelegram} from "../hooks/useTelegram";
-import OrdersStore from "../store/order/OrdersStore";
 import {observer} from "mobx-react-lite";
 import {NavLink} from "react-router-dom";
-import {ORDERS_ROUTE} from "../utils/consts";
-import UserStore from "../store/user/UserStore";
-import Spinner from "../components/Loaders/Spinner";
+import OrdersStore from "../../store/order/OrdersStore";
+import Spinner from "../../components/Loaders/Spinner";
+import UserStore from "../../store/user/UserStore";
+import {icons} from "../../components/icons";
+import {ORDERS_ROUTE} from "../../utils/consts";
 
 
 const Profile = observer((props) => {

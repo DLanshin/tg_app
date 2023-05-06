@@ -11,7 +11,7 @@
   display: flex;
   width: 100%;
 }
-.input{
+.input, .select{
   width: 100%;
   position: relative;
   font-size: 14px;
@@ -130,7 +130,7 @@
   * > span {
     display: flex;
     background-color: $bg_color;
-    padding: 10px 10px;
+    padding: 6px 10px;
     font-size: 14px;
     color:$text_color;
     border-bottom: 1px solid $secondary_bg_color;
@@ -157,4 +157,22 @@
 }
 .form .form-control.invalid{
   border:1px solid red!important;
+}
+.react-datepicker{
+  border:1px solid $secondary_bg_color!important;
+  background-color:$bg_color!important;
+  color: $text_color!important;
+  &__header{
+    background-color:$secondary_bg_color!important;
+    border-color: $bg_color!important;
+  }
+}
+.react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
+  color: $text_color!important;
+}
+.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name{
+  color: $text_color!important;
+}
+.react-datepicker__day--disabled, .react-datepicker__month-text--disabled, .react-datepicker__quarter-text--disabled, .react-datepicker__year-text--disabled{
+  opacity: 0.4;
 }

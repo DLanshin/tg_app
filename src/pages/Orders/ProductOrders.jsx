@@ -1,10 +1,9 @@
 import React, {useEffect} from 'react';
-import OrdersStore from "../store/order/OrdersStore";
+import OrdersStore from "../../store/order/OrdersStore";
 import {observer} from "mobx-react-lite";
-import OrderCard from "../components/Order/OrderCard";
-import ProductStore from "../store/catalog/ProductStore";
-import Spinner from "../components/Loaders/Spinner";
-import {icons} from "../components/icons";
+import OrderCard from "../../components/Order/OrderCard";
+import Spinner from "../../components/Loaders/Spinner";
+import {icons} from "../../components/icons";
 
 
 

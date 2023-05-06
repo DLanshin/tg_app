@@ -1,5 +1,5 @@
 import {action, makeAutoObservable} from "mobx";
-import {$api} from "../../http";
+import {$api} from "../../../http";
 
 class ProductStore {
     isLoading = true

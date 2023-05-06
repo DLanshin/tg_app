@@ -9,7 +9,7 @@ import SliderProductCard from "./SliderProductCard";
 
 
 
-const ProductSlider = observer(({products}) => {
+const ProductSlider = observer(({products, title}) => {
 
     const settings = {
         dots: true,
@@ -24,7 +24,7 @@ const ProductSlider = observer(({products}) => {
         return (
             <div className={'popular'}>
                 <div className={"popular__header"}>
-                    <div className={"popular__title"}>Популярное</div>
+                    <div className={"popular__title"}>{title}</div>
                 </div>
                 <Slider {...settings} className={"popular__slider"}>
                     {products.map((item)=>(

@@ -1,11 +1,11 @@
 import React, {useEffect} from 'react';
 import {YMaps, Map, Placemark} from '@pbe/react-yandex-maps';
 import {NavLink} from "react-router-dom";
-import Social from "../components/Social/Social";
-import {POLICY_ROUTE} from "../utils/consts";
-import ContactsStore from "../store/settings/ContactsStore";
+import Social from "../../components/Social/Social";
+import {POLICY_ROUTE} from "../../utils/consts";
+import ContactsStore from "../../store/settings/ContactsStore";
 import {observer} from "mobx-react-lite";
-import Spinner from "../components/Loaders/Spinner";
+import Spinner from "../../components/Loaders/Spinner";
 
 
 const Contacts = observer(() => {
