@@ -28,7 +28,10 @@ class ServiceCatalogStore {
     }
 
     setFilter(filter){
-        this.filter = filter
+        this.filter = {
+            ...this.filter,
+            ...filter
+        }
     }
 }
 export default new ServiceCatalogStore();

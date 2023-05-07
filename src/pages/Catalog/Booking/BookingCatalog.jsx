@@ -1,13 +1,10 @@
 import React, {useEffect} from 'react';
 import {observer} from "mobx-react-lite";
-import {useParams} from "react-router-dom";
 import Spinner from "../../../components/Loaders/Spinner";
 import ApartmentCatalogStore from "../../../store/booking/apartments/ApartmentCatalogStore";
 import BookingList from "../../../components/Catalog/Booking/BookingList";
 import BookingFilter from "./BookingFilter";
 import CategoryList from "../../../components/Catalog/Category/CategoryList";
-import ProductCatalogStore from "../../../store/catalog/products/ProductCatalogStore";
-import CartStore from "../../../store/cart/CartStore";
 import CategoriesStore from "../../../store/categories/CategoriesStore";
 
 
@@ -26,7 +23,7 @@ const BookingCatalog = observer(() => {
         }
     },[])
     const toggleCategory = (id) =>{
-        ProductCatalogStore.setFilter({
+        ApartmentCatalogStore.setFilter({
             category_id:filter.category_id === id ? null : id
         });
         ApartmentCatalogStore.fetchApartmentsCatalog();

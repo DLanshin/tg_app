@@ -39,7 +39,7 @@ const Home = observer(() => {
 
     return (
         <div className="container">
-            {services.length ?
+            {services.length > 2 ?
                 <ProductSlider
                     title={"Наши услуги"}
                     products={services}/>

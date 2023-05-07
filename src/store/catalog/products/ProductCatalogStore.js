@@ -30,7 +30,7 @@ class ProductCatalogStore {
     setFilter(filter){
         this.filter = {
             ...this.filter,
-            filter
+            ...filter
         }
     }
 }
