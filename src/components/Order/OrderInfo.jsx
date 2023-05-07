@@ -5,7 +5,7 @@ const OrderInfo = ({totalPrice, deliveryPrice, payBonusSum}) => {
         <div className={"order-info"}>
             <div className={"order-info__item"}>
                 <span>Стоимость</span>
-                <span>{totalPrice ? totalPrice+ " ₽": "-"}</span>
+                <span>{totalPrice ? totalPrice+ " ₽": "Бесплатно"}</span>
             </div>
             {payBonusSum ?
                 <div className={"order-info__item"}>
@@ -15,7 +15,7 @@ const OrderInfo = ({totalPrice, deliveryPrice, payBonusSum}) => {
                 :null}
             <div className={"order-info__item"}>
                 <span>Доставка</span>
-                <span>{deliveryPrice ? deliveryPrice+ " ₽": "-"}</span>
+                <span>{deliveryPrice ? deliveryPrice+ " ₽": "Бесплатно"}</span>
             </div>
             <div className={"order-info__item"}>
                 <span>Итого</span>

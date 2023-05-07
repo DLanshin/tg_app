@@ -39,7 +39,7 @@ const ProductCard = observer(({product, type}) => {
                         :null
                 }
                 <div className="products__item-description" dangerouslySetInnerHTML={{__html: description}}></div>
-                <span className="products__item-price">{product?.min_price + ' ₽'} {inCart ? " · "+cartQuality:""}</span>
+                <span className="products__item-price">{product?.min_price === 0 ? 'Бесплатно' : product?.min_price + ' ₽'} {inCart ? " · "+cartQuality:""}</span>
             </div>
             <div className={"products__item-button"+ (inCart?  " products__item-button--success": "")}>
                 {icons.plus}

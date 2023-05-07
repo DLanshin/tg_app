@@ -47,7 +47,7 @@ const OrderCard = observer(({object, cancelOrder}) => {
                     }
                 </div>
                 <div className="order-card__price">
-                    {object.order_price + object.delivery_price+ " ₽"}
+                    {(object.order_price + object.delivery_price) === 0 ? "Бесплатно": (object.order_price + object.delivery_price) + " ₽"}
                 </div>
             </div>
         </div>

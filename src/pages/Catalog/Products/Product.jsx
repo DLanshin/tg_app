@@ -87,7 +87,7 @@ const Product = observer((props) => {
                             }
                         </div>
                         <span className="product-item__price">
-                            {selectedSku?.price + ' ₽'}
+                            {selectedSku?.price === 0 ? 'Бесплатно': selectedSku?.price + ' ₽'}
                         </span>
                     </div>
 
