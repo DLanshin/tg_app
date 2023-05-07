@@ -30,7 +30,7 @@ const SliderProductCard = observer(({hideDescription, product, type}) => {
                 <div className="products__item-name">
                     {product.title}
                 </div>
-                <span className="products__item-price">{product?.min_price + ' ₽'} {inCart ? " · "+cartQuality:""}</span>
+                <span className="products__item-price">{product?.min_price === 0 ? 'Бесплатно': product?.min_price+ ' ₽'} {inCart ? " · "+cartQuality:""}</span>
             </div>
             <div className={"products__item-button"+ (inCart?  " products__item-button--success": "")}>
                 {icons.plus}

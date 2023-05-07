@@ -48,6 +48,7 @@ const ServiceCatalog = observer(() => {
             }
             <ServicesList
                 products={services}
+                type={'line'}
                 emptyText={"Услуги не найдены"}
             />
 
