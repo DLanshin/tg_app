@@ -11,6 +11,7 @@ class ApartmentCatalogStore {
         date_end:null,
 
     }
+    main_category_alias = "booking"
     constructor() {
         makeAutoObservable(this)
     }

@@ -9,7 +9,7 @@ import BottomWidget from "../../../components/Widgets/BottomWidget";
 const BookingFilter = observer(({onSubmit, date_start, date_end, quantity}) => {
     registerLocale('ru', ru)
 
-    const [person, setPerson] = useState(quantity);
+    const [person, setPerson] = useState(quantity ? quantity: 1);
     const [dateRange, setDateRange] = useState([date_start, date_end]);
     const [startDate, endDate] = dateRange;
 
@@ -25,6 +25,8 @@ const BookingFilter = observer(({onSubmit, date_start, date_end, quantity}) => {
         <div>
             <BottomWidget title={'Фильтр'}>
                 <DatePicker
+                    selected={startDate}
+                    placeholderText={'Укажите дату для поиска'}
                     selectsRange={true}
                     startDate={startDate}
                     endDate={endDate}
@@ -33,9 +35,11 @@ const BookingFilter = observer(({onSubmit, date_start, date_end, quantity}) => {
                     onChange={(update) => {
                         setDateRange(update);
                     }}
+                    minDate={new Date()}
                     customInput={<input className={'input'}/>}
                     withPortal
-                    selectsDisabledDaysInRange
+                    // selectsDisabledDaysInRange
+                    showDisabledMonthNavigation
                 />
                 <Select
                     label={'Кол-во человек'}

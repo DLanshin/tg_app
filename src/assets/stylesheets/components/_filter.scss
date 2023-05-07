@@ -1,11 +1,17 @@
 .bottom-widget{
-  color: $text_color;
   background: $secondary_bg_color;
   position: fixed;
   bottom: calc(40px - 236px);
   left: 0;
   width: 100%;
   transition: bottom 0.3s ease-in;
+  color:$button_text_color;
+  svg{
+    path{
+      fill:$button_text_color;
+      stroke: $hint_color;
+    }
+  }
   &.open{
     bottom: 0;
   }

@@ -39,7 +39,7 @@ const Apartment = observer((props) => {
         BookingStore.booking(apartment_id, startDate, endDate, person).then((response)=>{
             if(response.status === 420){
                 if(process.env.REACT_APP_MODE==="dev"){
-                    alert("Бронирование для выьранных вами дат недоступно");
+                    alert("Бронирование для выбранных вами дат недоступно");
                 }else{
                     showTelegramAlert("Бронирование для выьранных вами дат недоступно")
                 }
@@ -97,6 +97,9 @@ const Apartment = observer((props) => {
             </div>
             <BottomWidget title={'Выбрать свободные даты'}>
                 <DatePicker
+                    selected={startDate}
+                    minDate={new Date()}
+                    placeholderText={'Выберите даты'}
                     selectsRange={true}
                     startDate={startDate}
                     endDate={endDate}
@@ -108,6 +111,7 @@ const Apartment = observer((props) => {
                     excludeDates={excludeDates}
                     customInput={<input className={'input'}/>}
                     withPortal
+
 
                 />
                 <Select

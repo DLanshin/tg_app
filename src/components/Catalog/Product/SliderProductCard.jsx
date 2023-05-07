@@ -21,7 +21,6 @@ const SliderProductCard = observer(({hideDescription, product, type}) => {
             cartQuality++;
         }
     });
-    console.log(product);
     return (
         <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item "+type} data-id={product.id}>
             <div className={"products__item-image"}>

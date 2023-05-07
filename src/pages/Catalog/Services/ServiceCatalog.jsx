@@ -4,29 +4,48 @@ import {useParams} from "react-router-dom";
 import ServiceCatalogStore from "../../../store/catalog/services/ServiceCatalogStore";
 import CartStore from "../../../store/cart/CartStore";
 import Spinner from "../../../components/Loaders/Spinner";
-import ServiceCategoryList from "../../../components/Catalog/Category/ServiceCategoryList";
+import CategoryList from "../../../components/Catalog/Category/CategoryList";
 import ServicesList from "../../../components/Catalog/Services/ServicesList";
+import CategoriesStore from "../../../store/categories/CategoriesStore";
+import ProductSlider from "../../../components/Catalog/Product/ProductSlider";
 
 
 
 
 const ServiceCatalog = observer(() => {
-    const {services} = ServiceCatalogStore;
-    const params = useParams();
-
+    const {services, filter, popular, main_category_alias} = ServiceCatalogStore;
+    const {categories} = CategoriesStore;
     useEffect(()=>{
-        if(!services.length){
-            ServiceCatalogStore.fetchServiceCatalog()
-                .then(()=>CartStore.fetchCart())
+        ServiceCatalogStore.fetchServiceCatalog()
+            .then(()=>CartStore.fetchCart())
+            .then(()=>CategoriesStore.fetchCategories(main_category_alias))
+        return ()=>{
+            CategoriesStore.unsetCategories()
         }
     },[])
-
-    if(ServiceCatalogStore.isLoading || CartStore.isLoading){
+    const toggleCategory = (id) =>{
+        ServiceCatalogStore.setFilter({
+            category_id:filter.category_id === id ? null : id
+        });
+        ServiceCatalogStore.fetchServiceCatalog();
+    }
+    if(ServiceCatalogStore.isLoading || CartStore.isLoading || CategoriesStore.isLoading){
         return <Spinner/>
     }
+    console.log(popular.length)
     return (
         <div>
-            <ServiceCategoryList category_alias={"services"}/>
+            <CategoryList
+                items={categories}
+                onChange={toggleCategory}
+                value={filter.category_id}
+                />
+            {popular.length > 2 ?
+                <ProductSlider
+                    title={"Популярное"}
+                    products={popular}/>
+                : null
+            }
             <ServicesList
                 products={services}
                 emptyText={"Услуги не найдены"}

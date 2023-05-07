@@ -21,7 +21,6 @@ const ProductCard = observer(({product, type}) => {
             cartQuality++;
         }
     });
-    console.log(product);
     const description = product.description ? product.description.slice(0, 120) : "";
     return (
         <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item "+type} data-id={product.id}>

@@ -2,25 +2,34 @@ import React, {useEffect} from 'react';
 import {observer} from "mobx-react-lite";
 import {useParams} from "react-router-dom";
 import Spinner from "../../../components/Loaders/Spinner";
-import ProductCategoryList from "../../../components/Catalog/Category/ProductCategoryList";
 import ApartmentCatalogStore from "../../../store/booking/apartments/ApartmentCatalogStore";
 import BookingList from "../../../components/Catalog/Booking/BookingList";
 import BookingFilter from "./BookingFilter";
+import CategoryList from "../../../components/Catalog/Category/CategoryList";
+import ProductCatalogStore from "../../../store/catalog/products/ProductCatalogStore";
+import CartStore from "../../../store/cart/CartStore";
+import CategoriesStore from "../../../store/categories/CategoriesStore";
 
 
 
 
 const BookingCatalog = observer(() => {
-    const {apartments, isLoading, filter} = ApartmentCatalogStore;
-    const params = useParams();
+    const {apartments, isLoading, filter, main_category_alias} = ApartmentCatalogStore;
+    const {categories} = CategoriesStore;
 
     useEffect(()=>{
-        if(!apartments.length){
-            ApartmentCatalogStore.fetchApartmentsCatalog()
+        ApartmentCatalogStore.fetchApartmentsCatalog()
+            .then(()=>CategoriesStore.fetchCategories(main_category_alias))
+
+        return ()=>{
+            CategoriesStore.unsetCategories()
         }
     },[])
-    if(isLoading){
-        return <Spinner/>
+    const toggleCategory = (id) =>{
+        ProductCatalogStore.setFilter({
+            category_id:filter.category_id === id ? null : id
+        });
+        ApartmentCatalogStore.fetchApartmentsCatalog();
     }
     const setFilter = (startDate, endDate, person) =>{
         ApartmentCatalogStore.setFilter({
@@ -31,9 +40,17 @@ const BookingCatalog = observer(() => {
         })
         ApartmentCatalogStore.fetchApartmentsCatalog();
     }
+    if(ApartmentCatalogStore.isLoading || CategoriesStore.isLoading){
+        return <Spinner/>
+    }
+    console.log(apartments.length)
     return (
         <div>
-            <ProductCategoryList category_alias={"booking"}/>
+            <CategoryList
+                items={categories}
+                onChange={toggleCategory}
+                value={filter.category_id}
+            />
             <BookingList
                 type={"line"}
                 items={apartments}
