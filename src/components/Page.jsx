@@ -13,7 +13,6 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const {checkCredential} = useAuth()
     const {isAuth, isLoading} = UserStore;
     const {user, showMainButton, initBackButton} = useTelegram()
-    const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const {pathname} = useLocation()
     const params = useParams();
@@ -28,7 +27,7 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
 
 
 
-    const toggleMainButton = (pathmanu) =>{
+    const toggleMainButton = (pathname) =>{
         switch (pathname){
             case CART_ROUTE:
                 showMainButton({
