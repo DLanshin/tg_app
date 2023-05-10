@@ -13,6 +13,7 @@ import BookingList from "../components/Catalog/Booking/BookingList";
 import ApartmentCatalogStore from "../store/booking/apartments/ApartmentCatalogStore";
 import ServiceCatalogStore from "../store/catalog/services/ServiceCatalogStore";
 import ServicesList from "../components/Catalog/Services/ServicesList";
+import {SERVICE_ROUTE} from "../utils/consts";
 
 
 const Home = observer(() => {
@@ -42,6 +43,7 @@ const Home = observer(() => {
             {services.length > 2 ?
                 <ProductSlider
                     title={"Наши услуги"}
+                    urlRule={SERVICE_ROUTE}
                     products={services}/>
                 : null
             }

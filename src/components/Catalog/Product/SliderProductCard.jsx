@@ -7,7 +7,7 @@ import {observer} from "mobx-react-lite";
 import placeholderImage from "../../../assets/images/placeholder.jpg"
 import uuid from "react-uuid";
 
-const SliderProductCard = observer(({hideDescription, product, type}) => {
+const SliderProductCard = observer(({hideDescription, product, type, urlRule}) => {
     const cartProducts = cart.products
     let inCart = false,
         cartQuality = 0;
@@ -22,7 +22,7 @@ const SliderProductCard = observer(({hideDescription, product, type}) => {
         }
     });
     return (
-        <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item "+type} data-id={product.id}>
+        <NavLink to={(urlRule? urlRule:PRODUCT_ROUTE) + `/${product.id}`} className={"products__item "+type} data-id={product.id}>
             <div className={"products__item-image"}>
                 <img src={product.image ?product.image.path: placeholderImage} alt={product.title}/>
             </div>

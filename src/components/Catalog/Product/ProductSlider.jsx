@@ -9,7 +9,7 @@ import SliderProductCard from "./SliderProductCard";
 
 
 
-const ProductSlider = observer(({products, title}) => {
+const ProductSlider = observer(({products, title, urlRule}) => {
 
     const settings = {
         dots: true,
@@ -29,7 +29,7 @@ const ProductSlider = observer(({products, title}) => {
                 <Slider {...settings} className={"popular__slider"}>
                     {products.map((item)=>(
                         <div key={item.id} className={'item__slider'}>
-                            <SliderProductCard hideDescription={true} product={item}/>
+                            <SliderProductCard hideDescription={true} product={item} urlRule={urlRule}/>
                         </div>
                     ))}
                 </Slider>

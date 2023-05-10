@@ -8,6 +8,7 @@ import CategoryList from "../../../components/Catalog/Category/CategoryList";
 import ServicesList from "../../../components/Catalog/Services/ServicesList";
 import CategoriesStore from "../../../store/categories/CategoriesStore";
 import ProductSlider from "../../../components/Catalog/Product/ProductSlider";
+import {SERVICE_ROUTE} from "../../../utils/consts";
 
 
 
@@ -43,6 +44,7 @@ const ServiceCatalog = observer(() => {
             {popular.length > 2 ?
                 <ProductSlider
                     title={"Популярное"}
+                    urlRule={SERVICE_ROUTE}
                     products={popular}/>
                 : null
             }

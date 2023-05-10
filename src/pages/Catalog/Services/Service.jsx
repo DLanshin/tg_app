@@ -108,7 +108,7 @@ const Service = observer((props) => {
                                     <button
                                         className="button-group__button"
                                         onClick={()=>add(selectedSku)}
-                                    >Добавить</button>
+                                    >Оформить заказ</button>
                                 </div>
                         }
                     </div>
