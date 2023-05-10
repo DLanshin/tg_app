@@ -41,7 +41,7 @@ const Apartment = observer((props) => {
                 if(process.env.REACT_APP_MODE==="dev"){
                     alert("Бронирование для выбранных вами дат недоступно");
                 }else{
-                    showTelegramAlert("Бронирование для выьранных вами дат недоступно")
+                    showTelegramAlert("Бронирование для выбранных вами дат недоступно")
                 }
             }else {
                 if(process.env.REACT_APP_MODE==="dev"){
