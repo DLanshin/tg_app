@@ -13,7 +13,6 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const {checkCredential} = useAuth()
     const {isAuth, isLoading} = UserStore;
     const {user, showMainButton, initBackButton} = useTelegram()
-    const navigate = useNavigate();
     const {pathname} = useLocation()
     const params = useParams();
     //prod
@@ -25,12 +24,6 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
         bot_id = 5848850433;
     }
 
-    useEffect(()=>{
-        showMainButton({
-            text: `В корзине ${CartStore.quality} товаров`,
-            is_visible: !!CartStore.quality,
-        }, () => {navigate(CART_ROUTE)})
-    },[CartStore.quality]);
 
     useEffect(()=>{
         AppStore.toggleMenu(false);
