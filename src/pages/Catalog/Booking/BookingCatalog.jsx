@@ -40,7 +40,6 @@ const BookingCatalog = observer(() => {
     if(ApartmentCatalogStore.isLoading || CategoriesStore.isLoading){
         return <Spinner/>
     }
-    console.log(apartments.length)
     return (
         <div>
             <CategoryList

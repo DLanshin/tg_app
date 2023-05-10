@@ -22,7 +22,6 @@ const Catalog = () => {
         case 'products':tabIndex = 2;break;
         default:tabIndex = 0;break;
     }
-    console.log(tabIndex)
     return (
         <div className="container">
             <Tabs items={tabs} value={tabIndex}/>

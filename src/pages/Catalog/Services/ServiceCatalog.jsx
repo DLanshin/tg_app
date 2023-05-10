@@ -33,7 +33,6 @@ const ServiceCatalog = observer(() => {
     if(ServiceCatalogStore.isLoading || CartStore.isLoading || CategoriesStore.isLoading){
         return <Spinner/>
     }
-    console.log(popular.length)
     return (
         <div>
             <CategoryList

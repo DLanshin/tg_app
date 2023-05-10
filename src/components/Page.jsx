@@ -25,41 +25,22 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
         bot_id = 5848850433;
     }
 
-
-
-    const toggleMainButton = (pathname) =>{
-        switch (pathname){
-            case CART_ROUTE:
-                showMainButton({
-                    text: `Оформить заказ  ${CartStore.total_price} Р`,
-                    is_visible: !!CartStore.quality,
-                }, () => {navigate(MAKE_ORDER_ROUTE)})
-                break
-            case HOME_ROUTE:
-            case CATALOG_ROUTE:
-            case PRODUCT_ROUTE:
-                showMainButton({
-                    text: `В корзине ${CartStore.quality} товаров`,
-                    is_visible: !!CartStore.quality,
-                }, () => {navigate(CART_ROUTE)})
-                break;
-            default:
-                showMainButton({
-                    is_visible:false
-                },null)
-        }
-    }
     useEffect(()=>{
-        toggleMainButton(pathname)
+        showMainButton({
+            text: `В корзине ${CartStore.quality} товаров`,
+            is_visible: !!CartStore.quality,
+        }, () => {navigate(CART_ROUTE)})
     },[CartStore.quality]);
 
     useEffect(()=>{
-        toggleMainButton(pathname)
+        showMainButton({
+            text: `В корзине ${CartStore.quality} товаров`,
+            is_visible: !!CartStore.quality,
+        }, () => {navigate(CART_ROUTE)})
         AppStore.toggleMenu(false);
     },[pathname])
 
     useEffect(()=>{
-
         if(checkCredential(bot_id, user_id)){
             UserStore.check(user_id);
         }else{

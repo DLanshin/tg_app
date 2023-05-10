@@ -8,7 +8,6 @@ import {useAuth} from "../../hooks/useAuth";
 
 const Menu = observer((props) => {
     const {getBotId} = useAuth();
-    console.log(CONFIG_ROUTES.HOME_ROUTE.replace(':bot_id', 'getBotId'));
     return (
         <>
             <div className={'menu'}>
