@@ -37,13 +37,6 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     },[pathname])
 
     useEffect(()=>{
-        showMainButton({
-            text: `В корзине ${CartStore.quality} товаров`,
-            is_visible: !!CartStore.quality,
-        }, () => {navigate(CART_ROUTE)})
-    })
-
-    useEffect(()=>{
         if(checkCredential(bot_id, user_id)){
             UserStore.check(user_id);
         }else{

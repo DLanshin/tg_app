@@ -13,29 +13,28 @@ import BookingList from "../components/Catalog/Booking/BookingList";
 import ApartmentCatalogStore from "../store/booking/apartments/ApartmentCatalogStore";
 import ServiceCatalogStore from "../store/catalog/services/ServiceCatalogStore";
 import ServicesList from "../components/Catalog/Services/ServicesList";
-import {SERVICE_ROUTE} from "../utils/consts";
+import {CART_ROUTE, SERVICE_ROUTE} from "../utils/consts";
+import {useNavigate} from "react-router-dom";
 
 
 const Home = observer(() => {
     const {services} = ServiceCatalogStore;
     const {products, popular} = ProductCatalogStore;
     const {apartments} = ApartmentCatalogStore;
-    const settings = {
-        dots: true,
-        arrows: false,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 2,
-        slidesToScroll: 1
-    };
-    useEffect(() => {
-        if (!ServiceCatalogStore.services.length) {
-            ProductCatalogStore.fetchCatalog()
-                .then(() => ServiceCatalogStore.fetchServiceCatalog())
-                .then(() => CartStore.fetchCart())
-                .then(() => ApartmentCatalogStore.fetchApartmentsCatalog())
-        }
+    const navigate = useNavigate();
 
+
+    useEffect(() => {
+        ProductCatalogStore.fetchCatalog()
+            .then(() => ServiceCatalogStore.fetchServiceCatalog())
+            .then(() => CartStore.fetchCart())
+            .then(() => ApartmentCatalogStore.fetchApartmentsCatalog())
+            .then(()=>{
+                showMainButton({
+                    text: `В корзине ${CartStore.quality} товаров`,
+                    is_visible: !!CartStore.quality,
+                }, () => {navigate(CART_ROUTE)})
+            })
     }, [])
 
     return (

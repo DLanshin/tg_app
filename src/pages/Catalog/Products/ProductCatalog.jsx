@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 import {observer} from "mobx-react-lite";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import ProductCatalogStore from "../../../store/catalog/products/ProductCatalogStore";
 import CartStore from "../../../store/cart/CartStore";
 import Spinner from "../../../components/Loaders/Spinner";
@@ -8,6 +8,8 @@ import ProductList from "../../../components/Catalog/Product/ProductList";
 import ProductSlider from "../../../components/Catalog/Product/ProductSlider";
 import CategoriesStore from "../../../store/categories/CategoriesStore";
 import CategoryList from "../../../components/Catalog/Category/CategoryList";
+import {CART_ROUTE} from "../../../utils/consts";
+import {useTelegram} from "../../../hooks/useTelegram";
 
 
 
@@ -15,15 +17,30 @@ import CategoryList from "../../../components/Catalog/Category/CategoryList";
 const ProductCatalog = observer(() => {
     const {products, popular, filter, main_category_alias} = ProductCatalogStore;
     const {categories} = CategoriesStore;
+    const {showMainButton} = useTelegram();
+    const navigate = useNavigate();
+
 
     useEffect(()=>{
         ProductCatalogStore.fetchCatalog()
             .then(()=>CartStore.fetchCart())
             .then(()=>CategoriesStore.fetchCategories(main_category_alias))
+            .then(()=>{
+                showMainButton({
+                    text: `В корзине ${CartStore.quality} товаров`,
+                    is_visible: !!CartStore.quality,
+                }, () => {navigate(CART_ROUTE)})
+            })
         return ()=>{
             CategoriesStore.unsetCategories()
         }
     },[])
+    useEffect(()=>{
+        showMainButton({
+            text: `В корзине ${CartStore.quality} товаров`,
+            is_visible: !!CartStore.quality,
+        }, () => {navigate(CART_ROUTE)})
+    },[CartStore.quality]);
 
     const toggleCategory = (id) =>{
         ProductCatalogStore.setFilter({
