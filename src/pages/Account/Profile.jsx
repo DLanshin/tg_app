@@ -6,6 +6,7 @@ import Spinner from "../../components/Loaders/Spinner";
 import UserStore from "../../store/user/UserStore";
 import {icons} from "../../components/icons";
 import {ORDERS_ROUTE} from "../../utils/consts";
+import {useTelegram} from "../../hooks/useTelegram";
 
 
 const Profile = observer((props) => {

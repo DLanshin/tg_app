@@ -1,6 +1,9 @@
 const tg = window.Telegram.WebApp;
 export function useAuth(){
 
+    const getBotId = () =>{
+        return localStorage.getItem("bot_id");
+    }
     const checkCredential = (bot_id) => {
         return !!(checkBot(bot_id) && localStorage.getItem("accessToken"));
     }
@@ -26,6 +29,7 @@ export function useAuth(){
     return {
         checkCredential,
         checkBot,
+        getBotId
     }
 }
 
