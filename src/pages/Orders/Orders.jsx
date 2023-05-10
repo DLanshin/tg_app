@@ -13,7 +13,7 @@ const Orders = () => {
     ];
     return (
         <div className="container">
-            <Tabs items={tabs}/>
+            <Tabs items={tabs} value={0}/>
         </div>
     );
 }
