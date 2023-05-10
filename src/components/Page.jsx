@@ -33,12 +33,15 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     },[CartStore.quality]);
 
     useEffect(()=>{
+        AppStore.toggleMenu(false);
+    },[pathname])
+
+    useEffect(()=>{
         showMainButton({
             text: `В корзине ${CartStore.quality} товаров`,
             is_visible: !!CartStore.quality,
         }, () => {navigate(CART_ROUTE)})
-        AppStore.toggleMenu(false);
-    },[pathname])
+    })
 
     useEffect(()=>{
         if(checkCredential(bot_id, user_id)){
