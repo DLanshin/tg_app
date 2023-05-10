@@ -1,6 +1,6 @@
 import {useAuth} from "../hooks/useAuth";
 import UserStore from "../store/user/UserStore";
-import {useLocation, useNavigate, useSearchParams} from "react-router-dom";
+import {useLocation, useNavigate, useParams, useSearchParams} from "react-router-dom";
 import React, {useEffect} from "react";
 import ShopLoader from "./Loaders/ShopLoader";
 import {useTelegram} from "../hooks/useTelegram";
@@ -16,14 +16,14 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const {pathname} = useLocation()
-
+    const params = useParams();
     //prod
     let user_id= user ? user.id : null;
-    let bot_id = searchParams.get("bot_id") ? searchParams.get("bot_id") : null;
+    let bot_id = params?.bot_id ? params.bot_id : null;
     //dev
     if(process.env.REACT_APP_MODE==="dev"){
         user_id = 5467763995;
-        bot_id = 6200850849;
+        bot_id = 5848850433;
     }
 
 

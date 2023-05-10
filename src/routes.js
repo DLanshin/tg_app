@@ -1,16 +1,4 @@
-import {
-    CART_ROUTE,
-    CATALOG_ROUTE,
-    CONTACTS_ROUTE,
-    HOME_ROUTE,
-    ORDERS_ROUTE,
-    MAKE_ORDER_ROUTE,
-    POLICY_ROUTE,
-    PRODUCT_ROUTE,
-    APARTMENT_ROUTE,
-    PROFILE_ROUTE,
-    SERVICE_ROUTE
-} from "./utils/consts";
+import * as CONFIG_ROUTES from "./utils/consts";
 import Page from "./components/Page";
 import Home from "./pages/Home";
 import Product from "./pages/Catalog/Products/Product";
@@ -27,51 +15,51 @@ import Apartment from "./pages/Catalog/Booking/Apartment";
 
 export const routes = [
     {
-        path: HOME_ROUTE,
+        path: CONFIG_ROUTES.HOME_ROUTE,
         Component: <Page showTopPanel={true} element={<Home/>}/>,
     },
     {
-        path: CATALOG_ROUTE,
+        path: CONFIG_ROUTES.CATALOG_ROUTE,
         Component: <Page showTopPanel={true} element={<Catalog/>}/>,
     },
     {
-        path: PRODUCT_ROUTE + '/:id',
+        path: CONFIG_ROUTES.PRODUCT_ROUTE + '/:id',
         Component: <Page showTopPanel={false} element={<Product/>}/>,
         showTopPanel: false,
         showBottomPanel:false,
     },
     {
-        path: APARTMENT_ROUTE + '/:id',
+        path: CONFIG_ROUTES.APARTMENT_ROUTE + '/:id',
         Component: <Page showTopPanel={false} element={<Apartment/>}/>,
         showTopPanel: false,
         showBottomPanel:false,
     },
     {
-        path: SERVICE_ROUTE + '/:id',
+        path: CONFIG_ROUTES.SERVICE_ROUTE + '/:id',
         Component: <Page showTopPanel={false} element={<Service/>}/>,
     },
     {
-        path: PROFILE_ROUTE,
+        path: CONFIG_ROUTES.PROFILE_ROUTE,
         Component: <Page showTopPanel={false} element={<Profile/>}/>,
     },
     {
-        path: CART_ROUTE,
+        path: CONFIG_ROUTES.CART_ROUTE,
         Component: <Page showTopPanel={false} element={<Cart/>}/>,
     },
     {
-        path: MAKE_ORDER_ROUTE,
+        path: CONFIG_ROUTES.MAKE_ORDER_ROUTE,
         Component: <Page showTopPanel={false}  element={<MakeOrder/>}/>,
     },
     {
-        path: ORDERS_ROUTE,
+        path: CONFIG_ROUTES.ORDERS_ROUTE,
         Component: <Page showTopPanel={false}  element={<Orders/>}/>,
     },
     {
-        path: CONTACTS_ROUTE,
+        path: CONFIG_ROUTES.CONTACTS_ROUTE,
         Component: <Page showTopPanel={false}  element={<Contacts/>}/>,
     },
     {
-        path: POLICY_ROUTE,
+        path: CONFIG_ROUTES.POLICY_ROUTE,
         Component: <Page showTopPanel={false}  element={<Policy/>}/>,
     },
 
