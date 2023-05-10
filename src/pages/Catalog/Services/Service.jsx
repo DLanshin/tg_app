@@ -1,14 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import minusIcon from "../../../assets/images/icons/minus_icon.svg";
-import plusIcon from "../../../assets/images/icons/plus_icon.svg";
-import {ReactSVG} from "react-svg";
 import {observer} from "mobx-react-lite";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import placeholderImage from "../../../assets/images/placeholder.jpg"
 import {useTelegram} from "../../../hooks/useTelegram";
 import CartStore from "../../../store/cart/CartStore";
 import ProductStore from "../../../store/catalog/products/ProductStore";
 import Spinner from "../../../components/Loaders/Spinner";
+import {MAKE_ORDER_ROUTE} from "../../../utils/consts";
 
 
 const Service = observer((props) => {
@@ -16,6 +14,8 @@ const Service = observer((props) => {
     const [selectedSku, setSelectedSku] = useState(null);
     const [itemCart, setItemCart] = useState(null);
     const {initBackButton} = useTelegram();
+    const navigate = useNavigate();
+
     useEffect(()=>{
         initBackButton(true, ()=>{history.back()})
         return ()=>{
@@ -45,20 +45,14 @@ const Service = observer((props) => {
     const add = (selectedSku) => {
         CartStore.addProduct(selectedSku.id).then(() => {
             setItemCart(CartStore.getItemCartProduct(selectedSku.id));
+            goToMakeOrderPage()
         });
 
     }
-    const increment = (cartProduct) => {
-        CartStore.updateProduct(cartProduct.sku_id, cartProduct.count+1);
+    const goToMakeOrderPage = () =>{
+        navigate(MAKE_ORDER_ROUTE);
     }
-    const decrement = (cartProduct) => {
-        if(cartProduct.count === 1){
-            CartStore.deleteProduct(cartProduct.sku_id);
-            setItemCart(null)
-        }else{
-            CartStore.updateProduct(cartProduct.sku_id, cartProduct.count-1);
-        }
-    }
+
     if(ProductStore.isLoading){
         return <Spinner/>
     }
@@ -106,17 +100,8 @@ const Service = observer((props) => {
                         {
                             itemCart ?
                                 <div className="button-group">
-                                    <div className="quality-button">
-                                        <button className={'quality-button__btn'} onClick={()=>decrement(itemCart)}>
-                                            <ReactSVG src={minusIcon}/>
-                                        </button>
-                                        <div className={'quality-button__result'}>{itemCart?.count}</div>
-                                        <button className={'quality-button__btn'} onClick={()=>increment(itemCart)}>
-                                            <ReactSVG src={plusIcon}/>
-                                        </button>
-                                    </div>
-                                    <button className="button-group__button button-group__button--success">
-                                        В корзине · {itemCart?.count} | {itemCart.count*itemCart.price + " ₽"}</button>
+                                    <button className="button-group__button button-group__button--success" onClick={()=>goToMakeOrderPage()}>
+                                        Оформить заказ · {itemCart.count*itemCart.price + " ₽"}</button>
                                 </div>
                                 :
                                 <div className="button-group">

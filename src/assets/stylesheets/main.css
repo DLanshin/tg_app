@@ -25,11 +25,6 @@ p {
   margin: 0 0 5px 0;
 }
 
-svg * {
-  fill: var(--tg-theme-text-color);
-  stroke: var(--tg-theme-text-color);
-}
-
 img {
   width: 100%;
   object-fit: cover;
@@ -439,6 +434,7 @@ button {
   justify-content: space-between;
   position: relative;
   align-items: flex-start;
+  min-height: 100px;
 }
 .cart__item-image {
   width: 95px;

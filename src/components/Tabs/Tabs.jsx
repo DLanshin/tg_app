@@ -1,8 +1,8 @@
-import {useEffect, useState} from 'react';
+import {useState} from 'react';
 
 
-const Tabs = ({items}) => {
-    const [ active, setActive ] = useState(0);
+const Tabs = ({items, value}) => {
+    const [ active, setActive ] = useState(value);
 
     const openTab = e => setActive(+e.target.dataset.index);
 
