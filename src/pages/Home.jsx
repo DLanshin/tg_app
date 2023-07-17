@@ -7,17 +7,16 @@ import "slick-carousel/slick/slick-theme.css";
 import BannersSlider from "../components/Banners/BannersSlider";
 import ProductSlider from "../components/Catalog/Product/ProductSlider";
 import ProductCatalogStore from "../store/catalog/products/ProductCatalogStore";
-import Tabs from "../components/Tabs/Tabs";
-import BookingCatalog from "./Catalog/Booking/BookingCatalog";
 import BookingList from "../components/Catalog/Booking/BookingList";
 import ApartmentCatalogStore from "../store/booking/apartments/ApartmentCatalogStore";
 import ServiceCatalogStore from "../store/catalog/services/ServiceCatalogStore";
-import ServicesList from "../components/Catalog/Services/ServicesList";
 import {CART_ROUTE, SERVICE_ROUTE} from "../utils/consts";
 import {useNavigate} from "react-router-dom";
+import BotStore from "../store/bot/BotStore";
 
 
 const Home = observer(() => {
+    const {modules} = BotStore;
     const {services} = ServiceCatalogStore;
     const {products, popular} = ProductCatalogStore;
     const {apartments} = ApartmentCatalogStore;
@@ -26,9 +25,9 @@ const Home = observer(() => {
 
     useEffect(() => {
         ProductCatalogStore.fetchCatalog()
-            .then(() => ServiceCatalogStore.fetchServiceCatalog())
+            .then(() => {if(modules?.services?.active) ServiceCatalogStore.fetchServiceCatalog()})
             .then(() => CartStore.fetchCart())
-            .then(() => ApartmentCatalogStore.fetchApartmentsCatalog())
+            .then(() => {if(modules?.booking?.active)ApartmentCatalogStore.fetchApartmentsCatalog()})
             .then(()=>{
                 showMainButton({
                     text: `В корзине ${CartStore.quality} товаров`,
@@ -39,7 +38,7 @@ const Home = observer(() => {
 
     return (
         <div className="container">
-            {services.length > 2 ?
+            {modules?.services?.active && services.length > 2 ?
                 <ProductSlider
                     title={"Наши услуги"}
                     urlRule={SERVICE_ROUTE}
@@ -48,7 +47,7 @@ const Home = observer(() => {
             }
 
             <BannersSlider/>
-            {apartments.length ?
+            {modules?.booking?.active && apartments.length ?
                 <BookingList
                     items={apartments}
                     type={'line'}
@@ -57,7 +56,7 @@ const Home = observer(() => {
                 : null
             }
 
-            {products.length ?
+            {modules?.products?.active && products.length ?
                 <ProductList
                     products={products}
 

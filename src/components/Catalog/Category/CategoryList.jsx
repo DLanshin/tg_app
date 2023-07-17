@@ -1,6 +1,7 @@
 import React from 'react';
 
 const CategoryList = ({items, value, onChange}) => {
+    console.log(items)
     return (
         <div className={'category-list'}>
             <div className={'category-list__wrapper'}>

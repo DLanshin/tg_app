@@ -8,7 +8,7 @@ class ProductCatalogStore {
     filter = {
         category_id:null
     }
-    main_category_alias = "products"
+    category_type = "products"
 
     constructor() {
         makeAutoObservable(this)

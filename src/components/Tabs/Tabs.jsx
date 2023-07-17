@@ -1,8 +1,9 @@
 import {useState} from 'react';
 
 
+
 const Tabs = ({items, value}) => {
-    const [ active, setActive ] = useState(value);
+    const [ active, setActive ] = useState(0);
 
     const openTab = e => setActive(+e.target.dataset.index);
 
@@ -13,7 +14,7 @@ const Tabs = ({items, value}) => {
                 {items.map((n, i) => (
                     <div
                         key={i}
-                        className={`tab__header-item ${i === active ? 'active' : ''}`}
+                        className={`tab__header-item  ${i === active ? 'active' : ''}`}
                         onClick={openTab}
                         data-index={i}
                     >{n.title}</div>

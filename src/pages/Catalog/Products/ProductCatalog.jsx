@@ -15,7 +15,7 @@ import {useTelegram} from "../../../hooks/useTelegram";
 
 
 const ProductCatalog = observer(() => {
-    const {products, popular, filter, main_category_alias} = ProductCatalogStore;
+    const {products, popular, filter, category_type} = ProductCatalogStore;
     const {categories} = CategoriesStore;
     const {showMainButton} = useTelegram();
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ const ProductCatalog = observer(() => {
     useEffect(()=>{
         ProductCatalogStore.fetchCatalog()
             .then(()=>CartStore.fetchCart())
-            .then(()=>CategoriesStore.fetchCategories(main_category_alias))
+            .then(()=>CategoriesStore.fetchCategories(category_type))
             .then(()=>{
                 showMainButton({
                     text: `В корзине ${CartStore.quality} товаров`,
@@ -51,7 +51,6 @@ const ProductCatalog = observer(() => {
     if(ProductCatalogStore.isLoading || CartStore.isLoading || CategoriesStore.isLoading){
         return <Spinner/>
     }
-
     return (
         <div>
             <CategoryList
