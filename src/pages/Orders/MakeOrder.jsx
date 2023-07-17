@@ -15,6 +15,7 @@ import {icons} from "../../components/icons";
 import Spinner from "../../components/Loaders/Spinner";
 import UserStore from "../../store/user/UserStore";
 import Radio from "../../components/Form/Radio";
+import BotStore from "../../store/bot/BotStore";
 
 
 const receiversList = [
@@ -62,26 +63,26 @@ const MakeOrder = observer((props) => {
     const [comment, setComment] = useState("");
     const {
         price_type,
-        fix_shipping_price,
+        delivery_fix_price,
         min_order_price,
-        shippingMethods,
-        pickupPaymentsMethods,
-        paymentsMethods
-    } = OrderSettingsStore;
+        delivery_methods,
+        pickup_paying_methods,
+        delivery_paying_methods
+    } = BotStore.delivery;
+    const {loyalty} = BotStore
 
     useEffect(() => {
-        OrderSettingsStore.fetchShippingMethods()
+        BotStore.fetchSettings()
             .then(() => CartStore.fetchCart())
             .then(() => {
-
                 setReceiverMethod(receiversList[0])
             })
     }, []);
 
     useEffect(()=>{
-        setShippingMethod(shippingMethods[0]);
-        setPaymentMethod(shippingMethod?.slug === 'pickup' ? pickupPaymentsMethods[0] : paymentsMethods[0])
-    },[shippingMethods]);
+        setShippingMethod(delivery_methods[0]);
+        setPaymentMethod(shippingMethod?.slug === 'pickup' ? pickup_paying_methods[0] : delivery_paying_methods[0])
+    },[delivery_methods]);
 
     useEffect(()=>{
         if(shippingDateMethod.slug === 'time'){
@@ -127,7 +128,7 @@ const MakeOrder = observer((props) => {
         setPayBonusesSum(!isPayBonuses ? CartStore.total_price * OrderSettingsStore.loyalty.available_bonus_payments / 100 : 0)
     }
 
-    if(OrderSettingsStore.isLoading || CartStore.isLoading){
+    if(BotStore.isLoading || CartStore.isLoading){
         return <Spinner/>
     }else if(!CartStore.quality){
         return (
@@ -148,7 +149,7 @@ const MakeOrder = observer((props) => {
                     required={true}
                     name={"shipping_method"}
                     type={"radio"}
-                    elements={shippingMethods}
+                    elements={delivery_methods}
                     value={shippingMethod}
                     setValue={setShippingMethod}
                     />
@@ -159,7 +160,7 @@ const MakeOrder = observer((props) => {
                     required={true}
                     name={"payment_method"}
                     type={"radio"}
-                    elements={shippingMethod?.slug === 'pickup' ? pickupPaymentsMethods : paymentsMethods}
+                    elements={shippingMethod?.slug === 'pickup' ? pickup_paying_methods : delivery_paying_methods}
                     value={paymentMethod}
                     setValue={setPaymentMethod}
                     />
@@ -216,7 +217,7 @@ const MakeOrder = observer((props) => {
                 }
             </div>
             {
-                OrderSettingsStore.loyalty?.active ?
+                loyalty?.active ?
                     <div className={"form-block"}>
                         <Radio
                             required={false}

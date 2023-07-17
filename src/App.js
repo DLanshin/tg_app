@@ -22,7 +22,7 @@ const App = observer(() => {
                 <AppRouter/>
             </div>
             <Menu/>
-            {/*<MenuButton/>*/}
+            <MenuButton/>
         </BrowserRouter>
     );
 

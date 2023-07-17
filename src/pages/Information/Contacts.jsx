@@ -3,17 +3,17 @@ import {YMaps, Map, Placemark} from '@pbe/react-yandex-maps';
 import {NavLink} from "react-router-dom";
 import Social from "../../components/Social/Social";
 import {POLICY_ROUTE} from "../../utils/consts";
-import ContactsStore from "../../store/settings/ContactsStore";
 import {observer} from "mobx-react-lite";
 import Spinner from "../../components/Loaders/Spinner";
+import BotStore from "../../store/bot/BotStore";
 
 
 const Contacts = observer(() => {
-    const info = ContactsStore.info;
+    const info = BotStore.contacts;
 
     useEffect(() => {
-        if (ContactsStore.isLoading) {
-            ContactsStore.fetchContacts()
+        if (BotStore.isLoading) {
+            BotStore.fetchSettings()
         }
     }, [])
     let defaultState = null;
@@ -34,7 +34,7 @@ const Contacts = observer(() => {
     if (info?.youtube) {
         socials.push({name: 'youtube', link: info.youtube});
     }
-    if (ContactsStore.isLoading) {
+    if (BotStore.isLoading) {
         return <Spinner/>
     }
     return (

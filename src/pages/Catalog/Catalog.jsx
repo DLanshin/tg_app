@@ -1,16 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Tabs from "../../components/Tabs/Tabs";
 import ProductCatalog from "./Products/ProductCatalog";
 import ServiceCatalog from "./Services/ServiceCatalog";
 import BookingCatalog from "./Booking/BookingCatalog";
 import {useSearchParams} from "react-router-dom";
+import BotStore from "../../store/bot/BotStore";
 
 
 
 
 const Catalog = () => {
     const [searchParams] = useSearchParams();
-    const tabs = [
+    const {modules, isLoading} = BotStore;
+    let tabs = [];
+    tabs = [
         { title: 'Забронировать', content: <BookingCatalog/> },
         { title: 'Услуги', content: <ServiceCatalog/> },
         { title: 'Заказать', content: <ProductCatalog/> },

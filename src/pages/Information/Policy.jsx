@@ -1,24 +1,24 @@
 import React, {useEffect} from 'react';
-import ContactsStore from "../../store/settings/ContactsStore";
 import {observer} from "mobx-react-lite";
 import {useTelegram} from "../../hooks/useTelegram";
 import Spinner from "../../components/Loaders/Spinner";
+import BotStore from "../../store/bot/BotStore";
 
 
 const Policy = observer(() => {
-    const {policy_text} = ContactsStore.info;
+    const {contacts:{policy_text}, isLoading} = BotStore;
     const {initBackButton} = useTelegram();
 
     useEffect(() => {
         if (!policy_text) {
-            ContactsStore.fetchContacts();
+            BotStore.fetchSettings();
         }
         initBackButton(true, ()=>{history.back()})
         return ()=>{
             initBackButton(false);
         }
     }, []);
-    if(ContactsStore.isLoading){
+    if(isLoading){
         return <Spinner/>
     }
     return (
