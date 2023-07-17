@@ -22,7 +22,7 @@ const Apartment = observer((props) => {
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
     const persons = [];
-    const {showTelegramAlert} = useTelegram()
+    const {showTelegramAlert, closeApp} = useTelegram()
     for(let i = 1; i<5; i++){
         persons.push(i)
     }
@@ -47,7 +47,7 @@ const Apartment = observer((props) => {
                 if(process.env.REACT_APP_MODE==="dev"){
                     alert("Апартаменты успешно забронированы")
                 }else{
-                    showTelegramAlert("Апартаменты успешно забронированы")
+                    showTelegramAlert("Апартаменты успешно забронированы", closeApp)
                 }
             }
             ApartmentStore.fetchApartment(apartment_id)

@@ -55,7 +55,7 @@ const MakeOrder = observer((props) => {
     const [payBonusesSum, setPayBonusesSum] = useState(0);
 
 
-    const {showTelegramAlert} = useTelegram();
+    const {showTelegramAlert, closeApp} = useTelegram();
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [receiverName, setReceiverName] = useState("");
@@ -113,8 +113,7 @@ const MakeOrder = observer((props) => {
                 comment: comment,
                 pay_bonuses_sum: payBonusesSum
             }).then(()=>{
-                showTelegramAlert("Ваш заказ успешно создан и отправлен на обработку")
-                CartStore.fetchCart()
+                showTelegramAlert("Ваш заказ успешно создан и отправлен на обработку", closeApp)
             })
         }
     }

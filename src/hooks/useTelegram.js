@@ -22,6 +22,10 @@ export function useTelegram(){
     const expandApp = () =>{
         tg?.expand()
     }
+
+    const closeApp = () =>{
+        tg?.close()
+    }
     const initBackButton = (isShow, onClick) => {
         if(isShow){
             tg?.BackButton.onClick(onClick)
@@ -38,7 +42,8 @@ export function useTelegram(){
         showTelegramConfirm,
         showTelegramAlert,
         expandApp,
-        initBackButton
+        initBackButton,
+        closeApp
     }
 }
 
