@@ -19,6 +19,11 @@ const Cart = observer((props) => {
                 is_visible: !!CartStore.quality,
             }, () => {navigate(MAKE_ORDER_ROUTE)})
         })
+        return ()=>{
+            showMainButton({
+                is_visible:false
+            })
+        }
     }, [])
     if(CartStore.isLoading){
         return <Spinner/>

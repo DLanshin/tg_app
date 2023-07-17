@@ -113,7 +113,7 @@ const MakeOrder = observer((props) => {
                 comment: comment,
                 pay_bonuses_sum: payBonusesSum
             }).then(()=>{
-                showTelegramAlert("Ваш заказ успешно создан и отправлен на обработку", closeApp)
+                closeApp()
             })
         }
     }
