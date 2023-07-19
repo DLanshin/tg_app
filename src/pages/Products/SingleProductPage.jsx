@@ -73,26 +73,12 @@ const SingleProductPage = observer((props) => {
                     <div className="product-item__title">
                         {item.title}
                     </div>
-                    <div className="product-item__row">
                         <SkuGroup
                             type={"radio"}
                             elements={item.skus}
                             value={selectedSku}
                             setValue={setSelectedSku}
                         />
-                        <span className="product-item__price">
-                            {selectedSku?.price === 0 ? 'Бесплатно': selectedSku?.price + ' ₽'}
-                        </span>
-                    </div>
-
-                    {
-                        item.description ?
-                            <div className="product-item__panel">
-                                <label>Описание</label>
-                            </div>
-                            :
-                            null
-                    }
                     <div className="product-item__description" dangerouslySetInnerHTML={{__html: item.description}}></div>
                 </div>
                 <div className="product-item__content-footer">

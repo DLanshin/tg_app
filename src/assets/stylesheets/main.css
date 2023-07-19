@@ -258,6 +258,11 @@ button {
 .products__item-content {
   width: 100%;
   padding: 14px 14px 10px;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
 }
 .products__item.line .products__item-content {
   height: 100%;

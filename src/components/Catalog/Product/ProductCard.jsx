@@ -12,38 +12,41 @@ const ProductCard = observer(({product, type}) => {
     const cartProducts = cart.products
     let inCart = false,
         cartQuality = 0;
-    const skusInCartIds = cartProducts.map(function (item){
+    const skusInCartIds = cartProducts.map(function (item) {
         return item.sku_id;
     });
 
-    product.skus.map(function (item){
-        if(skusInCartIds.includes(item.id)){
+    product.skus.map(function (item) {
+        if (skusInCartIds.includes(item.id)) {
             inCart = true
             cartQuality++;
         }
     });
     const description = product.description ? product.description.slice(0, 120) : "";
     return (
-        <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item "+type} data-id={product.id}>
+        <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item " + type} data-id={product.id}>
             <div className={"products__item-image"}>
                 <Badges items={product.labels}/>
-                <img src={product.image ?product.image.path: placeholderImage} alt={product.title}/>
+                <img src={product.image ? product.image.path : placeholderImage} alt={product.title}/>
             </div>
             <div className="products__item-content">
-                <div className="products__item-name">
-                    {product.title}
+                <div>
+                    <div className="products__item-name">
+                        {product.title}
+                    </div>
+                    {
+                        product.skus.length > 1 ?
+                            <div className="products__item-subname">
+                                {product.skus.map((item) => (<span key={uuid()}>{item.title}</span>))}
+                            </div>
+                            : null
+                    }
+                    <div className="products__item-description" dangerouslySetInnerHTML={{__html: description}}></div>
                 </div>
-                {
-                    product.skus.length > 1 ?
-                        <div className="products__item-subname">
-                            {product.skus.map((item)=>(<span key={uuid()}>{item.title}</span>))}
-                        </div>
-                        :null
-                }
-                <div className="products__item-description" dangerouslySetInnerHTML={{__html: description}}></div>
-                <span className="products__item-price">{product?.min_price === 0 ? 'Бесплатно' : product?.min_price + ' ₽'} {inCart ? " · "+cartQuality:""}</span>
+                <span
+                    className="products__item-price">{product?.min_price === 0 ? 'Бесплатно' : product?.min_price + ' ₽'} {inCart ? " · " + cartQuality : ""}</span>
             </div>
-            <div className={"products__item-button"+ (inCart?  " products__item-button--success": "")}>
+            <div className={"products__item-button" + (inCart ? " products__item-button--success" : "")}>
                 {icons.plus}
             </div>
         </NavLink>
