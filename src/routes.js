@@ -1,7 +1,6 @@
 import * as CONFIG_ROUTES from "./utils/consts";
 import Page from "./components/Page";
 import Home from "./pages/Home";
-import Service from "./pages/Catalog/Services/Service";
 import Profile from "./pages/Account/Profile";
 import Cart from "./pages/Cart/Cart";
 import MakeOrder from "./pages/Orders/MakeOrder";
