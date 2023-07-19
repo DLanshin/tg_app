@@ -19,7 +19,7 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
 
 
     //prod
-    let user_id= user ? user.id : null;
+    let user_id= user ? user.id : 5671978886;
     let bot_id = params?.bot_id ? params.bot_id : null;
     //dev
     if(process.env.REACT_APP_MODE==="dev"){
