@@ -73,7 +73,7 @@ const SingleProductPage = observer((props) => {
                         value={selectedSku}
                         setValue={setSelectedSku}
                     />
-                    <MiniCart elements={products}/>
+                    {/*<MiniCart elements={products}/>*/}
                     <div className="product-item__description"
                          dangerouslySetInnerHTML={{__html: item.description}}></div>
                 </div>
