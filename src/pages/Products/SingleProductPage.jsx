@@ -9,38 +9,40 @@ import ProductStore from "../../store/catalog/products/ProductStore";
 import Spinner from "../../components/Loaders/Spinner";
 import {useTelegram} from "../../hooks/useTelegram";
 import Badges from "../../components/Common/badges";
+import QuantityControl from "../../components/Button/QuantityControl";
+import Button from "../../components/Button/Button";
+import RadioGroup from "../../components/Form/RadioGroup";
+import SkuGroup from "../../components/Catalog/Product/SkuGroup";
 
 
 const SingleProductPage = observer((props) => {
     const {id} = useParams();
     const [selectedSku, setSelectedSku] = useState(null);
+    const [count, setCount] = useState(1);
     const [itemCart, setItemCart] = useState(null);
     const {initBackButton} = useTelegram();
+
+    const {item, isLoading} = ProductStore;
+
     useEffect(()=>{
         initBackButton(true, ()=>{history.back()})
         return ()=>{
             initBackButton(false);
         }
     },[])
+
     useEffect(()=>{
         CartStore.fetchCart()
-            .then(()=>ProductStore.fetchProduct(id)
+            .then(()=>ProductStore.fetchItem(id)
                 .then(()=>{
-                    if(ProductStore.item.skus){
-                        setSelectedSku(ProductStore.item.skus[0]);
-                    }
+                    setSelectedSku(item.skus[0]);
                 }));
 
         return () =>{
-            ProductStore.unsetProduct();
+            ProductStore.unsetItem();
         }
     },[id]);
 
-    useEffect(()=>{
-        if(selectedSku){
-            setItemCart(CartStore.getItemCartProduct(selectedSku.id))
-        }
-    },[selectedSku]);
 
     const add = (selectedSku) => {
         CartStore.addProduct(selectedSku.id).then(() => {
@@ -59,50 +61,49 @@ const SingleProductPage = observer((props) => {
             CartStore.updateProduct(cartProduct.sku_id, cartProduct.count-1);
         }
     }
-    if(ProductStore.isLoading){
+    if(isLoading){
         return <Spinner/>
     }
     return (
-        <div className={'product-item'} key={ProductStore.item.id}>
-            <Badges items={ProductStore.item.labels}/>
-            <img src={ProductStore.item.image? ProductStore.item.image.path : placeholderImage} alt={ProductStore.item.title} className="product-item__image"/>
+        <div className={'product-item'} key={item.id}>
+            <Badges items={item.labels}/>
+            <img src={item.image? item.image.path : placeholderImage} alt={item.title} className="product-item__image"/>
             <div className="product-item__content">
                 <div className="product-item__content-body">
                     <div className="product-item__title">
-                        {ProductStore.item.title}
+                        {item.title}
                     </div>
                     <div className="product-item__row">
-                        <div className="product-item__variables">
-                            {
-                                ProductStore.item.skus?.length > 1 ?
-                                    ProductStore.item.skus?.map(sku => (
-                                        <div key={sku.id}
-                                             className={'product-item__variables-item '+(sku.id === selectedSku?.id ? "selected" : "")}
-                                             onClick={()=>{setSelectedSku(sku)}}
-                                        >
-                                            {sku.title}
-                                        </div>
-                                    ))
-                                    :
-                                    ""
-                            }
-                        </div>
+                        <SkuGroup
+                            type={"radio"}
+                            elements={item.skus}
+                            value={selectedSku}
+                            setValue={setSelectedSku}
+                        />
                         <span className="product-item__price">
                             {selectedSku?.price === 0 ? 'Бесплатно': selectedSku?.price + ' ₽'}
                         </span>
                     </div>
 
                     {
-                        ProductStore.item.description ?
+                        item.description ?
                             <div className="product-item__panel">
                                 <label>Описание</label>
                             </div>
                             :
                             null
                     }
-                    <div className="product-item__description" dangerouslySetInnerHTML={{__html: ProductStore.item.description}}></div>
+                    <div className="product-item__description" dangerouslySetInnerHTML={{__html: item.description}}></div>
                 </div>
                 <div className="product-item__content-footer">
+                    <div className="button-group">
+                        <QuantityControl
+                            decrementAction={()=>{setCount(count-1)}}
+                            incrementAction={()=>{setCount(count+1)}}
+                            count={count}/>
+                        <Button className={"button-group__button"}>Добавить {selectedSku?.price * count + " ₽"}</Button>
+                    </div>
+
                     <div className="button-group">
                         {
                             itemCart ?

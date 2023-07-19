@@ -1,33 +1,28 @@
 import React, {useEffect, useState} from 'react';
-import BotStore from "../../store/bot/BotStore";
 import {observer} from "mobx-react-lite";
-import CategoriesStore from "../../store/categories/CategoriesStore";
-import ProductCatalogStore from "../../store/catalog/products/ProductCatalogStore";
-import Spinner from "../../components/Loaders/Spinner";
+import ProductCatalogStore from "../../store/catalog/products/ProductStore";
 import CategoryList from "../../components/Catalog/Category/CategoryList";
 import ProductList from "../../components/Catalog/Product/ProductList";
+import ProductStore from "../../store/catalog/products/ProductStore";
 
 
 
 const ProductsPage = observer(() => {
     const [chooseCategory, setChooseCategory] = useState(null);
-    const {categories} = CategoriesStore;
-    const {products} = ProductCatalogStore;
+    const {items, categories,isLoading} = ProductStore;
     useEffect(()=>{
-        CategoriesStore.fetchCategories("products")
+        ProductStore.fetchCategories()
     },[]);
+
     useEffect(()=>{
         ProductCatalogStore.setFilter({
             category_id:chooseCategory ? chooseCategory.id : null
         });
-        console.log(ProductCatalogStore.filter)
-        ProductCatalogStore.fetchCatalog()
+        ProductCatalogStore.fetchList()
 
 
     },[chooseCategory])
-    if(BotStore.isLoading || CategoriesStore.isLoading){
-        return <Spinner/>
-    }
+
     return (
         <div>
             <CategoryList
@@ -36,9 +31,9 @@ const ProductsPage = observer(() => {
                 onChange={setChooseCategory}
             />
             <ProductList
-                products={products}
+                products={items}
                 emptyText={"Товары не найдены"}
-                isLoading={ProductCatalogStore.isLoading}
+                isLoading={isLoading}
             />
         </div>
     );

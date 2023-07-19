@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {observer} from "mobx-react-lite";
 import {useNavigate, useParams} from "react-router-dom";
-import ProductCatalogStore from "../../../store/catalog/products/ProductCatalogStore";
+import ProductCatalogStore from "../../../store/catalog/products/ProductStore";
 import CartStore from "../../../store/cart/CartStore";
 import Spinner from "../../../components/Loaders/Spinner";
 import ProductList from "../../../components/Catalog/Product/ProductList";

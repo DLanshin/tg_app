@@ -8,10 +8,10 @@ import Orders from "./pages/Orders/Orders";
 import Contacts from "./pages/Information/Contacts";
 import Policy from "./pages/Information/Policy";
 import Apartment from "./pages/Catalog/Booking/Apartment";
-import ServicesPage from "./pages/Products/ServicesPage";
-import SingleServicePage from "./pages/Products/SingleServicePage";
-import ProductsPage from "./pages/Services/ProductsPage";
-import SingleProductPage from "./pages/Services/SingleProductPage";
+import ProductsPage from "./pages/Products/ProductsPage";
+import SingleProductPage from "./pages/Products/SingleProductPage";
+import ServicesPage from "./pages/Services/ServicesPage";
+import SingleServicePage from "./pages/Services/SingleServicePage";
 
 
 export const routes = [
