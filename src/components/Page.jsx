@@ -1,4 +1,3 @@
-import {useAuth} from "../hooks/useAuth";
 import UserStore from "../store/user/UserStore";
 import {useParams} from "react-router-dom";
 import React, {useEffect} from "react";
@@ -31,6 +30,7 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     if(!isAuth || isLoading){
         return (
             <>
+                <div>LOADED</div>
                 <ShopLoader/>
             </>
         );
@@ -38,6 +38,7 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
 
     return (
         <div className={"page"}>
+            NOT LOADED
             {element}
         </div>
     );
