@@ -1,19 +1,13 @@
 import React from 'react';
 import {observer} from "mobx-react-lite";
 
-const SkuGroup = observer((props) => {
-    const {
-        elements,
-        type,
-        value,
-        setValue
-    } = props
+const SkuGroup = observer(({label,elements,type,value,setValue}) => {
+
     if (!elements.length) {
         return (
             <></>
         );
     }
-    console.log(value)
     return (
         <div className={"radio-group"}>
             {
@@ -21,11 +15,14 @@ const SkuGroup = observer((props) => {
                     <label key={item.id}>
                         <input
                             type={type}
-                            checked={value === item}
+                            checked={value?.id === item.id}
                             value={item}
                             onChange={()=>setValue(item)}
                         />
-                        <span>{item.title}</span>
+                        <span className={"radio-group__item"}>
+                            <div className={"radio-group__label"}>{item.title}</div>
+                            <div className={"radio-group__value"}>{item.price + " ₽"}</div>
+                        </span>
                     </label>
                 ))
             }

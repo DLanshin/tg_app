@@ -377,9 +377,10 @@ button {
   font-size: 24px;
   font-weight: bold;
   font-family: "Poppins", sans-serif;
+  margin-bottom: 20px;
 }
 .product-item__description {
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 .product-item__row {
   display: flex;
@@ -557,6 +558,42 @@ button {
   padding: 0 5px;
 }
 
+.mini-cart {
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
+  border-radius: 10px;
+  background: #181819;
+  font-size: 13px;
+  margin-top: 15px;
+  padding: 10px;
+}
+.mini-cart__title {
+  color: #7d7d7d;
+  font-size: 12px;
+}
+.mini-cart__item {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid black;
+}
+.mini-cart__item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+.mini-cart__item-title {
+  font-weight: bold;
+}
+.mini-cart__item-hint {
+  color: #7d7d7d;
+  font-size: 12px;
+}
+.mini-cart__item-count {
+  font-weight: bold;
+}
+
 .spinner {
   display: block;
   position: absolute;
@@ -689,25 +726,35 @@ button {
 }
 
 .button-group {
-  display: flex;
+  display: grid;
   align-items: center;
   width: 100%;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
   border-radius: 8px;
+  grid-template-columns: 1fr 1fr;
 }
-.button-group > * {
-  height: 30px;
-  padding: 0;
+.button-group .quality-control {
   display: flex;
   align-items: center;
+  gap: 2px;
 }
-.button-group > *:first-child {
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
+.button-group .quality-control__value {
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.button-group > *:last-child {
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+.button-group .quality-control__value, .button-group .quality-control__button {
+  width: 44px;
+  height: 44px;
+}
+.button-group .quality-control__value svg, .button-group .quality-control__button svg {
+  width: 20px;
+  height: 20px;
+  fill: #ffffff;
+}
+.button-group .quality-control__value svg path, .button-group .quality-control__button svg path {
+  stroke: #ffffff;
 }
 .button-group__button {
   display: flex;
@@ -718,7 +765,8 @@ button {
   color: #ffffff;
   border: none;
   width: 100%;
-  font-size: 12px;
+  height: 44px;
+  font-size: 13px;
   font-weight: bold;
 }
 .button-group__button--success {
@@ -974,6 +1022,11 @@ button {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
   border-radius: 10px;
 }
+.radio-group__item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .radio-group > *:first-child > span {
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
@@ -1013,11 +1066,15 @@ button {
 }
 .radio-group * > span {
   display: flex;
-  background-color: #181819;
-  padding: 6px 10px;
-  font-size: 14px;
+  padding: 10px 10px;
+  font-size: 13px;
+  font-weight: 500;
   color: #ffffff;
+  background: #181819;
   border-bottom: 1px solid #000000;
+}
+.radio-group * > span:last-child {
+  border: none;
 }
 .radio-group * > input:not(:disabled):active + span {
   background-color: #000000;

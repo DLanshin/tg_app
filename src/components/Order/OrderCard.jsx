@@ -14,10 +14,10 @@ const OrderCard = observer(({object, cancelOrder}) => {
             </div>
             <div className="order-card__body">
                 <div className="order-card__info order-card__info--hint">
-                    {object.shipping_method.slug === "pickup" ?
+                    {object.shipping_method.slug === "pickup" || object.shipping_method.slug === "inhouse" ?
                         object.shipping_method.name
                         :
-                        'Куда доставить: '+object.shipping_address
+                        'Куда доставить: '+object?.shipping_address
                     }
                 </div>
                 {

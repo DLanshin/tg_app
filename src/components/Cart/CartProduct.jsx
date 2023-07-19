@@ -25,6 +25,7 @@ const CartProduct = observer(({product}) => {
             <img className={"cart__item-image"} src={product.image?.path} alt={product.title}/>
             <div className="cart__item-content">
                 <div className="cart__item-name">{product.title}</div>
+                <div className="cart__item-name">{product.sku_title}</div>
                 <QuantityControl
                     count={product.count}
                     incrementAction={()=>{increment(product.sku_id, product.count+1)}}
