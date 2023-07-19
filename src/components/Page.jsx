@@ -27,20 +27,16 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
         })
     },[isAuth]);
 
-    // if(!isAuth || isLoading){
-    //     return (
-    //         <>
-    //             <div>LOADED</div>
-    //             {/*<ShopLoader/>*/}
-    //         </>
-    //     );
-    // }
+    if(!isAuth || isLoading){
+        return (
+            <>
+                {/*<ShopLoader/>*/}
+            </>
+        );
+    }
 
     return (
         <div className={"page"}>
-            Авторизован: {isAuth ? "yes": "no"}
-            Идет загрузка пользователя: {isLoading ? "yes": "no"}
-            {/*NOT LOADED*/}
             {element}
         </div>
     );
