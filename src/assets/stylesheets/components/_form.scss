@@ -1,17 +1,20 @@
-.form-block{
+.form-block {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  &__title{
+
+  &__title {
     font-size: 13px;
     color: $hint_color;
   }
 }
-.input-container{
+
+.input-container {
   display: flex;
   width: 100%;
 }
-.input, .select{
+
+.input, .select {
   width: 100%;
   position: relative;
   font-size: 14px;
@@ -24,103 +27,128 @@
   outline: none;
   color: $text_color;
 }
-.form{
+
+.form {
   border-radius: 8px;
   background-color: $bg_color;
   box-shadow: $shadow;
-  & > *{
+
+  & > * {
     border-bottom: 1px solid $secondary_bg_color;
   }
-  & > *:first-child{
-    input{
+
+  & > *:first-child {
+    input {
       color: $text_color;
       border-top-right-radius: 8px;
       border-top-left-radius: 8px;
     }
   }
-  & > *:last-child{
+
+  & > *:last-child {
     border-bottom: none;
-    input{
+
+    input {
       border-bottom-right-radius: 8px;
       border-bottom-left-radius: 8px;
     }
   }
-  .form-control{
-    border: none!important;
-    width: 100%!important;
-    background-color: $bg_color!important;
+
+  .form-control {
+    border: none !important;
+    width: 100% !important;
+    background-color: $bg_color !important;
   }
 }
 
-.react-tel-input .flag-dropdown{
-  left:1px;
-  top: 1px!important;
-  height:calc(100% - 2px);
-  background-color: transparent!important;
-  color:$text_color!important;
-  border: none!important;
+.react-tel-input .flag-dropdown {
+  left: 1px;
+  top: 1px !important;
+  height: calc(100% - 2px);
+  background-color: transparent !important;
+  color: $text_color !important;
+  border: none !important;
   border-radius: 6px 0 0 6px;
-  &.open{
-    background-color: $bg_color!important;
+
+  &.open {
+    background-color: $bg_color !important;
   }
 }
-.react-tel-input .selected-flag{
+
+.react-tel-input .selected-flag {
   border-radius: 6px 0 0 6px;
 }
-.react-tel-input .country-list{
-  background-color: $secondary_bg_color!important;
-  color:$text_color!important;
+
+.react-tel-input .country-list {
+  background-color: $secondary_bg_color !important;
+  color: $text_color !important;
 }
+
 .react-tel-input .country-list .country.highlight,
 .react-tel-input .flag-dropdown.open .selected-flag,
-.react-tel-input .country-list .country:hover{
-  background-color: $bg_color!important;
-  color:$text_color!important;
+.react-tel-input .country-list .country:hover {
+  background-color: $bg_color !important;
+  color: $text_color !important;
 }
-.radio-group{
+
+.radio-group {
   display: flex;
   flex-direction: column;
   box-shadow: $shadow;
   border-radius: 10px;
 
-  & > *:first-child > span{
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  & > *:first-child > span {
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
   }
-  & > *:last-child > span{
+
+  & > *:last-child > span {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     border-bottom: none;
   }
-  &--horizontal{
+
+  &--horizontal {
     flex-direction: row;
-    & > *{
+
+    & > * {
       width: 50%
     }
-    &-3{
-      & > *{
+
+    &-3 {
+      & > * {
         width: 33%
       }
     }
-    &-4{
-      & > *{
+
+    &-4 {
+      & > * {
         width: 25%
       }
     }
-    & > *:first-child > span{
+
+    & > *:first-child > span {
       border-radius: 8px 0 0 8px;
     }
-    & > *:last-child > span{
-      border-radius: 0 8px 8px 0 ;
+
+    & > *:last-child > span {
+      border-radius: 0 8px 8px 0;
       border-bottom: none;
     }
-    & > * > span{
+
+    & > * > span {
       text-align: center;
       justify-content: center;
     }
   }
 
-  *>input {
+  * > input {
     position: absolute;
     z-index: -1;
     opacity: 0;
@@ -129,50 +157,60 @@
 
   * > span {
     display: flex;
-    background-color: $bg_color;
-    padding: 6px 10px;
-    font-size: 14px;
-    color:$text_color;
+    padding: 10px 10px;
+    font-size: 13px;
+    font-weight: 500;
+    color: $text_color;
+    background: $bg_color;
     border-bottom: 1px solid $secondary_bg_color;
   }
 
+  * > span:last-child {
+    border: none;
+  }
 
 
-  *>input:not(:disabled):active+span {
+  * > input:not(:disabled):active + span {
     background-color: $secondary_bg_color;
-    color:$hint_color
+    color: $hint_color
   }
 
 
-  *>input:checked+span {
+  * > input:checked + span {
     background-color: $button_color;
-    color:$button_text_color
+    color: $button_text_color
   }
 
 
-  *>input:disabled+span {
+  * > input:disabled + span {
     background-color: #e9ecef;
-    color:$hint_color;
+    color: $hint_color;
   }
 }
-.form .form-control.invalid{
-  border:1px solid red!important;
+
+.form .form-control.invalid {
+  border: 1px solid red !important;
 }
-.react-datepicker{
-  border:1px solid $secondary_bg_color!important;
-  background-color:$bg_color!important;
-  color: $text_color!important;
-  &__header{
-    background-color:$secondary_bg_color!important;
-    border-color: $bg_color!important;
+
+.react-datepicker {
+  border: 1px solid $secondary_bg_color !important;
+  background-color: $bg_color !important;
+  color: $text_color !important;
+
+  &__header {
+    background-color: $secondary_bg_color !important;
+    border-color: $bg_color !important;
   }
 }
+
 .react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
-  color: $text_color!important;
+  color: $text_color !important;
 }
-.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name{
-  color: $text_color!important;
+
+.react-datepicker__day-name, .react-datepicker__day, .react-datepicker__time-name {
+  color: $text_color !important;
 }
-.react-datepicker__day--disabled, .react-datepicker__month-text--disabled, .react-datepicker__quarter-text--disabled, .react-datepicker__year-text--disabled{
+
+.react-datepicker__day--disabled, .react-datepicker__month-text--disabled, .react-datepicker__quarter-text--disabled, .react-datepicker__year-text--disabled {
   opacity: 0.4;
 }

@@ -23,8 +23,9 @@ class CartStore {
         return this.products.filter((item)=>item.sku_id === sku_id)[0]
     }
 
-    async addProduct(sku_id) {
-        await $api.post(`${localStorage.getItem('bot_id')}/cart/${sku_id}`).then(({data})=>{
+    async addProduct(sku_id, count) {
+        await $api.post(`${localStorage.getItem('bot_id')}/cart/${sku_id}`, {count: count}).then(({data})=>{
+            debugger
             this.products = [
                     ...this.products,
                     data.data
@@ -53,8 +54,8 @@ class CartStore {
         });
     }
     _updatePriceCount(){
-        this.total_price =  this.products.reduce((acc, item)=>acc+(item.count*item.price),0);
-        this.quality = this.products.reduce((acc, item) =>acc + item.count, 0);
+        this.total_price =  this.products.reduce((acc, item)=>acc+(item?.count*item.price),0);
+        this.quality = this.products.reduce((acc, item) =>acc + item?.count, 0);
     }
 }
 

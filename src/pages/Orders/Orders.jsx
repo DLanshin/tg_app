@@ -9,7 +9,7 @@ import Tabs from "../../components/Tabs/Tabs";
 const Orders = () => {
     const tabs = [
         { title: 'Заказы', content: <ProductOrders/> },
-        { title: 'Бронирования', content: <BookingOrders/> },
+        // { title: 'Бронирования', content: <BookingOrders/> },
     ];
     return (
         <div className="container">
