@@ -82,7 +82,7 @@ const MakeOrder = observer((props) => {
 
     useEffect(()=>{
         setShippingMethod(delivery_methods[0]);
-        setPaymentMethod(shippingMethod?.slug === 'pickup' ? pickup_paying_methods[0] : delivery_paying_methods[0])
+        setPaymentMethod(shippingMethod?.slug === 'pickup' || shippingMethod?.slug === 'inhouse' ? pickup_paying_methods[0] : delivery_paying_methods[0])
     },[delivery_methods]);
 
     useEffect(()=>{
@@ -160,7 +160,7 @@ const MakeOrder = observer((props) => {
                     required={true}
                     name={"payment_method"}
                     type={"radio"}
-                    elements={shippingMethod?.slug === 'pickup' ? pickup_paying_methods : delivery_paying_methods}
+                    elements={shippingMethod?.slug === 'pickup' || shippingMethod?.slug === 'inhouse' ? pickup_paying_methods : delivery_paying_methods}
                     value={paymentMethod}
                     setValue={setPaymentMethod}
                     />
@@ -248,7 +248,7 @@ const MakeOrder = observer((props) => {
                         onChange={phone => setPhone(phone)}
                     />
                     {
-                        shippingMethod?.slug !== 'pickup' ?
+                        shippingMethod?.slug !== 'pickup' && shippingMethod?.slug !== 'inhouse' ?
                             <Input
                                 required={true}
                                 type={"text"}
@@ -273,7 +273,7 @@ const MakeOrder = observer((props) => {
             <OrderInfo
                 totalPrice={CartStore.total_price}
                 payBonusSum={payBonusesSum}
-                deliveryPrice={price_type.slug === 'fix' && shippingMethod?.slug !== 'pickup' ? fix_shipping_price : 0}
+                deliveryPrice={price_type.slug === 'fix' && shippingMethod?.slug !== 'pickup' && shippingMethod?.slug !== 'inhouse' ? fix_shipping_price : 0}
 
             />
             {CartStore.total_price >= min_order_price ?
