@@ -10,6 +10,8 @@ import Policy from "./pages/Information/Policy";
 import Apartment from "./pages/Catalog/Booking/Apartment";
 import ServicesPage from "./pages/Products/ServicesPage";
 import SingleServicePage from "./pages/Products/SingleServicePage";
+import ProductsPage from "./pages/Services/ProductsPage";
+import SingleProductPage from "./pages/Services/SingleProductPage";
 
 
 export const routes = [
@@ -21,13 +23,13 @@ export const routes = [
 
     {
         path: CONFIG_ROUTES.PRODUCT_ROUTE,
-        Component: <Page showTopPanel={false} element={<ServicesPage/>}/>,
+        Component: <Page showTopPanel={false} element={<ProductsPage/>}/>,
         showTopPanel: false,
         showBottomPanel:false,
     },
     {
         path: CONFIG_ROUTES.PRODUCT_ROUTE + '/:id',
-        Component: <Page showTopPanel={false} element={<SingleServicePage/>}/>,
+        Component: <Page showTopPanel={false} element={<SingleProductPage/>}/>,
         showTopPanel: false,
         showBottomPanel:false,
     },
