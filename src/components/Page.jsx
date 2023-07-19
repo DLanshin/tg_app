@@ -1,4 +1,3 @@
-import {useAuth} from "../hooks/useAuth";
 import UserStore from "../store/user/UserStore";
 import {useLocation, useNavigate, useParams, useSearchParams} from "react-router-dom";
 import React, {useEffect} from "react";
@@ -6,8 +5,6 @@ import ShopLoader from "./Loaders/ShopLoader";
 import {useTelegram} from "../hooks/useTelegram";
 import {observer} from "mobx-react-lite";
 import BotStore from "../store/bot/BotStore";
-import CartStore from "../store/cart/CartStore";
-import {CART_ROUTE, MAKE_ORDER_ROUTE} from "../utils/consts";
 
 const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const {isAuth, isLoading} = UserStore;
@@ -33,6 +30,7 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     if(!isAuth || isLoading){
         return (
             <>
+                <div>LOADED</div>
                 <ShopLoader/>
             </>
         );
@@ -40,6 +38,7 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
 
     return (
         <div className={"page"}>
+            NOT LOADED
             {element}
         </div>
     );
