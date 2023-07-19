@@ -55,7 +55,7 @@ const MakeOrder = observer((props) => {
     const [payBonusesSum, setPayBonusesSum] = useState(0);
 
 
-    const {showTelegramAlert, closeApp} = useTelegram();
+    const {showMainButton, showTelegramAlert, closeApp} = useTelegram();
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
     const [receiverName, setReceiverName] = useState("");
@@ -72,6 +72,7 @@ const MakeOrder = observer((props) => {
     const {loyalty} = BotStore
 
     useEffect(() => {
+        showMainButton({is_visible:false})
         BotStore.fetchSettings()
             .then(() => CartStore.fetchCart())
             .then(() => {
@@ -131,9 +132,9 @@ const MakeOrder = observer((props) => {
         return <Spinner/>
     }else if(!CartStore.quality){
         return (
-            <div className={'empty-cart opacity-4'}>
+            <div className={'empty opacity-4'}>
                 {icons.cart}
-                <div className="empty-cart__text">
+                <div className="empty__text">
                     Ваша корзина пуста, добавьте товары в корзину
                 </div>
             </div>

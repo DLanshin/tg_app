@@ -6,6 +6,7 @@ import cart from "../../../store/cart/CartStore";
 import {observer} from "mobx-react-lite";
 import placeholderImage from "../../../assets/images/placeholder.jpg"
 import uuid from "react-uuid";
+import Badges from "../../Common/badges";
 
 const ProductCard = observer(({product, type}) => {
     const cartProducts = cart.products
@@ -25,6 +26,7 @@ const ProductCard = observer(({product, type}) => {
     return (
         <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item "+type} data-id={product.id}>
             <div className={"products__item-image"}>
+                <Badges items={product.labels}/>
                 <img src={product.image ?product.image.path: placeholderImage} alt={product.title}/>
             </div>
             <div className="products__item-content">

@@ -55,7 +55,7 @@ button{
   background-color: transparent;
 }
 .container{
-  padding: 15px;
+  padding: 0 15px;
 }
 
 .wrapper{
@@ -63,7 +63,7 @@ button{
   flex-direction: column;
   width:100%;
   padding: 0;
-  background: $secondary_bg_color;
+  background: linear-gradient($bg_color, $secondary_bg_color);
   min-height: 100vh;
   position: relative;
   z-index: 2;
@@ -130,7 +130,7 @@ button{
 .opacity-7{opacity:0.7}
 .opacity-8{opacity:0.8}
 .opacity-9{opacity:0.9}
-.empty-cart{
+.empty{
   display: flex;
   flex-direction: column;
   justify-content: center;

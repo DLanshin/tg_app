@@ -1,7 +1,6 @@
 import * as CONFIG_ROUTES from "./utils/consts";
 import Page from "./components/Page";
 import Home from "./pages/Home";
-import Product from "./pages/Catalog/Products/Product";
 import Service from "./pages/Catalog/Services/Service";
 import Profile from "./pages/Account/Profile";
 import Cart from "./pages/Cart/Cart";
@@ -9,8 +8,9 @@ import MakeOrder from "./pages/Orders/MakeOrder";
 import Orders from "./pages/Orders/Orders";
 import Contacts from "./pages/Information/Contacts";
 import Policy from "./pages/Information/Policy";
-import Catalog from "./pages/Catalog/Catalog";
 import Apartment from "./pages/Catalog/Booking/Apartment";
+import ServicesPage from "./pages/Products/ServicesPage";
+import SingleServicePage from "./pages/Products/SingleServicePage";
 
 
 export const routes = [
@@ -18,13 +18,17 @@ export const routes = [
         path: CONFIG_ROUTES.HOME_ROUTE,
         Component: <Page showTopPanel={true} element={<Home/>}/>,
     },
+
+
     {
-        path: CONFIG_ROUTES.CATALOG_ROUTE,
-        Component: <Page showTopPanel={true} element={<Catalog/>}/>,
+        path: CONFIG_ROUTES.PRODUCT_ROUTE,
+        Component: <Page showTopPanel={false} element={<ServicesPage/>}/>,
+        showTopPanel: false,
+        showBottomPanel:false,
     },
     {
         path: CONFIG_ROUTES.PRODUCT_ROUTE + '/:id',
-        Component: <Page showTopPanel={false} element={<Product/>}/>,
+        Component: <Page showTopPanel={false} element={<SingleServicePage/>}/>,
         showTopPanel: false,
         showBottomPanel:false,
     },
@@ -35,8 +39,12 @@ export const routes = [
         showBottomPanel:false,
     },
     {
+        path: CONFIG_ROUTES.SERVICE_ROUTE,
+        Component: <Page showTopPanel={false} element={<ServicesPage/>}/>,
+    },
+    {
         path: CONFIG_ROUTES.SERVICE_ROUTE + '/:id',
-        Component: <Page showTopPanel={false} element={<Service/>}/>,
+        Component: <Page showTopPanel={false} element={<SingleServicePage/>}/>,
     },
     {
         path: CONFIG_ROUTES.PROFILE_ROUTE,

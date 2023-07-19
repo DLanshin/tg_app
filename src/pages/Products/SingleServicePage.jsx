@@ -1,17 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import minusIcon from "../../../assets/images/icons/minus_icon.svg";
-import plusIcon from "../../../assets/images/icons/plus_icon.svg";
 import {ReactSVG} from "react-svg";
 import {observer} from "mobx-react-lite";
 import {useParams} from "react-router-dom";
-import placeholderImage from "../../../assets/images/placeholder.jpg"
-import CartStore from "../../../store/cart/CartStore";
-import ProductStore from "../../../store/catalog/products/ProductStore";
-import Spinner from "../../../components/Loaders/Spinner";
-import {useTelegram} from "../../../hooks/useTelegram";
+import {icons} from "../../components/icons";
+import placeholderImage from "../../assets/images/placeholder.jpg"
+import CartStore from "../../store/cart/CartStore";
+import ProductStore from "../../store/catalog/products/ProductStore";
+import Spinner from "../../components/Loaders/Spinner";
+import {useTelegram} from "../../hooks/useTelegram";
+import Badges from "../../components/Common/badges";
 
 
-const Product = observer((props) => {
+const SingleServicePage = observer((props) => {
     const {id} = useParams();
     const [selectedSku, setSelectedSku] = useState(null);
     const [itemCart, setItemCart] = useState(null);
@@ -64,6 +64,7 @@ const Product = observer((props) => {
     }
     return (
         <div className={'product-item'} key={ProductStore.item.id}>
+            <Badges items={ProductStore.item.labels}/>
             <img src={ProductStore.item.image? ProductStore.item.image.path : placeholderImage} alt={ProductStore.item.title} className="product-item__image"/>
             <div className="product-item__content">
                 <div className="product-item__content-body">
@@ -108,11 +109,13 @@ const Product = observer((props) => {
                                 <div className="button-group">
                                     <div className="quality-button">
                                         <button className={'quality-button__btn'} onClick={()=>decrement(itemCart)}>
-                                            <ReactSVG src={minusIcon}/>
+                                            -
+                                            <ReactSVG src={icons.minus}/>
                                         </button>
                                         <div className={'quality-button__result'}>{itemCart?.count}</div>
                                         <button className={'quality-button__btn'} onClick={()=>increment(itemCart)}>
-                                            <ReactSVG src={plusIcon}/>
+                                            +
+                                            <ReactSVG src={icons.plus}/>
                                         </button>
                                     </div>
                                     <button className="button-group__button button-group__button--success">
@@ -132,5 +135,5 @@ const Product = observer((props) => {
         </div>
     );
 });
-export default Product;
+export default SingleServicePage;
 

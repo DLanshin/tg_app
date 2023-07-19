@@ -14,9 +14,9 @@ const CartList = (props) => {
                     />
                 ))
             :
-              <div className={'empty-cart opacity-4'}>
+              <div className={'empty opacity-4'}>
                   {icons.cart}
-                  <div className="empty-cart__text">
+                  <div className="empty__text">
                       {props.emptyText}
                   </div>
               </div>

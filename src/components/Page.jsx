@@ -6,11 +6,16 @@ import ShopLoader from "./Loaders/ShopLoader";
 import {useTelegram} from "../hooks/useTelegram";
 import {observer} from "mobx-react-lite";
 import BotStore from "../store/bot/BotStore";
+import CartStore from "../store/cart/CartStore";
+import {MAKE_ORDER_ROUTE} from "../utils/consts";
 
 const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const {isAuth, isLoading} = UserStore;
-    const {user, showMainButton, initBackButton} = useTelegram()
+    const {quality} = CartStore;
+    const {user, showMainButton} = useTelegram()
     const params = useParams();
+    const navigate = useNavigate();
+
 
 
     //prod
@@ -28,6 +33,15 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
             BotStore.fetchSettings()
         })
     },[isAuth]);
+
+    useEffect(()=>{
+       if(CartStore.quality){
+           showMainButton({
+               text: `Перейти в корзину  ${CartStore.total_price} Р`,
+               is_visible: true,
+           }, () => {navigate(MAKE_ORDER_ROUTE)})
+       }
+    }, [quality]);
 
     if(!isAuth || isLoading){
         return (

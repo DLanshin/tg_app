@@ -52,9 +52,11 @@
   align-items: center;
   gap: 8px;
   background-color: $bg_color;
+  opacity: 0.9;
   &__btn{
     border:none;
     background-color: transparent;
+    color: $text_color;
     svg{
       fill: $text_color;
       stroke: $text_color;

@@ -1,26 +1,33 @@
 import React from 'react';
 import uuid from "react-uuid";
 import ProductCard from "./ProductCard";
+import Spinner from "../../Loaders/Spinner";
 
-const ProductList = ({products, emptyText, type}) => {
-    if(!products?.length){
-        return (<></>);
+const ProductList = ({products, emptyText, type, isLoading}) => {
+
+    if (!products?.length) {
+        return (<div className={'empty'}>{emptyText}</div>);
+    }
+    if(isLoading){
+        return <Spinner/>
     }
     return (
-        <div className={'products'}>
-            <div className={'products__list '+type}>
-                {products.length > 0 ?
-                    products.map(item => (
-                        <ProductCard
-                            type={type}
-                            key={item.id}
-                            product={item}
-                        />
-                    ))
-                :
-                  <div>
-                      {emptyText}
-                  </div>
+        <div className={'container'}>
+            <div className={'products'}>
+                {isLoading ?
+                    <Spinner/>
+                    :
+                    <div className={'products__list ' + type}>
+                        {
+                            products.map(item => (
+                                <ProductCard
+                                    type={type}
+                                    key={item.id}
+                                    product={item}
+                                />
+                            ))
+                        }
+                    </div>
                 }
             </div>
         </div>
