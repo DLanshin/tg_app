@@ -15,7 +15,6 @@ export function useTelegram(){
     }
     const showTelegramAlert = (message, callback) =>{
         tg?.showAlert(message, callback)
-        alert(message);
     }
     const showTelegramConfirm = (message, callback) => {
         tg?.showConfirm(message,callback)
