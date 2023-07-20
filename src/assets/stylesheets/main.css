@@ -68,7 +68,7 @@ button {
   flex-direction: column;
   width: 100%;
   padding: 0;
-  background: linear-gradient(var(--tg-theme-bg-color), var(--tg-theme-secondary-bg-color));
+  background: var(--tg-theme-bg-color);
   min-height: 100vh;
   position: relative;
   z-index: 2;

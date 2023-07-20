@@ -63,7 +63,8 @@ button{
   flex-direction: column;
   width:100%;
   padding: 0;
-  background: linear-gradient($bg_color, $secondary_bg_color);
+  background: $bg_color;
+  //linear-gradient($bg_color, $secondary_bg_color);
   min-height: 100vh;
   position: relative;
   z-index: 2;
