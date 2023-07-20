@@ -12,17 +12,19 @@ import QuantityControl from "../../components/Button/QuantityControl";
 import Button from "../../components/Button/Button";
 import SkuGroup from "../../components/Catalog/Product/SkuGroup";
 import MiniCart from "../../components/Cart/MiniCart";
+import {CART_ROUTE} from "../../utils/consts";
 
 
 const SingleProductPage = observer((props) => {
     const {id} = useParams();
     const [selectedSku, setSelectedSku] = useState(null);
     const [count, setCount] = useState(1);
-    const {initBackButton, showTelegramAlert} = useTelegram();
+    const {initBackButton, showTelegramAlert, showMainButton} = useTelegram();
     const {item, isLoading} = ProductStore;
     const {products} = CartStore;
 
     useEffect(() => {
+        showMainButton({is_visible: false});
         initBackButton(true, () => {
             history.back()
         })
