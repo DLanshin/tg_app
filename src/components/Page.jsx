@@ -26,11 +26,19 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
             BotStore.fetchSettings()
         })
     },[isAuth]);
-
+    const debug = {
+        user_id: user_id,
+        bot_id: bot_id,
+        is_loading: isLoading,
+        is_auth: isAuth
+    }
+    alert(
+        JSON.stringify(debug)
+    );
     if(!isAuth || isLoading){
         return (
             <>
-                {/*<ShopLoader/>*/}
+                <ShopLoader/>
             </>
         );
     }
