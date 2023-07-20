@@ -17,6 +17,7 @@ class UserStore {
     async login(bot_id, user_id) {
         await $api.get(`${process.env.REACT_APP_API_URL}${bot_id}/auth/login?user_id=${user_id}`).then(({data})=>{
             this.setErrors({name:"Auth user:", data:data})
+            localStorage.setItem("bot_id", bot_id);
             localStorage.setItem("accessToken", data.data.token);
             localStorage.setItem("refreshToken", data.data.refresh_token);
             this.isAuth = true;

@@ -12,12 +12,12 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
     const params = useParams();
 
     //prod
-    let user_id= user ? user.id : 5467763995;
+    let user_id= user ? user.id : null;
     let bot_id = params?.bot_id ? params.bot_id : null;
     //dev
     if(process.env.REACT_APP_MODE==="dev"){
         user_id = 5467763995;
-        bot_id = 5848850433;
+        // bot_id = 5848850433;
     }
 
 
@@ -26,15 +26,7 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
             BotStore.fetchSettings()
         })
     },[isAuth]);
-    const debug = {
-        user_id: user_id,
-        bot_id: bot_id,
-        is_loading: isLoading,
-        is_auth: isAuth
-    }
-    alert(
-        JSON.stringify(debug)
-    );
+
     if(!isAuth || isLoading){
         return (
             <>
