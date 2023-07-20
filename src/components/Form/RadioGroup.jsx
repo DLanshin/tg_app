@@ -11,7 +11,7 @@ const RadioGroup = observer((props) => {
         value,
         setValue
     } = props
-    if (!elements.length) {
+    if(!elements || !elements?.length){
         return (
             <></>
         );

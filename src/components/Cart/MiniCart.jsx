@@ -1,7 +1,7 @@
 import React from 'react';
 
 const MiniCart = ({elements}) => {
-    if(!elements || !elements.length){
+    if(!elements || !elements?.length){
         return (<></>)
     }
     console.log(elements);

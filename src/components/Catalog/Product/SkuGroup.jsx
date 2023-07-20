@@ -3,7 +3,7 @@ import {observer} from "mobx-react-lite";
 
 const SkuGroup = observer(({label,elements,type,value,setValue}) => {
 
-    if (!elements.length) {
+    if(!elements || !elements?.length){
         return (
             <></>
         );
