@@ -17,6 +17,7 @@ import MiniCart from "../../components/Cart/MiniCart";
 const SingleProductPage = observer((props) => {
     const {id} = useParams();
     const [selectedSku, setSelectedSku] = useState(null);
+    const [availableCount, setAvailableCount] = useState(999999);
     const [count, setCount] = useState(1);
     const {initBackButton, showTelegramAlert, showMainButton} = useTelegram();
     const {item, isLoading} = ProductStore;
@@ -31,6 +32,10 @@ const SingleProductPage = observer((props) => {
             initBackButton(false);
         }
     }, [])
+    useEffect(() => {
+        setAvailableCount(selectedSku?.use_stock ? selectedSku?.stock - CartStore.getProductCartCount(selectedSku.id) : 999999);
+
+    }, [selectedSku, products])
 
     useEffect(() => {
         CartStore.fetchCart()
@@ -45,7 +50,7 @@ const SingleProductPage = observer((props) => {
     }, [id]);
 
 
-    const addToCart = (selectedSku, count) =>{
+    const addToCart = (selectedSku, count) => {
         CartStore.addProduct(selectedSku.id, count).then(() => {
             setCount(1)
             showTelegramAlert("Товар успешно добавлен в корзину")
@@ -79,19 +84,26 @@ const SingleProductPage = observer((props) => {
                     <div className="product-item__description"
                          dangerouslySetInnerHTML={{__html: item.description}}></div>
                 </div>
-                <div className="product-item__content-footer">
-                    <div className="button-group">
-                        <QuantityControl
-                            decrementAction={() => {
-                                setCount(count - 1)
-                            }}
-                            incrementAction={() => {
-                                setCount(count + 1)
-                            }}
-                            count={count}/>
-                        <Button className={"button-group__button"} onClick={()=>addToCart(selectedSku, count)}>Добавить {selectedSku?.price * count + " ₽"}</Button>
+                {availableCount ?
+                    <div className="product-item__content-footer">
+                        <div className="button-group">
+                            <QuantityControl
+                                decrementAction={() => {
+                                    setCount(count <= 1 ? count : count - 1)
+                                }}
+                                incrementAction={() => {
+
+                                    console.log(availableCount)
+                                    setCount(count >= availableCount ? count : count + 1)
+                                }}
+                                count={count}/>
+                            <Button className={"button-group__button"}
+                                    onClick={() => addToCart(selectedSku, count)}>Добавить {selectedSku?.price * count + " ₽"}</Button>
+                        </div>
                     </div>
-                </div>
+                    :
+                    <></>
+                }
             </div>
         </div>
     );

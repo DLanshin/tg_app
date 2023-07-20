@@ -83,7 +83,7 @@ const MakeOrder = observer((props) => {
                 setReceiverMethod(receiversList[0])
             })
     }, []);
-
+    console.log(loyalty)
     useEffect(()=>{
         setShippingMethod(delivery_methods[0]);
         setPaymentMethod(shippingMethod?.slug === 'pickup' || shippingMethod?.slug === 'inhouse' ? pickup_paying_methods[0] : delivery_paying_methods[0])
@@ -129,7 +129,7 @@ const MakeOrder = observer((props) => {
 
     const handlerIsPayBonuses = () =>{
         setIsPayBonuses(!isPayBonuses);
-        setPayBonusesSum(!isPayBonuses ? CartStore.total_price * OrderSettingsStore.loyalty.available_bonus_payments / 100 : 0)
+        setPayBonusesSum(!isPayBonuses ? parseInt(CartStore.total_price * loyalty.active / 100) : 0)
     }
 
     if(BotStore.isLoading || CartStore.isLoading){

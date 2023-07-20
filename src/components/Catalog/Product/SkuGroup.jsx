@@ -18,9 +18,17 @@ const SkuGroup = observer(({label,elements,type,value,setValue}) => {
                             checked={value?.id === item.id}
                             value={item}
                             onChange={()=>setValue(item)}
+                            disabled={!item.is_available && item.use_stock}
                         />
                         <span className={"radio-group__item"}>
-                            <div className={"radio-group__label"}>{item.title}</div>
+                            <div className={"radio-group__label"}>{item.title}
+                                {
+                                    item.is_available && item.use_stock ?
+                                    <small>  (остаток {item.stock}) </small>
+                                    :
+                                    ""
+                                }
+                            </div>
                             <div className={"radio-group__value"}>{item.price + " ₽"}</div>
                         </span>
                     </label>

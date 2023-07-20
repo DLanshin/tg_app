@@ -61,6 +61,11 @@ class CartStore {
             this._updatePriceCount();
         });
     }
+
+    getProductCartCount(sku_id){
+        const cartProduct = this.products.find(item=>item.sku_id === sku_id);
+        return cartProduct ? cartProduct.count : 0;
+    }
     _updatePriceCount(){
         this.total_price =  this.products.reduce((acc, item)=>acc+(item?.count*item.price),0);
         this.quality = this.products.reduce((acc, item) =>acc + item?.count, 0);
