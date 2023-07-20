@@ -732,6 +732,9 @@ button {
   border-radius: 8px;
   grid-template-columns: 1fr 1fr;
 }
+.button-group--1 {
+  grid-template-columns: 1fr;
+}
 .button-group .quality-control {
   display: flex;
   align-items: center;

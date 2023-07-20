@@ -12,7 +12,6 @@ import QuantityControl from "../../components/Button/QuantityControl";
 import Button from "../../components/Button/Button";
 import SkuGroup from "../../components/Catalog/Product/SkuGroup";
 import MiniCart from "../../components/Cart/MiniCart";
-import {CART_ROUTE} from "../../utils/consts";
 
 
 const SingleProductPage = observer((props) => {

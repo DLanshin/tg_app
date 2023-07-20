@@ -8,7 +8,7 @@ import placeholderImage from "../../../assets/images/placeholder.jpg"
 import uuid from "react-uuid";
 import Badges from "../../Common/badges";
 
-const ProductCard = observer(({product, type}) => {
+const ProductCard = observer(({singlePageRoute, product, type}) => {
     const cartProducts = cart.products
     let inCart = false,
         cartQuality = 0;

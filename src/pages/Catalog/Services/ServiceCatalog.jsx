@@ -14,7 +14,7 @@ import {SERVICE_ROUTE} from "../../../utils/consts";
 
 
 const ServiceCatalog = observer(() => {
-    const {services, filter, popular, main_category_alias} = ServiceCatalogStore;
+    const {services, filter, popular, main_category_alias} = S;
     const {categories} = CategoriesStore;
     useEffect(()=>{
         ServiceCatalogStore.fetchServiceCatalog()

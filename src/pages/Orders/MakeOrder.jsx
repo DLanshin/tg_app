@@ -16,6 +16,7 @@ import Spinner from "../../components/Loaders/Spinner";
 import UserStore from "../../store/user/UserStore";
 import Radio from "../../components/Form/Radio";
 import BotStore from "../../store/bot/BotStore";
+import MiniCart from "../../components/Cart/MiniCart";
 
 
 const receiversList = [
@@ -61,6 +62,9 @@ const MakeOrder = observer((props) => {
     const [receiverName, setReceiverName] = useState("");
     const [shippingDate, setShippingDate] = useState("");
     const [comment, setComment] = useState("");
+
+    const {products} = CartStore;
+
     const {
         price_type,
         delivery_fix_price,
@@ -276,9 +280,11 @@ const MakeOrder = observer((props) => {
                 deliveryPrice={price_type.slug === 'fix' && shippingMethod?.slug !== 'pickup' && shippingMethod?.slug !== 'inhouse' ? fix_shipping_price : 0}
 
             />
-            {CartStore.total_price >= min_order_price ?
-                <Button type={"submit"} className={'button-primary'}>Оформить заказ</Button>:
+            <MiniCart elements={products}/>
 
+            {CartStore.total_price >= min_order_price ?
+                <Button type={"submit"} className={'button-primary'}>Оформить заказ</Button>
+                :
                 <>Минимальная сумма заказа {min_order_price+" P"}</>
             }
 

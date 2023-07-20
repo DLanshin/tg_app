@@ -15,7 +15,9 @@
   width: 100%;
   border-radius: 8px;
   grid-template-columns: 1fr 1fr;
-
+  &--1{
+    grid-template-columns: 1fr;
+  }
   .quality-control{
     display: flex;
     align-items: center;

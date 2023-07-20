@@ -1,9 +1,13 @@
 import React from 'react';
 import ServiceCard from "./ServiceCard";
+import Spinner from "../../Loaders/Spinner";
 
-const ServicesList = ({products, emptyText, type}) => {
-    if(!products?.length){
-        return (<></>);
+const ServicesList = ({products, emptyText, type, isLoading}) => {
+    if (!products?.length) {
+        return (<div className={'empty'}>{emptyText}</div>);
+    }
+    if(isLoading){
+        return <Spinner/>
     }
     return (
         <div className={'products'}>
