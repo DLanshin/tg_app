@@ -32,8 +32,9 @@ $api.interceptors.response.use((config) => {
             localStorage.setItem("refreshToken", data.data.refresh_token);
             return $api.request(originalRequest);
         }catch (e){
-            showTelegramAlert("Ошибка авторизации");
-
+            if(process.env.REACT_APP_MODE==="dev"){
+                alert("Ошибка авторизации");
+            }
             console.log("Ошибка авторизации");
             UserStore.logout()
         }
