@@ -7,11 +7,12 @@ import MakeOrder from "./pages/Orders/MakeOrder";
 import Orders from "./pages/Orders/Orders";
 import Contacts from "./pages/Information/Contacts";
 import Policy from "./pages/Information/Policy";
-import Apartment from "./pages/Catalog/Booking/Apartment";
 import ProductsPage from "./pages/Products/ProductsPage";
 import SingleProductPage from "./pages/Products/SingleProductPage";
 import ServicesPage from "./pages/Services/ServicesPage";
 import SingleServicePage from "./pages/Services/SingleServicePage";
+import BookingPage from "./pages/Booking/BookingPage";
+import SingleBookingPage from "./pages/Booking/SingleBookingPage";
 
 
 export const routes = [
@@ -34,8 +35,14 @@ export const routes = [
         showBottomPanel:false,
     },
     {
-        path: CONFIG_ROUTES.APARTMENT_ROUTE + '/:id',
-        Component: <Page showTopPanel={false} element={<Apartment/>}/>,
+        path: CONFIG_ROUTES.BOOKING_ROUTE,
+        Component: <Page showTopPanel={false} element={<BookingPage/>}/>,
+        showTopPanel: false,
+        showBottomPanel:false,
+    },
+    {
+        path: CONFIG_ROUTES.BOOKING_ROUTE + '/:id',
+        Component: <Page showTopPanel={false} element={<SingleBookingPage/>}/>,
         showTopPanel: false,
         showBottomPanel:false,
     },

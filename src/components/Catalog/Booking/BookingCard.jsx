@@ -3,12 +3,12 @@ import {NavLink} from "react-router-dom";
 import {icons} from "../../icons";
 import {observer} from "mobx-react-lite";
 import placeholderImage from "../../../assets/images/placeholder.jpg"
-import {APARTMENT_ROUTE} from "../../../utils/consts";
+import {BOOKING_ROUTE} from "../../../utils/consts";
 
 const BookingCard = observer(({item, type}) => {
     const description = item.description ? item.description.slice(0, 120) : "";
     return (
-        <NavLink to={APARTMENT_ROUTE + `/${item.id}`} className={"products__item "+type} data-id={item.id}>
+        <NavLink to={BOOKING_ROUTE + `/${item.id}`} className={"products__item "+type} data-id={item.id}>
             <div className={"products__item-image"}>
                 <img src={item.image ?item.image.path: placeholderImage} alt={item.title}/>
             </div>
