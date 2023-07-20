@@ -37,6 +37,10 @@ const Page = observer(({showTopPanel, showBottomPanel, navType, element}) => {
 
     return (
         <div className={"page"}>
+            user_id: {user_id}
+            bot_id: {bot_id}
+            is_loading: {isLoading}
+            is_auth: {isAuth}
             {element}
         </div>
     );
