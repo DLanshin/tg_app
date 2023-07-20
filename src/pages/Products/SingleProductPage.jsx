@@ -51,7 +51,7 @@ const SingleProductPage = observer((props) => {
         });
     }
 
-    if (isLoading) {
+    if (isLoading || !item) {
         return <Spinner/>
     }
 
