@@ -25,11 +25,19 @@ class CartStore {
 
     async addProduct(sku_id, count) {
         await $api.post(`${localStorage.getItem('bot_id')}/cart/${sku_id}`, {count: count}).then(({data})=>{
-            debugger
-            this.products = [
+            if(this.products.filter(item=>item.sku_id === data.data.sku_id)){
+                this.products.map(item=>{
+                    if(item.sku_id === data.data.sku_id){
+                        item.count = data.data.count;
+                    }
+                })
+            }else{
+                this.products = [
                     ...this.products,
                     data.data
                 ];
+            }
+
             this._updatePriceCount();
         });
 

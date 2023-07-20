@@ -102,7 +102,9 @@
     justify-content: space-between;
     align-items: center;
   }
-
+  &__value{
+    color:$button_color;
+  }
   & > *:first-child > span {
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
@@ -178,7 +180,10 @@
 
   * > input:checked + span {
     background-color: $button_color;
-    color: $button_text_color
+    color: $button_text_color;
+    .radio-group__value{
+      color: $button_text_color;
+    }
   }
 
 

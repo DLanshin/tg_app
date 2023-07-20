@@ -18,7 +18,7 @@ const SingleProductPage = observer((props) => {
     const {id} = useParams();
     const [selectedSku, setSelectedSku] = useState(null);
     const [count, setCount] = useState(1);
-    const {initBackButton} = useTelegram();
+    const {initBackButton, showTelegramAlert} = useTelegram();
     const {item, isLoading} = ProductStore;
     const {products} = CartStore;
 
@@ -47,6 +47,7 @@ const SingleProductPage = observer((props) => {
     const addToCart = (selectedSku, count) =>{
         CartStore.addProduct(selectedSku.id, count).then(() => {
             setCount(1)
+            showTelegramAlert("Товар успешно добавлен в корзину")
         });
     }
 
@@ -73,7 +74,7 @@ const SingleProductPage = observer((props) => {
                         value={selectedSku}
                         setValue={setSelectedSku}
                     />
-                    {/*<MiniCart elements={products}/>*/}
+                    <MiniCart elements={products}/>
                     <div className="product-item__description"
                          dangerouslySetInnerHTML={{__html: item.description}}></div>
                 </div>
