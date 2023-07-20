@@ -47,7 +47,7 @@ class ProductStore {
         });
     }
     async unsetItem(){
-        this.currentProduct = {
+        this.item = {
             id:null,
             image:null,
             title:null,
