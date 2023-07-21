@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {observer} from "mobx-react-lite";
 import CategoryList from "../../components/Catalog/Category/CategoryList";
-import ProductList from "../../components/Catalog/Product/ProductList";
 import ApartmentStore from "../../store/booking/apartments/ApartmentStore";
+import BookingList from "../../components/Catalog/Booking/BookingList";
+import BookingFilter from "../../components/Catalog/Booking/BookingFilter";
 
 
 
 const BookingPage = observer(() => {
     const [chooseCategory, setChooseCategory] = useState(null);
-    const {items, categories,isLoading} = ApartmentStore;
+    const {items, filter, categories,isLoading} = ApartmentStore;
 
 
     useEffect(()=>{
@@ -24,6 +25,17 @@ const BookingPage = observer(() => {
 
     },[chooseCategory])
 
+
+    const setFilter = (startDate, endDate, person) =>{
+        ApartmentStore.setFilter({
+            ...filter,
+            quantity:person,
+            date_start:startDate,
+            date_end:endDate,
+        })
+        ApartmentStore.fetchList();
+    }
+
     return (
         <div>
             <CategoryList
@@ -31,11 +43,12 @@ const BookingPage = observer(() => {
                 value={chooseCategory}
                 onChange={setChooseCategory}
             />
-            <ProductList
-                products={items}
+            <BookingList
+                items={items}
                 emptyText={"Апартаменты не найдены"}
                 isLoading={isLoading}
             />
+            <BookingFilter onSubmit={setFilter} {...filter}/>
         </div>
     );
 });

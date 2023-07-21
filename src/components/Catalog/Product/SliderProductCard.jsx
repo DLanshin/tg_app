@@ -5,7 +5,6 @@ import {icons} from "../../icons";
 import cart from "../../../store/cart/CartStore";
 import {observer} from "mobx-react-lite";
 import placeholderImage from "../../../assets/images/placeholder.jpg"
-import uuid from "react-uuid";
 
 const SliderProductCard = observer(({hideDescription, product, type, urlRule}) => {
     const cartProducts = cart.products

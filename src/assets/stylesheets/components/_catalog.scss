@@ -189,6 +189,7 @@
   background-color: $bg_color;
   position: relative;
 
+
   .labels{
     display: flex;
     flex-wrap: wrap;
@@ -204,6 +205,9 @@
   }
   &__image {
     height: 40vh;
+    .slick-dots{
+        top: calc(40vh - 95px);
+    }
   }
 
   &__content {

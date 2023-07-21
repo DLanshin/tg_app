@@ -12,6 +12,7 @@ import QuantityControl from "../../components/Button/QuantityControl";
 import Button from "../../components/Button/Button";
 import SkuGroup from "../../components/Catalog/Product/SkuGroup";
 import MiniCart from "../../components/Cart/MiniCart";
+import ImageSlider from "../../components/Common/imageSlider";
 
 
 const SingleProductPage = observer((props) => {
@@ -64,8 +65,10 @@ const SingleProductPage = observer((props) => {
     return (
         <div className={'product-item'} key={item.id}>
             <Badges items={item.labels}/>
-            <img src={item.image ? item.image.path : placeholderImage} alt={item.title}
-                 className="product-item__image"/>
+
+            <div className="product-item__image">
+                <ImageSlider images={item.gallery}/>
+            </div>
             <div className="product-item__content">
                 <div className="product-item__content-body">
                     <div className="product-item__title">

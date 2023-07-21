@@ -188,8 +188,11 @@
 
 
   * > input:disabled + span {
-    background-color: #e9ecef;
+    background-color: $secondary_bg_color;
     color: $hint_color;
+    .radio-group__value{
+      color: $hint_color;
+    }
   }
 }
 

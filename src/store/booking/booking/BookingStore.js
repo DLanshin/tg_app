@@ -1,6 +1,5 @@
 import {makeAutoObservable} from "mobx";
 import {$api} from "../../../http";
-import {useTelegram} from "../../../hooks/useTelegram";
 
 class BookingStore {
     isLoading = true

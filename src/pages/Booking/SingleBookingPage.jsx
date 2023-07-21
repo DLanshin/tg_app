@@ -5,12 +5,13 @@ import placeholderImage from "../../assets/images/placeholder.jpg"
 import DatePicker, {registerLocale} from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ru from 'date-fns/locale/ru';
-import {useTelegram} from "../../hooks/useTelegram";
 import ApartmentStore from "../../store/booking/apartments/ApartmentStore";
+import {useTelegram} from "../../hooks/useTelegram";
 import BookingStore from "../../store/booking/booking/BookingStore";
 import Spinner from "../../components/Loaders/Spinner";
 import BottomWidget from "../../components/Widgets/BottomWidget";
 import Select from "../../components/Form/Select";
+import ImageSlider from "../../components/Common/imageSlider";
 
 
 const SingleBookingPage = observer((props) => {
@@ -23,6 +24,10 @@ const SingleBookingPage = observer((props) => {
     const [startDate, endDate] = dateRange;
     const persons = [];
     const {showTelegramAlert, closeApp} = useTelegram()
+
+
+
+
     for(let i = 1; i<5; i++){
         persons.push(i)
     }
@@ -30,7 +35,7 @@ const SingleBookingPage = observer((props) => {
         initBackButton(true, () => {
             history.back()
         })
-        ApartmentStore.fetchApartment(id)
+        ApartmentStore.fetchItem(id)
         return () => {
             initBackButton(false);
         }
@@ -53,18 +58,20 @@ const SingleBookingPage = observer((props) => {
             ApartmentStore.fetchApartment(apartment_id)
         })
     }
-    if (isLoading) {
-        return <Spinner/>
-    }
+
     let excludeDates = [];
     item.not_available_dates.forEach((item)=>{
         excludeDates.push(new Date(item))
     });
 
+    if (isLoading) {
+        return <Spinner/>
+    }
     return (
         <div className={'product-item'} key={item.id}>
-            <img src={item.image ? item.image.path : placeholderImage} alt={item.title}
-                 className="product-item__image"/>
+            <div className="product-item__image">
+                <ImageSlider images={item.gallery}/>
+            </div>
             <div className="product-item__content">
                 <div className="product-item__content-body">
                     <div className="product-item__title">
