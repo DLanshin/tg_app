@@ -93,7 +93,6 @@ const SingleProductPage = observer((props) => {
                                 }}
                                 incrementAction={() => {
 
-                                    console.log(availableCount)
                                     setCount(count >= availableCount ? count : count + 1)
                                 }}
                                 count={count}/>
