@@ -62,6 +62,11 @@ const SingleProductPage = observer(props => {
 				}
 			)
 		}
+		return ()=>{
+			showMainButton({
+					is_visible:false
+			})
+	}
 	}, [CartStore.quality])
 
 	const addToCart = (selectedSku, count) => {
