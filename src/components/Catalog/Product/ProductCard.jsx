@@ -47,7 +47,7 @@ const ProductCard = observer(({singlePageRoute, product, type}) => {
                     className="products__item-price">{product?.min_price === 0 ? 'Бесплатно' : product?.min_price + ' ₽'} {inCart ? " · " + cartQuality : ""}</span>
             </div>
             <div className={"products__item-button" + (inCart ? " products__item-button--success" : "")}>
-                {icons.arrow_right}
+                {icons.arrow_right_3}
             </div>
         </NavLink>
     );

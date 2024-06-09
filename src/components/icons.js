@@ -3,6 +3,9 @@ import arrowLeft from "../assets/images/icons/arrow-left_icon.svg"
 import arrowRight from "../assets/images/icons/arrow-right_icon.svg"
 import arrowLeft2 from "../assets/images/icons/arrow-left-2_icon.svg"
 import arrowRight2 from "../assets/images/icons/arrow-right-2_icon.svg"
+import arrowRight3 from "../assets/images/icons/arrow-right-3_icon.svg"
+
+
 import phone from "../assets/images/icons/phone_icon.svg"
 import award from "../assets/images/icons/award_icon.svg"
 import backward from "../assets/images/icons/backward_icon.svg"
@@ -37,6 +40,7 @@ export const icons = {
     arrow_right: <ReactSVG className={'svg-icon'} src={arrowRight}/>,
     arrow_left_2: <ReactSVG className={'svg-icon'} src={arrowLeft2}/>,
     arrow_right_2: <ReactSVG className={'svg-icon'} src={arrowRight2}/>,
+    arrow_right_3: <ReactSVG className={'svg-icon'} src={arrowRight3}/>,
     menu: <ReactSVG className={'svg-icon'} src={menu}/>,
     phone: <ReactSVG className={'svg-icon'} src={phone}/>,
     mail: <ReactSVG className={'svg-icon'} src={mail}/>,
