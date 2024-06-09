@@ -13,7 +13,7 @@ const Cart = observer(props => {
 	const { initBackButton } = useTelegram()
 
 	useEffect(() => {
-		if (history.length > 2) {
+		if (history.length > 1) {
 			initBackButton(true, () => {
 				history.back()
 			})
