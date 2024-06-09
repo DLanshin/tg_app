@@ -1,6 +1,9 @@
 import React from 'react'
 import { CART_ROUTE } from '../../utils/consts'
 import {NavLink} from "react-router-dom";
+import uuid from "react-uuid";
+
+
 
 const MiniCart = ({ elements }) => {
 	if (!elements || !elements?.length) {
@@ -11,9 +14,9 @@ const MiniCart = ({ elements }) => {
 		<div className={'mini-cart'}>
 			<div className='mini-cart__title'>В корзине</div>
 			<div className='mini-cart__list'>
-				{elements.map(item => (
+				{elements.map((item) => (
 					<NavLink to={CART_ROUTE}>
-						<div key={item.id} className={'mini-cart__item'}>
+						<div key={uuid()} className={'mini-cart__item'}>
 							<div className={'mini-cart__item-info'}>
 								<div className={'mini-cart__item-title'}>{item.title}</div>
 								<div className={'mini-cart__item-hint'}>{item.sku_title}</div>
