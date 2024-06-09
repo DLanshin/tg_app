@@ -50,6 +50,16 @@ const SingleProductPage = observer((props) => {
         }
     }, [id]);
 
+    useEffect(()=>{
+        ProductStore.fetchCategories()
+        if(CartStore.quality){
+            showMainButton({
+                text: `Перейти в корзину  ${CartStore.total_price} Р`,
+                is_visible: true,
+            }, () => {navigate(CART_ROUTE)})
+        }
+    },[]);
+
 
     const addToCart = (selectedSku, count) => {
         CartStore.addProduct(selectedSku.id, count).then(() => {

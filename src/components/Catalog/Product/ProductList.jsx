@@ -5,7 +5,7 @@ import Spinner from "../../Loaders/Spinner";
 
 const ProductList = ({products, emptyText, type, isLoading}) => {
 
-    if (!products?.length) {
+    if (!products?.length && !isLoading) {
         return (<div className={'empty'}>{emptyText}</div>);
     }
     if(isLoading){
