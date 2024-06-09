@@ -19,24 +19,23 @@ const ProductsPage = observer(() => {
 	const { showMainButton } = useTelegram()
 
 	useEffect(() => {
-		if (CartStore.quality > 0) {
-			showMainButton(
-				{
-					text: `Перейти в корзину ${CartStore.total_price} Р`,
-					is_visible: true,
-				},
-				() => {
-					navigate(CART_ROUTE)
-				}
-			)
-		}
+		showMainButton(
+			{
+				text: `Перейти в корзину`,
+				is_visible: true,
+			},
+			() => {
+				navigate(CART_ROUTE)
+			}
+		)
+
 		return () => {
 			showMainButton({
 				is_visible: false,
 			})
 		}
 	}, [CartStore.quality])
-    
+
 	useEffect(() => {
 		ProductStore.fetchCategories()
 	}, [])

@@ -12,6 +12,7 @@ import { useTelegram } from '../../hooks/useTelegram'
 import CartStore from '../../store/cart/CartStore'
 import ProductStore from '../../store/catalog/products/ProductStore'
 
+
 const SingleProductPage = observer(props => {
 	const { id } = useParams()
 	const [selectedSku, setSelectedSku] = useState(null)

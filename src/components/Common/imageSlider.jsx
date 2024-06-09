@@ -3,8 +3,12 @@ import React from "react";
 import placeholderImage from "../../assets/images/placeholder.jpg"
 import uuid from "react-uuid";
 
+import Lightbox from 'react-image-lightbox';
+import 'react-image-lightbox/style.css';
 
 const ImageSlider = ({images}) => {
+
+    
     const settings = {
         dots: true,
         arrows:false,
