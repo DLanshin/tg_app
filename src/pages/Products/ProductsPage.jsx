@@ -3,6 +3,8 @@ import {observer} from "mobx-react-lite";
 import ProductCatalogStore from "../../store/catalog/products/ProductStore";
 import CategoryList from "../../components/Catalog/Category/CategoryList";
 import ProductList from "../../components/Catalog/Product/ProductList";
+import BannersSlider from "../../components/Banners/BannersSlider";
+
 import ProductStore from "../../store/catalog/products/ProductStore";
 import CartStore from "../../store/cart/CartStore";
 import {CART_ROUTE} from "../../utils/consts";
@@ -45,6 +47,7 @@ const ProductsPage = observer(() => {
                 value={chooseCategory}
                 onChange={setChooseCategory}
             />
+            <BannersSlider />
             <ProductList
                 products={items}
                 emptyText={"Товары не найдены"}
