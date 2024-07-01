@@ -308,6 +308,10 @@ button {
 	line-height: 20px;
 	color: var(--tg-theme-hint-color);
 }
+.products__item-description p {
+	word-break: break-all;
+	overflow-wrap: break-word;
+}
 .products__item-button {
 	width: 34px;
 	height: 34px;
@@ -1245,7 +1249,7 @@ button {
 }
 .banner img {
 	border-radius: 14px;
-	
+
 	object-fit: cover;
 }
 
@@ -1329,7 +1333,7 @@ button {
 	flex-direction: column;
 	gap: 15px;
 }
-.slick-slide{
+.slick-slide {
 	background-color: #ffffff;
 }
 /*# sourceMappingURL=main.css.map */
