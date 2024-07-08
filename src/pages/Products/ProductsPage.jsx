@@ -49,7 +49,6 @@ const ProductsPage = observer(() => {
 
 	return (
 		<div>
-			Test
 			<CategoryList
 				items={categories}
 				value={chooseCategory}
