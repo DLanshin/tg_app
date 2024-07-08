@@ -306,6 +306,7 @@ const MakeOrder = observer((props) => {
                         value={comment}
                         onChange={setComment}
                     />
+                    test
                     {
                         distance && (
                             <div>
