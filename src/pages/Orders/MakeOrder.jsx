@@ -62,6 +62,8 @@ const MakeOrder = observer((props) => {
     const [receiverName, setReceiverName] = useState("");
     const [shippingDate, setShippingDate] = useState("");
     const [comment, setComment] = useState("");
+    const [distance, setDistance] = useState("");
+
 
     const {products} = CartStore;
 
@@ -93,6 +95,13 @@ const MakeOrder = observer((props) => {
             setShippingDate(getDefaultDate())
         }
     },[shippingDateMethod]);
+
+    useEffect(() => {
+        if (address) {
+            calculateDistance();
+        }
+    }, [address]);
+    
 
 
     const createOrderHandler = (event) => {
@@ -130,6 +139,34 @@ const MakeOrder = observer((props) => {
         setIsPayBonuses(!isPayBonuses);
         setPayBonusesSum(!isPayBonuses ? parseInt(CartStore.total_price * loyalty.available_bonus_payments / 100) : 0)
     }
+    const calculateDistance = () => {
+        ymaps.ready(function () {
+            var geocoder = ymaps.geocode([address, 'Точка Б']);
+    
+            geocoder.then(function (res) {
+                var originCoords = res.geoObjects.get(0).geometry.getCoordinates();
+                var destinationCoords = res.geoObjects.get(1).geometry.getCoordinates();
+    
+                var multiRoute = new ymaps.multiRouter.MultiRoute({
+                    referencePoints: [
+                        originCoords,
+                        destinationCoords
+                    ],
+                    params: {
+                        routingMode: 'auto'
+                    }
+                }, {
+                    boundsAutoApply: true
+                });
+    
+                multiRoute.model.events.add('requestsuccess', function () {
+                    var distanceText = multiRoute.getRoutes().get(0).properties.get("distance").text;
+                    setDistance(distanceText);
+                });
+            });
+        });
+    }
+    
 
     if(BotStore.isLoading || CartStore.isLoading){
         return <Spinner/>
@@ -259,7 +296,7 @@ const MakeOrder = observer((props) => {
                                 placeholder={"Куда доставить"}
                                 value={address}
                                 onChange={setAddress}
-                            />: null
+                            /> : null
                     }
 
                     <Input
@@ -269,8 +306,17 @@ const MakeOrder = observer((props) => {
                         value={comment}
                         onChange={setComment}
                     />
+                    {
+                        distance && (
+                            <div>
+                                <b>Расстояние:</b> {distance}
+                            </div>
+                        )
+                    }
                 </div>
             </div>
+
+
 
 
             <OrderInfo
