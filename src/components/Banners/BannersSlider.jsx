@@ -29,7 +29,7 @@ const BannersSlider = observer(() => {
         }
     },[])
 
-    if(banner.length){
+    if(banners.length){
         return (
             <div>
                 <Slider {...settings} className={"banners__slider"}>
