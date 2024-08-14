@@ -1254,7 +1254,8 @@ button {
 }
 .banner img {
 	border-radius: 14px;
-	padding: 0 10px;
+	padding: 3px 10px;
+	margin-top: 2px;
 	object-fit: cover;
 }
 
