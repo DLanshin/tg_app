@@ -37,7 +37,7 @@ const ImageSlider = ({ images }) => {
 					<div
 						key={item.id}
 						className={'gallery-slider__item'}
-						onClick={() => openLightBox(key)}
+						
 					>
 						<img src={item.path} />
 					</div>
