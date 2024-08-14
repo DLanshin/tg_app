@@ -34,6 +34,14 @@ const ProductCard = observer(({singlePageRoute, product, type}) => {
                     <div className="products__item-name">
                         {product.title}
                     </div>
+                    {
+                       /* product.skus.length > 1 ?
+                            <div className="products__item-subname">
+                                {product.skus.map((item) => (<span key={uuid()}>{item.title}</span>))}
+                            </div>
+                            : null*/
+                    }
+                    <div className="products__item-description" dangerouslySetInnerHTML={{__html: description}}></div>
                 </div>
                 <span
                     className="products__item-price">{product?.min_price === 0 ? 'Бесплатно' : product?.min_price + ' ₽'} {inCart ? " · " + cartQuality : ""}</span>
