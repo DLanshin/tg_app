@@ -122,7 +122,7 @@ button {
 
 .item__slider {
 	display: flex;
-	padding: 0 10px;
+	padding: 0;
 }
 .item__slider > * {
 	height: 100%;
@@ -1244,7 +1244,9 @@ button {
 	margin: 0;
 	display: block;
 }
-
+.banners__slider .slick-list .slick-track .slick-slide {
+	height: 144px!important;
+}
 .banner {
 	width: 100%;
 	/* border-radius: 14px; */
