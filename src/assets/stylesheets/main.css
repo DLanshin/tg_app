@@ -1245,7 +1245,7 @@ button {
 	display: block;
 }
 .banners__slider .slick-list .slick-track .slick-slide {
-	height: 144px!important;
+	height: 100%!important;
 }
 .banner {
 	width: 100%;
@@ -1253,8 +1253,8 @@ button {
 	box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
 }
 .banner img {
-	/* border-radius: 14px; */
-
+	border-radius: 14px;
+	padding: 0 10%;
 	object-fit: cover;
 }
 
@@ -1339,6 +1339,6 @@ button {
 	gap: 15px;
 }
 .slick-slide {
-	background-color: #ffffff;
+	background-color:  var(--tg-theme-secondary-bg-color);
 }
 /*# sourceMappingURL=main.css.map */
