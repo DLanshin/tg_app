@@ -49,12 +49,13 @@ const ProductsPage = observer(() => {
 
 	return (
 		<div>
-			<BannersSlider />
+			
 			<CategoryList
 				items={categories}
 				value={chooseCategory}
 				onChange={setChooseCategory}
 			/>
+			<BannersSlider />
 			<ProductList
 				products={items}
 				emptyText={'Товары не найдены'}
