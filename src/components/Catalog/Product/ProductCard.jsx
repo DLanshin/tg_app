@@ -29,7 +29,7 @@ const ProductCard = observer(({singlePageRoute, product, type}) => {
                 {product.title}
             </div>
             <div className={"products__item-image"}>
-                <Badges items={product.labels}/>
+                {/* <Badges items={product.labels}/> */}
                 <img src={product.image ? product.image.path : placeholderImage} alt={product.title}/>
             </div>
             <div className="products__item-content">
