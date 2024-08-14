@@ -273,6 +273,7 @@ button {
 	align-items: flex-start;
 }
 .products__item-name {
+	padding: 15px 8px;
 	font-family: 'Poppins', sans-serif;
 	font-style: normal;
 	font-weight: 500;
@@ -371,7 +372,7 @@ button {
 }
 .product-item__content {
 	position: relative;
-	margin-top: -60px;
+	/* margin-top: -60px; */
 	background: linear-gradient(
 		var(--tg-theme-bg-color),
 		var(--tg-theme-secondary-bg-color)

@@ -25,16 +25,14 @@ const ProductCard = observer(({singlePageRoute, product, type}) => {
     const description = product.description ? product.description.slice(0, 120) : "";
     return (
         <NavLink to={PRODUCT_ROUTE + `/${product.id}`} className={"products__item " + type} data-id={product.id}>
+            <div className="products__item-name">
+                {product.title}
+            </div>
             <div className={"products__item-image"}>
                 <Badges items={product.labels}/>
                 <img src={product.image ? product.image.path : placeholderImage} alt={product.title}/>
             </div>
             <div className="products__item-content">
-                <div>
-                    <div className="products__item-name">
-                        {product.title}
-                    </div>
-                </div>
                 <span
                     className="products__item-price">{product?.min_price === 0 ? 'Бесплатно' : product?.min_price + ' ₽'} {inCart ? " · " + cartQuality : ""}</span>
             </div>
