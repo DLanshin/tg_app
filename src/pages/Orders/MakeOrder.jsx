@@ -64,7 +64,7 @@ const MakeOrder = observer((props) => {
 
     const mapRef = useRef(null);
     const [map, setMap] = useState(null);
-    const [directionService, setDirectionsService] = useState(null);
+    const [directionsService, setDirectionsService] = useState(null);
     const [directionsDisplay, setDirectionsDisplay] = useState(null);
     const [startLocation, setStartLocation] = useState('');
     const [address, setEndLocation] = useState('');
