@@ -166,7 +166,7 @@ const MakeOrder = observer((props) => {
         };
     }, []);
 
-    const calculateAndDisplayRoute = () => {
+    const calculateAndDisplayRoute = (address) => {
         if (directionsService && directionsDisplay) {
             directionsService.route(
                 {
@@ -183,7 +183,6 @@ const MakeOrder = observer((props) => {
                 }
             );
         }
-        this.calculateAndDisplayRoute();
     };
 
     const createOrderHandler = (event) => {
@@ -376,7 +375,8 @@ const MakeOrder = observer((props) => {
                                 name={"address"}
                                 placeholder={"Куда доставить"}
                                 value={address}
-                                onChange={setEndLocation(e.target.value)}
+                                // onChange={setEndLocation(e.target.value)}
+                                onChange={calculateAndDisplayRoute(e.target.value)}
                             /> : null
                     }
                     <div id="map" ref={mapRef} style={{ height: '100vh' }}></div>
