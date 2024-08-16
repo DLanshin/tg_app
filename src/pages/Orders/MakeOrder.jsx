@@ -221,37 +221,37 @@ const MakeOrder = observer((props) => {
         setPayBonusesSum(!isPayBonuses ? parseInt(CartStore.total_price * loyalty.available_bonus_payments / 100) : 0);
     };
 
-    const calculateDistance = () => {
-        ymaps.ready(() => {
-            var geocoder = ymaps.geocode(address);
+    // const calculateDistance = () => {
+    //     ymaps.ready(() => {
+    //         var geocoder = ymaps.geocode(address);
 
-            geocoder.then((res) => {
-                if (res.geoObjects.get(0)) {
-                    var originCoords = res.geoObjects.get(0).geometry.getCoordinates();
-                    var destinationCoords = [55.751426, 37.618879];
+    //         geocoder.then((res) => {
+    //             if (res.geoObjects.get(0)) {
+    //                 var originCoords = res.geoObjects.get(0).geometry.getCoordinates();
+    //                 var destinationCoords = [55.751426, 37.618879];
 
-                    var multiRoute = new ymaps.multiRouter.MultiRoute({
-                        referencePoints: [
-                            originCoords,
-                            destinationCoords
-                        ],
-                        params: {
-                            routingMode: 'auto'
-                        }
-                    }, {
-                        boundsAutoApply: true
-                    });
+    //                 var multiRoute = new ymaps.multiRouter.MultiRoute({
+    //                     referencePoints: [
+    //                         originCoords,
+    //                         destinationCoords
+    //                     ],
+    //                     params: {
+    //                         routingMode: 'auto'
+    //                     }
+    //                 }, {
+    //                     boundsAutoApply: true
+    //                 });
 
-                    multiRoute.model.events.add('requestsuccess', function () {
-                        var distanceText = multiRoute.getRoutes().get(0).properties.get("distance").text;
-                        setDistance(distanceText);
-                    });
-                } else {
-                    setDistance("Адрес не найден");
-                }
-            });
-        });
-    };
+    //                 multiRoute.model.events.add('requestsuccess', function () {
+    //                     var distanceText = multiRoute.getRoutes().get(0).properties.get("distance").text;
+    //                     setDistance(distanceText);
+    //                 });
+    //             } else {
+    //                 setDistance("Адрес не найден");
+    //             }
+    //         });
+    //     });
+    // };
 
     if (BotStore.isLoading || CartStore.isLoading) {
         return <Spinner />;
