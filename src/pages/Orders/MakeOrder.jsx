@@ -112,7 +112,8 @@ const MakeOrder = observer((props) => {
         const initMap = () => {
             const mapInstance = new window.google.maps.Map(mapRef.current, {
                 zoom: 7,
-                center: { lat:  55.75167, lng: 37.61778 },
+                center: { lat:  55.750537, lng: 37.609566 },
+                //55.750537, 37.609566
             });
             setMap(mapInstance);
 
