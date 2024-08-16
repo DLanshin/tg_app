@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { observer } from "mobx-react-lite";
 import CartStore from "../../store/cart/CartStore";
 import OrderInfo from "../../components/Order/OrderInfo";
@@ -55,11 +55,19 @@ const MakeOrder = observer((props) => {
 
     const { showMainButton, closeApp } = useTelegram();
     const [phone, setPhone] = useState("");
-    const [address, setAddress] = useState("");
+    // const [address, setAddress] = useState("");
     const [receiverName, setReceiverName] = useState("");
     const [shippingDate, setShippingDate] = useState("");
     const [comment, setComment] = useState("");
     const [distance, setDistance] = useState("");
+
+
+    const mapRef = useRef(null);
+    const [map, setMap] = userState(null);
+    const [directionService, setDirectionsService] = useState(null);
+    const [directionsDisplay, setDirectionsDisplay] = useState(null);
+    const [startLocation, setStartLocation] = useState('');
+    const [address, setEndLocation] = useState('');
 
     const { products } = CartStore;
 
@@ -98,6 +106,85 @@ const MakeOrder = observer((props) => {
             calculateDistance();
         }
     }, [address]);
+
+
+    useEffect(() => {
+        const initMap = () => {
+            const mapInstance = new window.google.maps.Map(mapRef.current, {
+                zoom: 7,
+                center: { lat: 41.85, lng: -87.65 },
+            });
+            setMap(mapInstance);
+
+            const directionsServiceInstance = new window.google.maps.DirectionsService();
+            const directionsDisplayInstance = new window.google.maps.DirectionsRenderer();
+            directionsDisplayInstance.setMap(mapInstance);
+
+            setDirectionsService(directionsServiceInstance);
+            setDirectionsDisplay(directionsDisplayInstance);
+
+            getCurrentLocation((loc) => {
+                if (loc) {
+                    setStartLocation(loc.toString());
+                    mapInstance.setCenter(loc);
+                } else {
+                    alert('Current location not found');
+                }
+            });
+        };
+
+        const getCurrentLocation = (complete) => {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    (position) => {
+                        const location = new window.google.maps.LatLng(
+                            position.coords.latitude,
+                            position.coords.longitude
+                        );
+                        complete(location);
+                    },
+                    () => {
+                        complete(null);
+                    }
+                );
+            } else {
+                complete(null);
+            }
+        };
+
+        window.initMap = initMap;
+
+        // Load the Google Maps script
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?callback=initMap`;
+        script.async = true;
+        document.head.appendChild(script);
+
+        return () => {
+            // Cleanup script tag if component unmounts
+            document.head.removeChild(script);
+        };
+    }, []);
+
+    const calculateAndDisplayRoute = () => {
+        if (directionsService && directionsDisplay) {
+            directionsService.route(
+                {
+                    origin: startLocation,
+                    destination: address,
+                    travelMode: window.google.maps.TravelMode.DRIVING,
+                },
+                (response, status) => {
+                    if (status === window.google.maps.DirectionsStatus.OK) {
+                        directionsDisplay.setDirections(response);
+                    } else {
+                        window.alert('Directions request failed due to ' + status);
+                    }
+                }
+            );
+        }
+        this.calculateAndDisplayRoute();
+    };
 
     const createOrderHandler = (event) => {
         event.preventDefault();
@@ -289,9 +376,10 @@ const MakeOrder = observer((props) => {
                                 name={"address"}
                                 placeholder={"Куда доставить"}
                                 value={address}
-                                onChange={setAddress}
+                                onChange={setEndLocation(e.target.value)}
                             /> : null
                     }
+                    <div id="map" ref={mapRef} style={{ height: '100vh' }}></div>
                     <Input
                         type={"text"}
                         name={"comment"}
