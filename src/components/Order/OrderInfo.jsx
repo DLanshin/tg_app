@@ -15,7 +15,7 @@ const OrderInfo = ({totalPrice, deliveryPrice, payBonusSum}) => {
                 :null}
             <div className={"order-info__item"}>
                 <span>Доставка</span>
-                <span>{deliveryPrice ? deliveryPrice+ " ₽": "Бесплатно"}</span>
+                <span>{deliveryPrice ? deliveryPrice+ " ₽": "Уточняется менеджером"}</span>
             </div>
             <div className={"order-info__item"}>
                 <span>Итого</span>
