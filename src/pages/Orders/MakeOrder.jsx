@@ -55,7 +55,7 @@ const MakeOrder = observer((props) => {
 
     const { showMainButton, closeApp } = useTelegram();
     const [phone, setPhone] = useState("");
-    // const [address, setAddress] = useState("");
+    const [address, setAddress] = useState("");
     const [receiverName, setReceiverName] = useState("");
     const [shippingDate, setShippingDate] = useState("");
     const [comment, setComment] = useState("");
@@ -67,7 +67,7 @@ const MakeOrder = observer((props) => {
     const [directionsService, setDirectionsService] = useState(null);
     const [directionsDisplay, setDirectionsDisplay] = useState(null);
     const [startLocation, setStartLocation] = useState('');
-    const [address, setEndLocation] = useState('');
+    // const [address, setEndLocation] = useState('');
 
     const { products } = CartStore;
 
@@ -108,83 +108,83 @@ const MakeOrder = observer((props) => {
     }, [address]);
 
 
-    useEffect(() => {
-        const initMap = () => {
-            const mapInstance = new window.google.maps.Map(mapRef.current, {
-                zoom: 7,
-                center: { lat:  55.750537, lng: 37.609566 },
-                //55.750537, 37.609566
-            });
-            setMap(mapInstance);
+    // useEffect(() => {
+    //     const initMap = () => {
+    //         const mapInstance = new window.google.maps.Map(mapRef.current, {
+    //             zoom: 7,
+    //             center: { lat:  55.750537, lng: 37.609566 },
+    //             //55.750537, 37.609566
+    //         });
+    //         setMap(mapInstance);
 
-            const directionsServiceInstance = new window.google.maps.DirectionsService();
-            const directionsDisplayInstance = new window.google.maps.DirectionsRenderer();
-            directionsDisplayInstance.setMap(mapInstance);
+    //         const directionsServiceInstance = new window.google.maps.DirectionsService();
+    //         const directionsDisplayInstance = new window.google.maps.DirectionsRenderer();
+    //         directionsDisplayInstance.setMap(mapInstance);
 
-            setDirectionsService(directionsServiceInstance);
-            setDirectionsDisplay(directionsDisplayInstance);
+    //         setDirectionsService(directionsServiceInstance);
+    //         setDirectionsDisplay(directionsDisplayInstance);
 
-            getCurrentLocation((loc) => {
-                if (loc) {
-                    setStartLocation(loc.toString());
-                    mapInstance.setCenter(loc);
-                } else {
-                    alert('Current location not found');
-                }
-            });
-        };
+    //         getCurrentLocation((loc) => {
+    //             if (loc) {
+    //                 setStartLocation(loc.toString());
+    //                 mapInstance.setCenter(loc);
+    //             } else {
+    //                 alert('Current location not found');
+    //             }
+    //         });
+    //     };
 
-        const getCurrentLocation = (complete) => {
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(
-                    (position) => {
-                        const location = new window.google.maps.LatLng(
-                            position.coords.latitude,
-                            position.coords.longitude
-                        );
-                        complete(location);
-                    },
-                    () => {
-                        complete(null);
-                    }
-                );
-            } else {
-                complete(null);
-            }
-        };
+    //     const getCurrentLocation = (complete) => {
+    //         if (navigator.geolocation) {
+    //             navigator.geolocation.getCurrentPosition(
+    //                 (position) => {
+    //                     const location = new window.google.maps.LatLng(
+    //                         position.coords.latitude,
+    //                         position.coords.longitude
+    //                     );
+    //                     complete(location);
+    //                 },
+    //                 () => {
+    //                     complete(null);
+    //                 }
+    //             );
+    //         } else {
+    //             complete(null);
+    //         }
+    //     };
 
-        window.initMap = initMap;
+    //     window.initMap = initMap;
 
-        // Load the Google Maps script
-        const script = document.createElement('script');
-        script.src = `https://maps.googleapis.com/maps/api/js?callback=initMap`;
-        script.async = true;
-        document.head.appendChild(script);
+    //     // Load the Google Maps script
+    //     const script = document.createElement('script');
+    //     script.src = `https://maps.googleapis.com/maps/api/js?callback=initMap`;
+    //     script.async = true;
+    //     document.head.appendChild(script);
 
-        return () => {
-            // Cleanup script tag if component unmounts
-            document.head.removeChild(script);
-        };
-    }, []);
+    //     return () => {
+    //         // Cleanup script tag if component unmounts
+    //         document.head.removeChild(script);
+    //     };
+    // }, []);
 
-    const calculateAndDisplayRoute = (address) => {
-        if (directionsService && directionsDisplay) {
-            directionsService.route(
-                {
-                    origin: startLocation,
-                    destination: address,
-                    travelMode: window.google.maps.TravelMode.DRIVING,
-                },
-                (response, status) => {
-                    if (status === window.google.maps.DirectionsStatus.OK) {
-                        directionsDisplay.setDirections(response);
-                    } else {
-                        window.alert('Directions request failed due to ' + status);
-                    }
-                }
-            );
-        }
-    };
+    // const calculateAndDisplayRoute = (address) => {
+    //     if (directionsService && directionsDisplay) {
+    //         directionsService.route(
+    //             {
+    //                 origin: startLocation,
+    //                 destination: address,
+    //                 travelMode: window.google.maps.TravelMode.DRIVING,
+    //             },
+    //             (response, status) => {
+    //                 if (status === window.google.maps.DirectionsStatus.OK) {
+    //                     directionsDisplay.setDirections(response);
+    //                 } else {
+    //                     window.alert('Directions request failed due to ' + status);
+    //                 }
+    //             }
+    //         );
+    //     }
+    // };
 
     const createOrderHandler = (event) => {
         event.preventDefault();
@@ -376,11 +376,11 @@ const MakeOrder = observer((props) => {
                                 name={"address"}
                                 placeholder={"Куда доставить"}
                                 value={address}
-                                // onChange={setEndLocation(e.target.value)}
-                                onChange={calculateAndDisplayRoute(address)}
+                                onChange={setAddress(address)}
+                                // onChange={calculateAndDisplayRoute(address)}
                             /> : null
                     }
-                    <div id="map" ref={mapRef} style={{ height: '100vh' }}></div>
+                    {/* <div id="map" ref={mapRef} style={{ height: '100vh' }}></div> */}
                     <Input
                         type={"text"}
                         name={"comment"}
