@@ -376,7 +376,7 @@ const MakeOrder = observer((props) => {
                                 name={"address"}
                                 placeholder={"Куда доставить"}
                                 value={address}
-                                onChange={setEndLocation(e.target.value)}
+                                onChange={setAddress}
                                 // onChange={calculateAndDisplayRoute(address)}
                             /> : null
                     }
