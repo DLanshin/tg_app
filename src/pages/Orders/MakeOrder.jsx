@@ -103,7 +103,7 @@ const MakeOrder = observer((props) => {
 
     useEffect(() => {
         if (address) {
-            calculateDistance();
+            // calculateDistance();
         }
     }, [address]);
 
