@@ -1,9 +1,9 @@
-import React, {useEffect} from 'react';
-import {YMaps, Map, Placemark} from '@pbe/react-yandex-maps';
-import {NavLink} from "react-router-dom";
+import React, { useEffect } from 'react';
+import { YMaps, Map, Placemark } from '@pbe/react-yandex-maps';
+import { NavLink } from "react-router-dom";
 import Social from "../../components/Social/Social";
-import {POLICY_ROUTE} from "../../utils/consts";
-import {observer} from "mobx-react-lite";
+import { POLICY_ROUTE } from "../../utils/consts";
+import { observer } from "mobx-react-lite";
 import Spinner from "../../components/Loaders/Spinner";
 import BotStore from "../../store/bot/BotStore";
 
@@ -26,16 +26,16 @@ const Contacts = observer(() => {
     }
     let socials = [];
     if (info?.vk) {
-        socials.push({name: 'vk', link: info.vk});
+        socials.push({ name: 'vk', link: info.vk });
     }
     if (info?.instagram) {
-        socials.push({name: 'instagram', link: info.instagram});
+        socials.push({ name: 'instagram', link: info.instagram });
     }
     if (info?.youtube) {
-        socials.push({name: 'youtube', link: info.youtube});
+        socials.push({ name: 'youtube', link: info.youtube });
     }
     if (BotStore.isLoading) {
-        return <Spinner/>
+        return <Spinner />
     }
     return (
         <div className={'contacts container'}>
@@ -44,7 +44,7 @@ const Contacts = observer(() => {
                     defaultState ?
                         <YMaps>
                             <Map defaultState={defaultState} width={'100%'} height={'40vh'}>
-                                <Placemark geometry={[info.geo_lat, info.geo_lon]}/>
+                                <Placemark geometry={[info.geo_lat, info.geo_lon]} />
                             </Map>
                         </YMaps> : ""
                 }
@@ -52,7 +52,7 @@ const Contacts = observer(() => {
 
             <div className="block-list">
                 <div className="block-list__title">
-                    Информация о пользователе
+                    Информация о магазине
                 </div>
                 <div className="block-list__body">
                     <div className="list">
@@ -81,14 +81,19 @@ const Contacts = observer(() => {
                                 {info.email ? info.email : '-'}
                             </div>
                         </div>
-                        <div className="list__item">
-                            <div className="list__item-value">
-                                <span>Web-сайт</span>
-                            </div>
-                            <div className="list__item-value list__item-value--primary">
-                                {info.site ? info.site : '-'}
-                            </div>
-                        </div>
+                        {
+                            info.site ?
+                                <div className="list__item">
+                                    <div className="list__item-value">
+                                        <span>Web-сайт</span>
+                                    </div>
+                                    <div className="list__item-value list__item-value--primary">
+                                        {info.site ? info.site : '-'}
+                                    </div>
+                                </div>
+                                : null
+                        }
+                        { console.log(info) }
                     </div>
                 </div>
             </div>
@@ -99,7 +104,7 @@ const Contacts = observer(() => {
                             Социальные сети
                         </div>
                         <div className="block-list__body">
-                            <Social socials={socials}/>
+                            <Social socials={socials} />
                         </div>
                     </div>
                     : null
